@@ -9,7 +9,7 @@ ToolboxArea::ToolboxArea(QWidget *parent) : QWidget(parent), ui(new Ui::ToolboxA
 
 void ToolboxArea::on_filter_clicked()
 {
-    Filterarea *filter = new Filterarea();
+    FilterArea *filter = new FilterArea();
     filter->show();
 }
 

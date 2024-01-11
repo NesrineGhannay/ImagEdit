@@ -1,14 +1,14 @@
 #include "filterarea.h"
 #include "ui_filterarea.h"
 
-Filterarea::Filterarea(QWidget *parent)
+FilterArea::FilterArea(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Filterarea)
+    , ui(new Ui::FilterArea)
 {
     ui->setupUi(this);
 }
 
-Filterarea::~Filterarea()
+FilterArea::~FilterArea()
 {
     delete ui;
 }

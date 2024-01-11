@@ -4,19 +4,19 @@
 #include <QWidget>
 
 namespace Ui {
-class Filterarea;
+class FilterArea;
 }
 
-class Filterarea : public QWidget
+class FilterArea : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Filterarea(QWidget *parent = nullptr);
-    ~Filterarea();
+    explicit FilterArea(QWidget *parent = nullptr);
+    ~FilterArea();
 
 private:
-    Ui::Filterarea *ui;
+    Ui::FilterArea *ui;
 };
 
 #endif // FILTERAREA_H

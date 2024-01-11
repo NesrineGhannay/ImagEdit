@@ -37,7 +37,7 @@
    <widget class="QPushButton" name="trim">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>10</x>
       <y>150</y>
       <width>83</width>
       <height>29</height>
@@ -55,8 +55,8 @@
    <widget class="QPushButton" name="filter">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>220</y>
+      <x>100</x>
+      <y>150</y>
       <width>83</width>
       <height>29</height>
      </rect>
@@ -73,8 +73,8 @@
    <widget class="QPushButton" name="selection">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>290</y>
+      <x>160</x>
+      <y>190</y>
       <width>83</width>
       <height>29</height>
      </rect>
