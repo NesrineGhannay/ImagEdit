@@ -12,11 +12,11 @@ class SettingArea : public QWidget
     Q_OBJECT
 
 public:
-    explicit SettingArea(QWidget *parent = nullptr);
+    explicit SettingArea(QWidget *parent = 0);
     ~SettingArea();
 
 private:
     Ui::SettingArea *ui;
-};
 
+};
 #endif // SETTINGAREA_H
