@@ -2,6 +2,8 @@
 #define TOOLBOXAREA_H
 
 #include <QWidget>
+#include <QStyleOption>
+#include <QPainter>
 
 namespace Ui {
 class ToolboxArea;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::ToolboxArea *ui;
+
 };
 
 #endif // TOOLBOXAREA_H
