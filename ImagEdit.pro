@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     editionarea.cpp \
+    filterarea.cpp \
     libraryarea.cpp \
     main.cpp \
     imagedit.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     editionarea.h \
+    filterarea.h \
     imagedit.h \
     libraryarea.h \
     settingarea.h \
@@ -25,6 +27,7 @@ HEADERS += \
 
 FORMS += \
     editionarea.ui \
+    filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
     settingarea.ui \

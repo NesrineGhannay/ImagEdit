@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>264</width>
-    <height>543</height>
+    <width>275</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="trim">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -52,7 +52,7 @@
      <string>Rogner</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="filter">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -70,7 +70,7 @@
      <string>Filtre</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="selection">
     <property name="geometry">
      <rect>
       <x>90</x>

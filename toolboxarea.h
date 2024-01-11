@@ -17,6 +17,9 @@ public:
     explicit ToolboxArea(QWidget *parent = nullptr);
     ~ToolboxArea();
 
+private slots:
+    void on_filter_clicked();
+
 private:
     Ui::ToolboxArea *ui;
 
