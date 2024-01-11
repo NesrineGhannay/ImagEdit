@@ -2,6 +2,7 @@
 #define IMAGEDIT_H
 
 #include <QMainWindow>
+#include <QPalette>
 
 #include "editionarea.h"
 #include "libraryarea.h"

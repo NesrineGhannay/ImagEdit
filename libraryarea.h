@@ -2,6 +2,8 @@
 #define LIBRARYAREA_H
 
 #include <QWidget>
+#include <QStyleOption>
+#include <QPainter>
 
 namespace Ui {
 class LibraryArea;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::LibraryArea *ui;
+
 };
 
 #endif // LIBRARYAREA_H
