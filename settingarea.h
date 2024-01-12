@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QFileDialog>
 #include <QStandardPaths>
-
+#include <QLabel>
 
 namespace Ui {
 class SettingArea;
@@ -25,12 +25,26 @@ private:
     QPushButton *boutonEnregistrer;
     QPushButton *boutonEnregistrerSous;
     QPushButton *boutonAnnuler;
+    QPushButton *boutonRevenirArriere;
+    QPushButton *boutonRevenirAvant;
+    QPushButton *boutonPlus;
+    QPushButton *boutonMoins;
+    QPushButton *boutonSupprimer;
+    QLabel *logoLabel;
+
+
+
 
 private slots:
     void onBoutonOuvrirClicked();
     void onBoutonEnregistrerClicked();
     void onBoutonEnregistrerSousClicked();
     void onBoutonAnnulerClicked();
+    void onBoutonRevenirArriereClicked();
+    void onBoutonRevenirAvantClicked();
+    void onBoutonPlusClicked();
+    void onBoutonMoinsClicked();
+    void onBoutonSupprimerClicked();
 
 };
 #endif // SETTINGAREA_H
