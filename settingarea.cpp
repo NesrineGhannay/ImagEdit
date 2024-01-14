@@ -8,17 +8,17 @@ SettingArea::SettingArea(QWidget *parent) : QWidget(parent), ui(new Ui::SettingA
     ui->setupUi(this);
 
     boutonOuvrir = new QPushButton("Ouvrir", this);
-    boutonOuvrir->setIcon(QIcon("C:/Users/yasmi/Downloads/open.png"));
+    boutonOuvrir->setIcon(QIcon(":/open.png"));
     boutonOuvrir->setGeometry(10, 10, 100, 30);
     connect(boutonOuvrir, &QPushButton::clicked, this, &SettingArea::onBoutonOuvrirClicked);
 
     boutonEnregistrer = new QPushButton("Enregistrer", this);
-    boutonEnregistrer->setIcon(QIcon("C:/Users/yasmi/Downloads/save.png"));
+    boutonEnregistrer->setIcon(QIcon(":/save.png"));
     boutonEnregistrer->setGeometry(120, 10, 100, 30);
     connect(boutonEnregistrer, &QPushButton::clicked, this, &SettingArea::onBoutonEnregistrerClicked);
 
     boutonEnregistrerSous = new QPushButton("Enregistrer sous", this);
-    boutonEnregistrerSous->setIcon(QIcon("C:/Users/yasmi/Downloads/saveAs.png"));
+    boutonEnregistrerSous->setIcon(QIcon(":/saveAs.png"));
     boutonEnregistrerSous->setGeometry(230, 10, 110, 30);
     connect(boutonEnregistrerSous, &QPushButton::clicked, this, &SettingArea::onBoutonEnregistrerSousClicked);
 
@@ -28,32 +28,32 @@ SettingArea::SettingArea(QWidget *parent) : QWidget(parent), ui(new Ui::SettingA
     connect(boutonAnnuler, &QPushButton::clicked, this, &SettingArea::onBoutonAnnulerClicked);
 
     boutonRevenirArriere = new QPushButton(this);
-    boutonRevenirArriere->setIcon(QIcon("C:/Users/yasmi/Downloads/arriere.png"));
+    boutonRevenirArriere->setIcon(QIcon(":/arriere.png"));
     boutonRevenirArriere->setGeometry(460, 10, 50, 30);
     connect(boutonRevenirArriere, &QPushButton::clicked, this, &SettingArea::onBoutonRevenirArriereClicked);
 
     boutonRevenirAvant = new QPushButton(this);
-    boutonRevenirAvant->setIcon(QIcon("C:/Users/yasmi/Downloads/avant.png"));
+    boutonRevenirAvant->setIcon(QIcon(":/avant.png"));
     boutonRevenirAvant->setGeometry(520, 10, 50, 30);
     connect(boutonRevenirAvant, &QPushButton::clicked, this, &SettingArea::onBoutonRevenirAvantClicked);
 
     boutonPlus = new QPushButton(this);
-    boutonPlus->setIcon(QIcon("C:/Users/yasmi/Downloads/plus.png"));
+    boutonPlus->setIcon(QIcon(":/plus.png"));
     boutonPlus->setGeometry(580, 10, 50, 30);
     connect(boutonPlus, &QPushButton::clicked, this, &SettingArea::onBoutonPlusClicked);
 
     boutonMoins = new QPushButton(this);
-    boutonMoins->setIcon(QIcon("C:/Users/yasmi/Downloads/moins.png"));
+    boutonMoins->setIcon(QIcon(":/moins.png"));
     boutonMoins->setGeometry(640, 10, 50, 30);
     connect(boutonMoins, &QPushButton::clicked, this, &SettingArea::onBoutonMoinsClicked);
 
     boutonSupprimer = new QPushButton("Supprimer",this);
-    boutonSupprimer->setIcon(QIcon("C:/Users/yasmi/Downloads/suppr.png"));
+    boutonSupprimer->setIcon(QIcon(":/suppr.png"));
     boutonSupprimer->setGeometry(700, 10, 100, 30);
     connect(boutonSupprimer, &QPushButton::clicked, this, &SettingArea::onBoutonSupprimerClicked);
 
     logoLabel = new QLabel(this);
-    logoLabel->setPixmap(QPixmap("C:/Users/yasmi/Downloads/logo3.png"));
+    logoLabel->setPixmap(QPixmap(":/logo3.png"));
     logoLabel->setAlignment(Qt::AlignTop | Qt::AlignRight);
     //logoLabel->setGeometry(width() - 200, -5, 90, 50);
     logoLabel->setGeometry(990, -5, 210, 210);

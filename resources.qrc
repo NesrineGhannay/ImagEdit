@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cancel.png</file>
+        <file>arriere.png</file>
+        <file>avant.png</file>
+        <file>saveAs.png</file>
+        <file>suppr.png</file>
+        <file>logo3.png</file>
+        <file>moins.png</file>
+        <file>plus.png</file>
+        <file>save.png</file>
+        <file>open.png</file>
+    </qresource>
+</RCC>
