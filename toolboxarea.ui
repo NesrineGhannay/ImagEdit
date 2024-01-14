@@ -34,65 +34,94 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="rogner">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>83</width>
-      <height>29</height>
+      <x>20</x>
+      <y>70</y>
+      <width>70</width>
+      <height>206</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="rogner">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
 	color: black;
 };</string>
-    </property>
-    <property name="text">
-     <string>Rogner</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="filter">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>150</y>
-      <width>83</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/Icone/icone_rogner.png</normaloff>:/Icone/icone_rogner.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="shortcut">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="filter">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
 	color: black;
 };</string>
-    </property>
-    <property name="text">
-     <string>Filtre</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="selection">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>190</y>
-      <width>83</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/Icone/icone_filtre.png</normaloff>:/Icone/icone_filtre.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="selection">
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
 	color: black;
 };</string>
-    </property>
-    <property name="text">
-     <string>Sélection</string>
-    </property>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/Icone/Icone_selection.png</normaloff>:/Icone/Icone_selection.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
