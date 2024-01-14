@@ -20,6 +20,9 @@ public:
 private slots:
     void on_filter_clicked();
 
+private slots:
+    void on_selection_clicked();
+
 private:
     Ui::ToolboxArea *ui;
 

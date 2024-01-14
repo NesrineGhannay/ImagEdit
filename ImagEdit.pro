@@ -14,6 +14,7 @@ SOURCES += \
     libraryarea.cpp \
     main.cpp \
     imagedit.cpp \
+    selectionaera.cpp \
     settingarea.cpp \
     toolboxarea.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     filterarea.h \
     imagedit.h \
     libraryarea.h \
+    selectionaera.h \
     settingarea.h \
     toolboxarea.h
 
@@ -30,6 +32,7 @@ FORMS += \
     filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
+    selectionaera.ui \
     settingarea.ui \
     toolboxarea.ui
 
@@ -37,3 +40,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    ../Icone/Icone_selection.png
