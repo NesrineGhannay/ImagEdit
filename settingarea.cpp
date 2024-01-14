@@ -23,7 +23,7 @@ SettingArea::SettingArea(QWidget *parent) : QWidget(parent), ui(new Ui::SettingA
     connect(boutonEnregistrerSous, &QPushButton::clicked, this, &SettingArea::onBoutonEnregistrerSousClicked);
 
     boutonAnnuler = new QPushButton("Annuler", this);
-    boutonAnnuler->setIcon(QIcon("C:/Users/yasmi/Downloads/cancel.png"));
+    boutonAnnuler->setIcon(QIcon(":/cancel.png"));
     boutonAnnuler->setGeometry(350, 10, 100, 30);
     connect(boutonAnnuler, &QPushButton::clicked, this, &SettingArea::onBoutonAnnulerClicked);
 
