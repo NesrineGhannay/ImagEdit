@@ -23,6 +23,9 @@ private slots:
 private slots:
     void on_selection_clicked();
 
+private slots:
+    void on_rogner_clicked();
+
 private:
     Ui::ToolboxArea *ui;
 

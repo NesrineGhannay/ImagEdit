@@ -2,6 +2,7 @@
 #include "ui_toolboxarea.h"
 #include "filterarea.h"
 #include "selectionaera.h"
+#include "rognerarea.h"
 
 ToolboxArea::ToolboxArea(QWidget *parent) : QWidget(parent), ui(new Ui::ToolboxArea)
 {
@@ -18,6 +19,12 @@ void ToolboxArea::on_selection_clicked()
 {
     selectionaera *selection = new selectionaera();
     selection->show();
+}
+
+void ToolboxArea::on_rogner_clicked()
+{
+    RognerArea *rogner = new RognerArea();
+    rogner->show();
 }
 
 
