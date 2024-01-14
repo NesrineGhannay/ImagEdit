@@ -14,6 +14,7 @@ SOURCES += \
     libraryarea.cpp \
     main.cpp \
     imagedit.cpp \
+    rognerarea.cpp \
     selectionaera.cpp \
     settingarea.cpp \
     toolboxarea.cpp
@@ -23,6 +24,7 @@ HEADERS += \
     filterarea.h \
     imagedit.h \
     libraryarea.h \
+    rognerarea.h \
     selectionaera.h \
     settingarea.h \
     toolboxarea.h
@@ -32,6 +34,7 @@ FORMS += \
     filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
+    rognerarea.ui \
     selectionaera.ui \
     settingarea.ui \
     toolboxarea.ui
