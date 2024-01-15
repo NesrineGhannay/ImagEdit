@@ -10,23 +10,32 @@ CONFIG += c++17
 
 SOURCES += \
     editionarea.cpp \
+    filterarea.cpp \
     libraryarea.cpp \
     main.cpp \
     imagedit.cpp \
+    rognerarea.cpp \
+    selectionaera.cpp \
     settingarea.cpp \
     toolboxarea.cpp
 
 HEADERS += \
     editionarea.h \
+    filterarea.h \
     imagedit.h \
     libraryarea.h \
+    rognerarea.h \
+    selectionaera.h \
     settingarea.h \
     toolboxarea.h
 
 FORMS += \
     editionarea.ui \
+    filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
+    rognerarea.ui \
+    selectionaera.ui \
     settingarea.ui \
     toolboxarea.ui
 
@@ -36,4 +45,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resources.qrc
+    Ressources.qrc
+
