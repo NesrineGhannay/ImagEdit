@@ -1,9 +1,9 @@
 <RCC>
     <qresource prefix="/">
-        <file>../Icone/icone_filtre.png</file>
-        <file>../Icone/icone_ovale_selection.png</file>
-        <file>../Icone/icone_rectangle_selection.png</file>
-        <file>../Icone/icone_rogner.png</file>
-        <file>../Icone/Icone_selection.png</file>
+        <file>icone_filtre.png</file>
+        <file>icone_ovale_selection.png</file>
+        <file>icone_rectangle_selection.png</file>
+        <file>icone_rogner.png</file>
+        <file>icone_selection.png</file>
     </qresource>
 </RCC>

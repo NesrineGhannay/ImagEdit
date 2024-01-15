@@ -56,7 +56,7 @@
        </property>
        <property name="icon">
         <iconset resource="Ressources.qrc">
-         <normaloff>:/Icone/icone_rogner.png</normaloff>:/Icone/icone_rogner.png</iconset>
+         <normaloff>:icone_rogner.png</normaloff>:icone_rogner.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -81,7 +81,7 @@
        </property>
        <property name="icon">
         <iconset resource="Ressources.qrc">
-         <normaloff>:/Icone/icone_filtre.png</normaloff>:/Icone/icone_filtre.png</iconset>
+         <normaloff>:icone_filtre.png</normaloff>:icone_filtre.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -106,7 +106,7 @@
        </property>
        <property name="icon">
         <iconset resource="Ressources.qrc">
-         <normaloff>:/Icone/Icone_selection.png</normaloff>:/Icone/Icone_selection.png</iconset>
+         <normaloff>:icone_selection.png</normaloff>:icone_selection.png</iconset>
        </property>
        <property name="iconSize">
         <size>
