@@ -29,6 +29,10 @@ public:
 
 
 
+private slots:
+    void on_open_clicked();
+    void displayOnEdition();
+
 private:
     Ui::ImagEdit *ui;
 };

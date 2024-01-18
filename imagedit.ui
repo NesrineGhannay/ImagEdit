@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1251</width>
-    <height>652</height>
+    <width>1027</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,74 +17,228 @@
    <string notr="true">background-color: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="SettingArea" name="widget" native="true">
+   <widget class="QPushButton" name="open">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1231</width>
-      <height>81</height>
+      <x>30</x>
+      <y>20</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Ouvrir</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/open.png</normaloff>:/open.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="library">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>140</y>
+      <width>181</width>
+      <height>361</height>
      </rect>
     </property>
    </widget>
-   <widget class="ToolboxArea" name="widget_2" native="true">
+   <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>980</x>
-      <y>110</y>
-      <width>261</width>
-      <height>521</height>
+      <x>130</x>
+      <y>20</y>
+      <width>91</width>
+      <height>24</height>
      </rect>
     </property>
-   </widget>
-   <widget class="LibraryArea" name="widget_3" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>291</width>
-      <height>521</height>
-     </rect>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Enregistrer</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/save.png</normaloff>:/save.png</iconset>
     </property>
    </widget>
-   <widget class="EditionArea" name="widget_4" native="true">
+   <widget class="QPushButton" name="save_under">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>110</y>
-      <width>661</width>
-      <height>521</height>
+      <x>250</x>
+      <y>20</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Enregistrer sous</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/saveAs.png</normaloff>:/saveAs.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="save_under_2">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>20</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Supprimer</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/suppr.png</normaloff>:/suppr.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>20</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/arriere.png</normaloff>:/arriere.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>20</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/avant.png</normaloff>:/avant.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>20</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>20</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/moins.png</normaloff>:/moins.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Annuler</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="edition">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>120</y>
+      <width>421</width>
+      <height>291</height>
      </rect>
     </property>
    </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>SettingArea</class>
-   <extends>QWidget</extends>
-   <header>settingarea.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>EditionArea</class>
-   <extends>QWidget</extends>
-   <header>editionarea.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToolboxArea</class>
-   <extends>QWidget</extends>
-   <header>toolboxarea.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>LibraryArea</class>
-   <extends>QWidget</extends>
-   <header>libraryarea.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
- <resources/>
+ <resources>
+  <include location="Ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
