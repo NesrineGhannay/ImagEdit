@@ -21,7 +21,10 @@ void ImagEdit::on_open_clicked()
 {
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
-    QPushButton *button = new QPushButton(cheminFichier, this);
+    QFileInfo fileInfo(cheminFichier);
+    QString nomFichier = fileInfo.fileName();
+    QPushButton *button = new QPushButton(nomFichier, this);
+
     connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
     *path = cheminFichier;
     QListWidgetItem *item = new QListWidgetItem;
@@ -32,9 +35,10 @@ void ImagEdit::on_open_clicked()
 
 void ImagEdit::displayOnEdition()
 {
-    cout << "path.toStdString()" <<endl;
     QPixmap pix(*path);
-    pix = pix.scaled(300, 300, Qt::KeepAspectRatio);
+    pix = pix.scaled(381, 271, Qt::KeepAspectRatio);
     ui->imageLabel->setPixmap(pix);
 
 }
+
+

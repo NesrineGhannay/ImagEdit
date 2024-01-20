@@ -9,7 +9,6 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    editionarea.cpp \
     filterarea.cpp \
     libraryarea.cpp \
     main.cpp \
@@ -20,7 +19,6 @@ SOURCES += \
     toolboxarea.cpp
 
 HEADERS += \
-    editionarea.h \
     filterarea.h \
     imagedit.h \
     libraryarea.h \
@@ -30,7 +28,6 @@ HEADERS += \
     toolboxarea.h
 
 FORMS += \
-    editionarea.ui \
     filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
