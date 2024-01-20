@@ -8,6 +8,9 @@
 #include "libraryarea.h"
 #include "settingarea.h"
 #include "toolboxarea.h"
+#include <iostream>
+
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,5 +38,6 @@ private slots:
 
 private:
     Ui::ImagEdit *ui;
+    QString *path;
 };
 #endif // IMAGEDIT_H

@@ -9,6 +9,7 @@
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
+    path = new QString();
 }
 
 ImagEdit::~ImagEdit()
@@ -22,7 +23,7 @@ void ImagEdit::on_open_clicked()
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QPushButton *button = new QPushButton(cheminFichier, this);
     connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
-
+    *path = cheminFichier;
     QListWidgetItem *item = new QListWidgetItem;
 
     ui->library->addItem(item);
@@ -31,7 +32,9 @@ void ImagEdit::on_open_clicked()
 
 void ImagEdit::displayOnEdition()
 {
-    QString myString = QStringLiteral("Hello, World!");
-    ui->edition->addItem(myString);
+    cout << "path.toStdString()" <<endl;
+    QPixmap pix(*path);
+    pix = pix.scaled(300, 300, Qt::KeepAspectRatio);
+    ui->imageLabel->setPixmap(pix);
 
 }
