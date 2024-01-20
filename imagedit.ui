@@ -248,6 +248,32 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="filter">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>180</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtre</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rogner">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>240</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rogner</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>

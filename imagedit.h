@@ -8,6 +8,8 @@
 #include "libraryarea.h"
 #include "settingarea.h"
 #include "toolboxarea.h"
+#include "rognerarea.h"
+#include "filterarea.h"
 #include <iostream>
 
 using namespace std;
@@ -35,6 +37,9 @@ public:
 private slots:
     void on_open_clicked();
     void displayOnEdition();
+    void on_filter_clicked();
+    void on_rogner_clicked();
+
 
 private:
     Ui::ImagEdit *ui;

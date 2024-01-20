@@ -42,3 +42,21 @@ void ImagEdit::displayOnEdition()
 }
 
 
+void ImagEdit::on_filter_clicked()
+{
+    FilterArea *filter = new FilterArea();
+    filter->show();
+}
+
+
+void ImagEdit::on_rogner_clicked()
+{
+    RognerArea *rogner = new RognerArea();
+    rogner->show();
+}
+
+
+
+
+
+
