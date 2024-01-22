@@ -21,6 +21,7 @@ public:
 
 private:
     Ui::SettingArea *ui;
+    QString getPicturePath();
 
 
 private slots:

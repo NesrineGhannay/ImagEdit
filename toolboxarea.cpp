@@ -4,6 +4,9 @@
 #include "selectionaera.h"
 #include "rognerarea.h"
 
+#include <iostream>
+using namespace std;
+
 ToolboxArea::ToolboxArea(QWidget *parent) : QWidget(parent), ui(new Ui::ToolboxArea)
 {
     ui->setupUi(this);
@@ -12,8 +15,18 @@ ToolboxArea::ToolboxArea(QWidget *parent) : QWidget(parent), ui(new Ui::ToolboxA
 void ToolboxArea::on_filter_clicked()
 {
     FilterArea *filter = new FilterArea();
+    cout << "hello" << endl;
+    //filter->setImage();
     filter->show();
+
+
 }
+
+
+
+
+
+
 
 void ToolboxArea::on_selection_clicked()
 {

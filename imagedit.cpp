@@ -10,11 +10,14 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
+    pix = new QPixmap(*path);
 }
 
 ImagEdit::~ImagEdit()
 {
     delete ui;
+    delete pix;
+    delete path;
 }
 
 void ImagEdit::on_open_clicked()
@@ -44,9 +47,14 @@ void ImagEdit::displayOnEdition()
 
 void ImagEdit::on_filter_clicked()
 {
-    FilterArea *filter = new FilterArea();
-    filter->show();
+    FilterArea *filterarea = new FilterArea();
+    //connect(filterarea, filterarea->appliquerFiltreNoirEtBlanc(pix->toImage()), this, ui->imageLabel);
+    //filterarea->setImage(ui->imageLabel->pixmap().toImage());
+    //ui->imageLabel->clear();
+    filterarea->setLabel(ui->imageLabel);
+    filterarea->show();
 }
+
 
 
 void ImagEdit::on_rogner_clicked()

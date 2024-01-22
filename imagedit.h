@@ -34,15 +34,17 @@ public:
 
 
 
-private slots:
+public slots:
     void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
 
 
+
 private:
     Ui::ImagEdit *ui;
     QString *path;
+    QPixmap *pix;
 };
 #endif // IMAGEDIT_H
