@@ -8,6 +8,11 @@
 #include "libraryarea.h"
 #include "settingarea.h"
 #include "toolboxarea.h"
+#include "rognerarea.h"
+#include "filterarea.h"
+#include <iostream>
+
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,7 +34,17 @@ public:
 
 
 
+public slots:
+    void on_open_clicked();
+    void displayOnEdition();
+    void on_filter_clicked();
+    void on_rogner_clicked();
+
+
+
 private:
     Ui::ImagEdit *ui;
+    QString *path;
+    QPixmap *pix;
 };
 #endif // IMAGEDIT_H
