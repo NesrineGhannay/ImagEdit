@@ -10,7 +10,8 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
-    pix = new QPixmap(*path);
+    pix = new QPixmap();
+
 }
 
 ImagEdit::~ImagEdit()
@@ -38,19 +39,20 @@ void ImagEdit::on_open_clicked()
 
 void ImagEdit::displayOnEdition()
 {
-    QPixmap pix(*path);
-    pix = pix.scaled(381, 271, Qt::KeepAspectRatio);
-    ui->imageLabel->setPixmap(pix);
+    pix = new QPixmap(*path);
+    *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
+
+    //QLabel *label1 = new QLabel(this);
+    //label1->setPixmap(*pix);
+
+    ui->imageLabel->setPixmap(*pix);
 
 }
 
 
 void ImagEdit::on_filter_clicked()
 {
-    FilterArea *filterarea = new FilterArea();
-    //connect(filterarea, filterarea->appliquerFiltreNoirEtBlanc(pix->toImage()), this, ui->imageLabel);
-    //filterarea->setImage(ui->imageLabel->pixmap().toImage());
-    //ui->imageLabel->clear();
+    filterarea = new FilterArea();
     filterarea->setLabel(ui->imageLabel);
     filterarea->show();
 }
@@ -59,11 +61,18 @@ void ImagEdit::on_filter_clicked()
 
 void ImagEdit::on_rogner_clicked()
 {
-    RognerArea *rogner = new RognerArea();
-    rogner->show();
+
+    QPainter painter(pix);
+    painter.setPen(QPen(Qt::blue, 2));
+    QColor grayWithAlpha = QColor(128, 128, 128, 128);  // Adjust the alpha value as needed
+    painter.setBrush(QBrush(grayWithAlpha));
+    cout << pix-> height() << endl;
+    cout << pix-> width() << endl;
+    painter.drawRect(0, 0, pix->width(), pix->height());
+
+    ui->imageLabel->setPixmap(*pix);
+
 }
-
-
 
 
 

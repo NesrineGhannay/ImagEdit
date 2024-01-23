@@ -7,9 +7,8 @@
 #include "editionarea.h"
 #include "libraryarea.h"
 #include "settingarea.h"
-#include "toolboxarea.h"
-#include "rognerarea.h"
 #include "filterarea.h"
+#include "cropping.h"
 #include <iostream>
 
 using namespace std;
@@ -30,7 +29,10 @@ public:
     EditionArea *editionarea;
     LibraryArea *libraryarea;
     SettingArea *settingarea;
-    ToolboxArea *toolboxarea;
+    Cropping *croppingarera;
+    FilterArea *filterarea;
+
+
 
 
 
