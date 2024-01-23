@@ -18,11 +18,15 @@ public:
 
 signals:
     void applyNbFilter();
+    void applyOmbresCFilter();
 
 public slots:
     void on_NbFilterButton_clicked();
     void appliquerFiltreNoirEtBlanc();
     void setLabel(QLabel *label);
+
+    void on_OmbresChaudesFilterButton_clicked();
+    void appliquerOmbresChaudesFilter();
 
 private:
     Ui::FilterArea *ui;
