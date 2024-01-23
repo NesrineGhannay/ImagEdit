@@ -18,15 +18,7 @@ void ToolboxArea::on_filter_clicked()
     cout << "hello" << endl;
     //filter->setImage();
     filter->show();
-
-
 }
-
-
-
-
-
-
 
 void ToolboxArea::on_selection_clicked()
 {

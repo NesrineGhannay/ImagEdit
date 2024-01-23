@@ -39,7 +39,7 @@ void ImagEdit::on_open_clicked()
 void ImagEdit::displayOnEdition()
 {
     QPixmap pix(*path);
-    pix = pix.scaled(381, 271, Qt::KeepAspectRatio);
+    pix = pix.scaled(491, 381, Qt::KeepAspectRatio);
     ui->imageLabel->setPixmap(pix);
 
 }
