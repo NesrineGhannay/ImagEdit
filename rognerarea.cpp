@@ -1,5 +1,6 @@
 #include "rognerarea.h"
 #include "ui_rognerarea.h"
+#include <iostream>
 
 RognerArea::RognerArea(QWidget *parent)
     : QWidget(parent)
@@ -9,9 +10,9 @@ RognerArea::RognerArea(QWidget *parent)
 
 }
 
-QImage RognerArea::getImage() const
+/*QImage RognerArea::getImage() const
 {
-    if (const QPixmap &pixmap = ui->image->pixmap(); !pixmap.isNull()) {
+    if (const QPixmap &pixmap = ui->labelSelected->pixmap(); !pixmap.isNull()) {
         QImage currentImage = pixmap.toImage();
         return currentImage;
     }
@@ -29,7 +30,7 @@ void RognerArea::rognageImage()
 {
     QImage image = getImage();
 
-    if (!imageActuelle.isNull()) {
+    if (!labelSelected->pixmap().isNull()) {
 
         //ici il faudra récuperer la taille de la widget et l'appliquer avec cette fonction
         QRect cropRect(0, 0, 100, 100);
@@ -49,7 +50,7 @@ void RognerArea::Rogner_clickedMouse()
 {
     // Appeler la fonction de rognage lorsque l'on lache la souris et qu'on appuie sur ok ?!
     rognageImage();
-}
+}*/
 
 
 RognerArea::~RognerArea()

@@ -15,10 +15,10 @@ public:
     explicit RognerArea(QWidget *parent = nullptr);
     ~RognerArea();
 
-    QImage getImage();
+    /*QImage getImage();
     void setImage();
     void rognageImage();
-    void Rogner_clickedMouse();
+    void Rogner_clickedMouse();*/
 
 private:
     Ui::RognerArea *ui;
