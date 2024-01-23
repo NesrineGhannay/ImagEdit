@@ -19,6 +19,7 @@ public:
 signals:
     void applyNbFilter();
     void applyOmbresCFilter();
+    void applyLumFroidesFilter();
 
 public slots:
     void on_NbFilterButton_clicked();
@@ -27,6 +28,10 @@ public slots:
 
     void on_OmbresChaudesFilterButton_clicked();
     void appliquerOmbresChaudesFilter();
+
+    void on_LumFroidesFilterButton_clicked();
+    void appliquerLumFroidesFilter();
+
 
 private:
     Ui::FilterArea *ui;
