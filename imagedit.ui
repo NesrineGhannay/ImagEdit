@@ -230,7 +230,7 @@
      <rect>
       <x>770</x>
       <y>180</y>
-      <width>83</width>
+      <width>41</width>
       <height>29</height>
      </rect>
     </property>
@@ -238,7 +238,7 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Filtre</string>
+     <string/>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
@@ -250,7 +250,7 @@
      <rect>
       <x>770</x>
       <y>240</y>
-      <width>83</width>
+      <width>41</width>
       <height>29</height>
      </rect>
     </property>
@@ -258,7 +258,7 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Rogner</string>
+     <string/>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">

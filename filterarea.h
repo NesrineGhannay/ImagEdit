@@ -24,6 +24,11 @@ public slots:
     void appliquerFiltreNoirEtBlanc();
     void setLabel(QLabel *label);
 
+private slots:
+    void on_LumFroidesFilterButton_clicked();
+
+    void on_OmbresChaudesFilterButton_clicked();
+
 private:
     Ui::FilterArea *ui;
     QLabel *labelSelected;
