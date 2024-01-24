@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QPalette>
 
-#include "editionarea.h"
 #include "libraryarea.h"
 #include "settingarea.h"
 #include "filterarea.h"
@@ -26,7 +25,6 @@ class ImagEdit : public QMainWindow
 public:
     ImagEdit(QWidget *parent = nullptr);
     ~ImagEdit();
-    EditionArea *editionarea;
     LibraryArea *libraryarea;
     SettingArea *settingarea;
     Cropping *croppingarera;

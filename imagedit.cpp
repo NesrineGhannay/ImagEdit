@@ -39,6 +39,7 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
+
 void ImagEdit::on_filter_clicked()
 {
     filterarea = new FilterArea();
