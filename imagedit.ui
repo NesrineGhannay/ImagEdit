@@ -225,13 +225,6 @@
       <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
     </property>
    </widget>
-<<<<<<< HEAD
-   <widget class="QPushButton" name="filter">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>180</y>
-=======
    <widget class="QListWidget" name="edition">
     <property name="geometry">
      <rect>
@@ -260,7 +253,6 @@
      <rect>
       <x>970</x>
       <y>160</y>
->>>>>>> 88d64a4690cab5dc544193ab776c3ba3db2603f2
       <width>41</width>
       <height>29</height>
      </rect>
@@ -279,13 +271,8 @@
    <widget class="QPushButton" name="rogner">
     <property name="geometry">
      <rect>
-<<<<<<< HEAD
-      <x>770</x>
-      <y>240</y>
-=======
       <x>970</x>
-      <y>250</y>
->>>>>>> 88d64a4690cab5dc544193ab776c3ba3db2603f2
+      <y>230</y>
       <width>41</width>
       <height>29</height>
      </rect>
@@ -301,7 +288,6 @@
       <normaloff>:/icone_rogner.png</normaloff>:/icone_rogner.png</iconset>
     </property>
    </widget>
-<<<<<<< HEAD
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
@@ -314,7 +300,7 @@
     <property name="styleSheet">
      <string notr="true">background-color:#CCCCCC;</string>
     </property>
-    <widget class="Cropping" name="imageLabel">
+    <widget class="Cropping" name="cropping">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -327,17 +313,16 @@
       <string/>
      </property>
     </widget>
-=======
-   <widget class="QListWidget" name="library_2">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>70</y>
-      <width>181</width>
-      <height>431</height>
-     </rect>
-    </property>
->>>>>>> 88d64a4690cab5dc544193ab776c3ba3db2603f2
+    <widget class="QListWidget" name="library_2">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>70</y>
+       <width>181</width>
+       <height>431</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

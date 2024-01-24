@@ -25,12 +25,15 @@ public slots:
     void on_NbFilterButton_clicked();
     void appliquerFiltreNoirEtBlanc();
     void setLabel(QLabel *label);
+    void appliquerOmbresChaudesFilter();
+
+
+
+
+private slots:
     void on_LumFroidesFilterButton_clicked();
+
     void on_OmbresChaudesFilterButton_clicked();
-    void appliquerOmbresChaudesFilter(); 
-    void appliquerLumFroidesFilter();
-
-
 
 private:
     Ui::FilterArea *ui;
