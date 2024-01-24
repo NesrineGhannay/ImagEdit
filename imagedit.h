@@ -9,7 +9,7 @@
 #include "settingarea.h"
 #include "filterarea.h"
 #include "cropping.h"
-#include <iostream>
+
 
 using namespace std;
 
@@ -34,8 +34,6 @@ public:
 
 
 
-
-
 public slots:
     void on_open_clicked();
     void displayOnEdition();
@@ -43,10 +41,14 @@ public slots:
     void on_rogner_clicked();
 
 
-
 private:
     Ui::ImagEdit *ui;
     QString *path;
     QPixmap *pix;
+    QRect *rect;
+
+
+
+
 };
 #endif // IMAGEDIT_H

@@ -6,12 +6,14 @@
 #include <QPushButton>
 #include <QDebug>
 
+
+
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
     pix = new QPixmap();
-
+    rect = new QRect();
 }
 
 ImagEdit::~ImagEdit()
@@ -37,6 +39,20 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
+void ImagEdit::on_filter_clicked()
+{
+    filterarea = new FilterArea();
+    filterarea->setLabel(ui->imageLabel);
+    filterarea->show();
+}
+
+void ImagEdit::on_rogner_clicked()
+{
+    //croppingarera = new Cropping(ui->imageLabel);
+    ui->imageLabel->drawRectCropping(pix);
+    /*ui->imageLabel->setPixmap(*pix);*/
+}
+
 void ImagEdit::displayOnEdition()
 {
     pix = new QPixmap(*path);
@@ -50,29 +66,11 @@ void ImagEdit::displayOnEdition()
 }
 
 
-void ImagEdit::on_filter_clicked()
-{
-    filterarea = new FilterArea();
-    filterarea->setLabel(ui->imageLabel);
-    filterarea->show();
-}
 
 
 
-void ImagEdit::on_rogner_clicked()
-{
 
-    QPainter painter(pix);
-    painter.setPen(QPen(Qt::blue, 2));
-    QColor grayWithAlpha = QColor(128, 128, 128, 128);  // Adjust the alpha value as needed
-    painter.setBrush(QBrush(grayWithAlpha));
-    cout << pix-> height() << endl;
-    cout << pix-> width() << endl;
-    painter.drawRect(0, 0, pix->width(), pix->height());
 
-    ui->imageLabel->setPixmap(*pix);
-
-}
 
 
 

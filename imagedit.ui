@@ -225,7 +225,7 @@
       <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="imageLabel">
+   <widget class="Cropping" name="imageLabel">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -280,6 +280,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Cropping</class>
+   <extends>QLabel</extends>
+   <header>cropping.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Ressources.qrc"/>
  </resources>

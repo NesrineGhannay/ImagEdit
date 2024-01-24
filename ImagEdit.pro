@@ -9,29 +9,29 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cropping.cpp \
     filterarea.cpp \
     libraryarea.cpp \
+    cropping.cpp \
     main.cpp \
     imagedit.cpp \
     selectionaera.cpp \
     settingarea.cpp
 
 HEADERS += \
-    cropping.h \
     filterarea.h \
     imagedit.h \
     libraryarea.h \
     selectionaera.h \
+    cropping.h \
     settingarea.h
 
 FORMS += \
-    cropping.ui \
     filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
     selectionaera.ui \
-    settingarea.ui
+    settingarea.ui \
+    editionarea.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
