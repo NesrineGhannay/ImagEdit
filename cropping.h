@@ -16,11 +16,11 @@ public:
     void drawRectCropping(QPixmap *pix);
 
 protected:
-    void display();
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    QPixmap cutImage();
 
 
 private:

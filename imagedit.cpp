@@ -48,18 +48,13 @@ void ImagEdit::on_filter_clicked()
 
 void ImagEdit::on_rogner_clicked()
 {
-    //croppingarera = new Cropping(ui->imageLabel);
     ui->imageLabel->drawRectCropping(pix);
-    /*ui->imageLabel->setPixmap(*pix);*/
 }
 
 void ImagEdit::displayOnEdition()
 {
     pix = new QPixmap(*path);
     *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
-
-    //QLabel *label1 = new QLabel(this);
-    //label1->setPixmap(*pix);
 
     ui->imageLabel->setPixmap(*pix);
 

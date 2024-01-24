@@ -2,6 +2,7 @@
 
 #include <QLabel>
 #include <QPainter>
+#include <iostream>
 
 static constexpr int resizeHandleWidth = 10;
 
@@ -13,12 +14,6 @@ Cropping::Cropping(QWidget *parent, const QRect &rect)
     m_resizeHandlePressed = false;
 }
 
-void Cropping::display() {
-    QLabel *label = new QLabel(this);
-
-    //connect(this, Cropping::currentRect, this, Cropping::mousePressEvent);
-    //gridLayout->addWidget(label);
-}
 
 QRect Cropping::resizeHandle() const
 {
@@ -41,8 +36,43 @@ void Cropping::mousePressEvent(QMouseEvent *event)
 
 void Cropping::mouseReleaseEvent(QMouseEvent *event)
 {
+
+
+    this->setPixmap(cutImage());
+
+    update();
     event->accept();
     m_resizeHandlePressed = false;
+}
+
+QPixmap Cropping::cutImage() {
+    QImage image = this->pixmap().toImage();
+    //this->pixmap().toImage().setPixel(10, 10, qRgb(255, 255, 255));
+    for(int i = 0; i < currentRect.topLeft().x(); i++) {
+        for(int j = 0; j < image.height(); j++) {
+            image.setPixel(i, j, qRgb(255, 255, 255));
+        }
+    }
+
+    for(int i = currentRect.topRight().x(); i < image.width(); i++) {
+        for(int j = 0; j < image.height(); j++) {
+            image.setPixel(i, j, qRgb(255, 255, 255));
+        }
+    }
+
+    for(int i = currentRect.topLeft().x(); i <  currentRect.topRight().x(); i++) {
+        for(int j = 0; j < currentRect.topLeft().y(); j++) {
+            image.setPixel(i, j, qRgb(255, 255, 255));
+        }
+    }
+
+    for(int i = currentRect.bottomLeft().x(); i < currentRect.bottomRight().x(); i++) {
+        for(int j = currentRect.bottomLeft().y(); j < image.height(); j++) {
+            image.setPixel(i, j, qRgb(255, 255, 255));
+        }
+    }
+
+    return QPixmap::fromImage(image);
 }
 
 void Cropping::mouseMoveEvent(QMouseEvent *event)
@@ -51,12 +81,11 @@ void Cropping::mouseMoveEvent(QMouseEvent *event)
 
     if (m_resizeHandlePressed) {
         currentRect = QRect(currentRect.topLeft(), event->position().toPoint() + m_mousePressOffset);
+
     } else {
         currentRect.moveTopLeft(event->position().toPoint() - m_mousePressOffset);
     }
     update();
-    //QSize size = rect->size().expandedTo(Shape::minSize);
-    //rect.setSize(size);
 
 
 }
@@ -65,16 +94,14 @@ void Cropping::paintEvent(QPaintEvent *event) {
     QLabel::paintEvent(event);
     QPainter painter(this);
     painter.setPen(QPen(Qt::blue, 2));
-    QColor grayWithAlpha = QColor(128, 128, 128, 128);  // Adjust the alpha value as needed
+    QColor grayWithAlpha = QColor(0, 0, 128, 128);
     painter.setBrush(QBrush(grayWithAlpha));
     painter.drawRect(currentRect);
     painter.drawRect(resizeHandle());
 }
 
-
 void Cropping::drawRectCropping(QPixmap *pix) {
-    currentRect = QRect(0, 0,  pix->width(),  pix->height());
+    currentRect = QRect(0,10, this->width()-10, this->height()-10);
     update();
 }
-
 
