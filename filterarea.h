@@ -32,10 +32,13 @@ public slots:
     void on_LumFroidesFilterButton_clicked();
     void appliquerLumFroidesFilter();
 
+    void luminosityChanged();
+
 
 private:
     Ui::FilterArea *ui;
     QLabel *labelSelected;
+    QImage originalImage;
 };
 #endif // FILTERAREA_H
 

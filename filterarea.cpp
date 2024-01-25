@@ -11,13 +11,15 @@ FilterArea::FilterArea(QWidget *parent)
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
     connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
-
+    connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
 }
+
 
 FilterArea::~FilterArea()
 {
     delete ui;
 }
+
 
 void FilterArea::on_NbFilterButton_clicked()
 {
@@ -135,7 +137,7 @@ void FilterArea::appliquerLumFroidesFilter()
                     qMin(255, int(newColor.green() * colorIntensity + ombresFroidesColor.green() * (1.0 - colorIntensity))),
                     qMin(255, int(newColor.blue() * colorIntensity + ombresFroidesColor.blue() * (1.0 - colorIntensity)))
                     );
-                newColor = newColor.lighter(150); // autres alterntive
+                newColor = newColor.lighter(150);
                 //newColor = newColor.darker(115);
                 imageOmbresChaudes.setPixel(x, y, newColor.rgb());
             }
@@ -149,3 +151,28 @@ void FilterArea::appliquerLumFroidesFilter()
 }
 
 
+void FilterArea::luminosityChanged()
+{
+    qDebug() << __FUNCTION__ << "The event sender is" << sender();
+
+    if (!labelSelected->pixmap().isNull()) {
+        QImage imageLuminosityChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
+
+
+        int sliderValue = ui->luminositeSlider->value();
+        for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
+            for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
+                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QColor originalColor(pixel);
+                QColor newColor = originalColor.toRgb();
+                newColor = newColor.lighter(100 + sliderValue/15);
+                imageLuminosityChanged.setPixel(x, y, newColor.rgb());
+            }
+        }
+
+        QPixmap pixmap = QPixmap::fromImage(imageLuminosityChanged);
+        labelSelected->setPixmap(pixmap);
+    } else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
+}
