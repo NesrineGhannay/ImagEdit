@@ -37,13 +37,15 @@ public slots:
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
-
+    void display();
 
 private:
     Ui::ImagEdit *ui;
     QString *path;
+    QString *fileName;
     QPixmap *pix;
     QRect *rect;
+    Cropping *actualCropping;
 
 
 

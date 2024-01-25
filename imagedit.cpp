@@ -5,15 +5,17 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QDebug>
-
+#include <iostream>
 
 
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
+    fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
+
 }
 
 ImagEdit::~ImagEdit()
@@ -28,8 +30,8 @@ void ImagEdit::on_open_clicked()
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QFileInfo fileInfo(cheminFichier);
-    QString nomFichier = fileInfo.fileName();
-    QPushButton *button = new QPushButton(nomFichier, this);
+    *fileName = fileInfo.fileName();
+    QPushButton *button = new QPushButton(*fileName, this);
 
     connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
     *path = cheminFichier;
@@ -43,13 +45,13 @@ void ImagEdit::on_open_clicked()
 void ImagEdit::on_filter_clicked()
 {
     filterarea = new FilterArea();
-    //filterarea->setLabel(ui->cropping);
+    filterarea->setLabel(actualCropping);
     filterarea->show();
 }
 
 void ImagEdit::on_rogner_clicked()
 {
-    //ui->cropping->drawRectCropping(pix);
+    actualCropping->drawRectCropping(pix);
 
 }
 
@@ -59,11 +61,16 @@ void ImagEdit::displayOnEdition()
     pix = new QPixmap(*path);
     *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
 
-    Cropping *crop = new Cropping();
-    crop->setPixmap(*pix);
-    ui->tabWidget->addTab(crop, "Photo");
-    //ui->cropping->setPixmap(*pix);
+    actualCropping = new Cropping();
+    actualCropping->setPixmap(*pix);
 
+    ui->tabWidget->addTab(actualCropping, *fileName);
+
+
+}
+
+void ImagEdit::display() {
+    std::cout << "coucou" << std::endl;
 }
 
 
