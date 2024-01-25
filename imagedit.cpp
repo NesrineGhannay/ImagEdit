@@ -6,11 +6,14 @@
 #include <QPushButton>
 #include <QDebug>
 
+
+
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
-    pix = new QPixmap(*path);
+    pix = new QPixmap();
+    rect = new QRect();
 }
 
 ImagEdit::~ImagEdit()
@@ -36,32 +39,37 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
-void ImagEdit::displayOnEdition()
-{
-    QPixmap pix(*path);
-    pix = pix.scaled(381, 271, Qt::KeepAspectRatio);
-    ui->imageLabel->setPixmap(pix);
-
-}
-
 
 void ImagEdit::on_filter_clicked()
 {
-    FilterArea *filterarea = new FilterArea();
-    //connect(filterarea, filterarea->appliquerFiltreNoirEtBlanc(pix->toImage()), this, ui->imageLabel);
-    //filterarea->setImage(ui->imageLabel->pixmap().toImage());
-    //ui->imageLabel->clear();
-    filterarea->setLabel(ui->imageLabel);
+    filterarea = new FilterArea();
+    //filterarea->setLabel(ui->cropping);
     filterarea->show();
 }
 
-
-
 void ImagEdit::on_rogner_clicked()
 {
-    RognerArea *rogner = new RognerArea();
-    rogner->show();
+    //ui->cropping->drawRectCropping(pix);
+
 }
+
+void ImagEdit::displayOnEdition()
+{
+
+    pix = new QPixmap(*path);
+    *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
+
+    Cropping *crop = new Cropping();
+    crop->setPixmap(*pix);
+    ui->tabWidget->addTab(crop, "Photo");
+    //ui->cropping->setPixmap(*pix);
+
+}
+
+
+
+
+
 
 
 

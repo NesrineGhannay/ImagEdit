@@ -9,9 +9,15 @@ FilterArea::FilterArea(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
+
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
     connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
+<<<<<<< HEAD
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
+=======
+
+
+>>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
 }
 
 
@@ -28,21 +34,6 @@ void FilterArea::on_NbFilterButton_clicked()
 
 }
 
-void FilterArea::on_OmbresChaudesFilterButton_clicked()
-{
-    qDebug() << "OmbresChaudesFilterButton clicked";
-    emit applyOmbresCFilter();
-
-}
-
-void FilterArea::on_LumFroidesFilterButton_clicked()
-{
-    qDebug() << "LumFroidesFilterButton clicked";
-    emit applyLumFroidesFilter();
-
-}
-
-
 
 void FilterArea::setLabel(QLabel *label) {
 
@@ -51,13 +42,9 @@ void FilterArea::setLabel(QLabel *label) {
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
 {
-    //labelSelected->clear();
-    qDebug() << "Appliquer filtre Noir et Blanc";
-    //cout << "coucou "<< labelSelected->pixmap().isNull() << endl;
-    //labelSelected->clear();
+
     if (!labelSelected->pixmap().isNull()) {
 
-        //imageSelected.fill(Qt::white);
         QImage imageNoirEtBlanc(labelSelected->pixmap().toImage().size(), QImage::Format_Grayscale8);
 
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
@@ -70,7 +57,7 @@ void FilterArea::appliquerFiltreNoirEtBlanc()
 
         QPixmap pixmap = QPixmap::fromImage(imageNoirEtBlanc);
 
-        // Attribuer la QPixmap au QLabel
+
         labelSelected->setPixmap(pixmap);
 
 
@@ -81,7 +68,42 @@ void FilterArea::appliquerFiltreNoirEtBlanc()
 }
 
 
+void FilterArea::on_LumFroidesFilterButton_clicked()
+{
+
+    if (!labelSelected->pixmap().isNull()) {
+
+        QImage imageOmbresChaudes(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
+        QColor ombresFroidesColor(0, 0, 50);
+        qreal colorIntensity = 0.6;
+
+        for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
+            for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
+                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QColor originalColor(pixel);
+                QColor newColor = originalColor.toRgb();
+                newColor = QColor::fromRgb(
+                    qMin(255, int((newColor.red() * colorIntensity) + ombresFroidesColor.red() * (1.0 - colorIntensity))),
+                    qMin(255, int(newColor.green() * colorIntensity + ombresFroidesColor.green() * (1.0 - colorIntensity))),
+                    qMin(255, int(newColor.blue() * colorIntensity + ombresFroidesColor.blue() * (1.0 - colorIntensity)))
+                    );
+                newColor = newColor.lighter(150);
+
+                imageOmbresChaudes.setPixel(x, y, newColor.rgb());
+            }
+        }
+        QPixmap pixmap = QPixmap::fromImage(imageOmbresChaudes);
+        labelSelected->setPixmap(pixmap);
+    }
+    else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
+
+}
+
+
 void FilterArea::appliquerOmbresChaudesFilter()
+
 {
     qDebug() << "Appliquer filtre Ombres Chaudes";
 
@@ -101,44 +123,16 @@ void FilterArea::appliquerOmbresChaudesFilter()
                     qMin(255, int(newColor.green() * colorIntensity + ombresChaudesColor.green() * (1.0 - colorIntensity))),
                     qMin(255, int(newColor.blue() * colorIntensity + ombresChaudesColor.blue() * (1.0 - colorIntensity)))
                     );
-                //newColor = newColor.lighter(110); // autres alterntive
-                newColor = newColor.darker(115);
-                //newColor = newColor.saturation();
-                imageOmbresChaudes.setPixel(x, y, newColor.rgb());
-            }
-        }
-        QPixmap pixmap = QPixmap::fromImage(imageOmbresChaudes);
-        labelSelected->setPixmap(pixmap);
-    }
-    else {
-        qDebug() << "Erreur : Aucune image actuelle à traiter.";
-    }
-}
-
-
-void FilterArea::appliquerLumFroidesFilter()
-{
-    qDebug() << "Appliquer filtre Lumières Froides";
-
-    if (!labelSelected->pixmap().isNull()) {
-
-        QImage imageOmbresChaudes(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
-        //QColor ombresFroidesColor(153, 204, 255);
-        QColor ombresFroidesColor(0, 0, 50);
-        qreal colorIntensity = 0.6;
-
-        for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
-            for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
-                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
-                QColor originalColor(pixel);
-                QColor newColor = originalColor.toRgb();
-                newColor = QColor::fromRgb(
-                    qMin(255, int((newColor.red() * colorIntensity) + ombresFroidesColor.red() * (1.0 - colorIntensity))),
-                    qMin(255, int(newColor.green() * colorIntensity + ombresFroidesColor.green() * (1.0 - colorIntensity))),
-                    qMin(255, int(newColor.blue() * colorIntensity + ombresFroidesColor.blue() * (1.0 - colorIntensity)))
-                    );
+<<<<<<< HEAD
                 newColor = newColor.lighter(150);
                 //newColor = newColor.darker(115);
+=======
+
+
+                newColor = newColor.darker(115);
+                //newColor = newColor.saturation();
+
+>>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
                 imageOmbresChaudes.setPixel(x, y, newColor.rgb());
             }
         }
@@ -148,9 +142,12 @@ void FilterArea::appliquerLumFroidesFilter()
     else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
+
+
 }
 
 
+<<<<<<< HEAD
 void FilterArea::luminosityChanged()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
@@ -176,3 +173,13 @@ void FilterArea::luminosityChanged()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
+=======
+
+
+
+void FilterArea::on_OmbresChaudesFilterButton_clicked()
+{
+
+}
+
+>>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
