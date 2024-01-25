@@ -37,7 +37,7 @@ public slots:
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
-    void display();
+
 
 private:
     Ui::ImagEdit *ui;

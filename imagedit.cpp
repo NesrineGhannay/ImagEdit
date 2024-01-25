@@ -63,14 +63,10 @@ void ImagEdit::displayOnEdition()
 
     actualCropping = new Cropping();
     actualCropping->setPixmap(*pix);
+    actualCropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     ui->tabWidget->addTab(actualCropping, *fileName);
 
-
-}
-
-void ImagEdit::display() {
-    std::cout << "coucou" << std::endl;
 }
 
 

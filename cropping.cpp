@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <iostream>
 
-static constexpr int resizeHandleWidth = 10;
+static constexpr int resizeHandleWidth = 40;
 
 Cropping::Cropping(QWidget *parent, const QRect &rect)
     : QLabel(parent),
@@ -12,6 +12,8 @@ Cropping::Cropping(QWidget *parent, const QRect &rect)
 {
     currentRect = currentRect;;
     m_resizeHandlePressed = false;
+    setFocusPolicy(Qt::StrongFocus);
+
 }
 
 
@@ -21,6 +23,11 @@ QRect Cropping::resizeHandle() const
     return QRect(br - QPoint(resizeHandleWidth, resizeHandleWidth), br);
 }
 
+void Cropping::keyPressEvent(QKeyEvent *event) {
+    if(event->key() == Qt::Key_Return)
+        this->setPixmap(cutImage());
+
+}
 
 void Cropping::mousePressEvent(QMouseEvent *event)
 {
@@ -36,43 +43,43 @@ void Cropping::mousePressEvent(QMouseEvent *event)
 
 void Cropping::mouseReleaseEvent(QMouseEvent *event)
 {
-
-
-    this->setPixmap(cutImage());
-
     update();
     event->accept();
     m_resizeHandlePressed = false;
 }
 
 QPixmap Cropping::cutImage() {
-    QImage image = this->pixmap().toImage();
-    //this->pixmap().toImage().setPixel(10, 10, qRgb(255, 255, 255));
-    for(int i = 0; i < currentRect.topLeft().x(); i++) {
-        for(int j = 0; j < image.height(); j++) {
-            image.setPixel(i, j, qRgb(255, 255, 255));
+    QImage newImage = pixImage.toImage();
+
+    int marge_lateral = (this->width() - newImage.width())/2;
+    int marge_vertical = (this->height() - newImage.height())/2;
+
+    for(int i = 0; i < currentRect.left()-marge_lateral; i++) {
+        for(int j = 0; j < newImage.height(); j++) {
+            newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
     }
 
-    for(int i = currentRect.topRight().x(); i < image.width(); i++) {
-        for(int j = 0; j < image.height(); j++) {
-            image.setPixel(i, j, qRgb(255, 255, 255));
+    for(int i = currentRect.right()-marge_lateral; i < newImage.width(); i++) {
+        for(int j = 0; j < newImage.height(); j++) {
+            newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
     }
 
-    for(int i = currentRect.topLeft().x(); i <  currentRect.topRight().x(); i++) {
-        for(int j = 0; j < currentRect.topLeft().y(); j++) {
-            image.setPixel(i, j, qRgb(255, 255, 255));
+    for(int i = currentRect.topLeft().x() - marge_lateral; i < currentRect.width() + marge_lateral; i++) {
+        for(int j = 0; j < currentRect.topLeft().y() - marge_vertical; j++) {
+            newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
     }
 
-    for(int i = currentRect.bottomLeft().x(); i < currentRect.bottomRight().x(); i++) {
-        for(int j = currentRect.bottomLeft().y(); j < image.height(); j++) {
-            image.setPixel(i, j, qRgb(255, 255, 255));
+    for(int i = currentRect.bottomLeft().x() - marge_lateral; i < currentRect.width() + marge_lateral; i++) {
+        for(int j = currentRect.bottomLeft().y() - marge_vertical; j < newImage.height(); j++) {
+            newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
     }
 
-    return QPixmap::fromImage(image);
+
+    return QPixmap::fromImage(newImage);
 }
 
 void Cropping::mouseMoveEvent(QMouseEvent *event)
@@ -101,7 +108,14 @@ void Cropping::paintEvent(QPaintEvent *event) {
 }
 
 void Cropping::drawRectCropping(QPixmap *pix) {
-    currentRect = QRect(0,10, this->width()-10, this->height()-10);
+    pixImage = *pix;
+    currentRect = QRect(this->width()/2-pix->width()/2,
+                        this->height()/2-pix->height()/2,
+                        pix->width(),
+                        pix->height()
+                        );
     update();
+    releaseKeyboard();
+
 }
 

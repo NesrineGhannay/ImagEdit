@@ -14,13 +14,15 @@ class Cropping : public QLabel
 public:
     explicit Cropping(QWidget *parent = nullptr, const QRect &rect = QRect());
     void drawRectCropping(QPixmap *pix);
-
+    
+    void cropRect(QPixmap *pix);
+    
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
-    QPixmap cutImage();
+    void keyPressEvent(QKeyEvent *event) override;
 
 
 private:
@@ -29,9 +31,10 @@ private:
     QPoint m_mousePressOffset;
     int m_mousePressIndex = -1;
     QRect currentRect;
-
-
-
+    bool isCropping = false;
+    QPixmap cutImage();
+    QPixmap pixImage;
+    QPixmap rectToPixmap(const QRect &rect);
 
 };
 
