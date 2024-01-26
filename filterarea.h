@@ -20,16 +20,19 @@ signals:
     void applyNbFilter();
     void applyOmbresCFilter();
     void applyLumFroidesFilter();
+    void applySummerFilter();
 
 public slots:
     void on_NbFilterButton_clicked();
     void appliquerFiltreNoirEtBlanc();
     void setLabel(QLabel *label);
     void appliquerOmbresChaudesFilter();
+    void appliquerSummerFiltre();
 
 private slots:
     void on_LumFroidesFilterButton_clicked();
     void luminosityChanged();
+    void saturationChanged();
 
 
 private:

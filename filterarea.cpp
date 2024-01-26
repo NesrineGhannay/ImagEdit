@@ -11,9 +11,9 @@ FilterArea::FilterArea(QWidget *parent)
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
     //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
+    connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
-
-
+    connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));
 }
 
 
@@ -68,8 +68,8 @@ void FilterArea::on_LumFroidesFilterButton_clicked()
     if (!labelSelected->pixmap().isNull()) {
 
         QImage imageOmbresChaudes(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
-        QColor ombresFroidesColor(0, 0, 50);
-        qreal colorIntensity = 0.6;
+        QColor ombresFroidesColor(27, 62, 121);
+        qreal colorIntensity = 0.7;
 
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
             for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
@@ -81,8 +81,7 @@ void FilterArea::on_LumFroidesFilterButton_clicked()
                     qMin(255, int(newColor.green() * colorIntensity + ombresFroidesColor.green() * (1.0 - colorIntensity))),
                     qMin(255, int(newColor.blue() * colorIntensity + ombresFroidesColor.blue() * (1.0 - colorIntensity)))
                     );
-                newColor = newColor.lighter(150);
-
+                newColor = newColor.lighter(140);
                 imageOmbresChaudes.setPixel(x, y, newColor.rgb());
             }
         }
@@ -116,15 +115,7 @@ void FilterArea::appliquerOmbresChaudesFilter()
                     qMin(255, int(newColor.blue() * colorIntensity + ombresChaudesColor.blue() * (1.0 - colorIntensity)))
                     );
 
-                newColor = newColor.lighter(150);
-                //newColor = newColor.darker(115);
-
-
-
-                newColor = newColor.darker(115);
-                //newColor = newColor.saturation();
-
-
+                newColor = newColor.darker(100);
                 imageOmbresChaudes.setPixel(x, y, newColor.rgb());
             }
         }
@@ -161,6 +152,73 @@ void FilterArea::luminosityChanged()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
+
+
+
+void FilterArea::appliquerSummerFiltre()
+{
+    qDebug() << "Appliquer filtre Summer";
+
+    if (!labelSelected->pixmap().isNull()) {
+
+        QImage imageSummer(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
+        qreal saturationFactor = 2.5;
+
+        for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
+            for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
+                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QColor originalColor(pixel);
+                QColor newColor = originalColor.toRgb();
+
+                int h, s, l;
+                newColor.getHsl(&h, &s, &l);
+                s = qMin(255, int(s * saturationFactor));
+                newColor = QColor::fromHsl(h, s, l);
+                newColor = newColor.lighter(110);
+                imageSummer.setPixel(x, y, newColor.rgb());
+            }
+        }
+
+        QPixmap pixmap = QPixmap::fromImage(imageSummer);
+        labelSelected->setPixmap(pixmap);
+    }
+    else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
+}
+
+
+void FilterArea::saturationChanged()
+{
+    qDebug() << __FUNCTION__ << "The event sender is" << sender();
+
+    if (!labelSelected->pixmap().isNull()) {
+        QImage imageSaturationChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
+        qreal saturationFactor = 2.5;
+        int sliderValue = ui->saturationSlider->value();
+
+        for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
+            for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
+                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QColor originalColor(pixel);
+                QColor newColor = originalColor.toRgb();
+                int h, s, l;
+                newColor.getHsl(&h, &s, &l);
+                s = qMin(255, int(s + sliderValue/10));
+                newColor = QColor::fromHsl(h, s, l);
+                imageSaturationChanged.setPixel(x, y, newColor.rgb());
+            }
+        }
+
+        QPixmap pixmap = QPixmap::fromImage(imageSaturationChanged);
+        labelSelected->setPixmap(pixmap);
+    } else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
+}
+
+
+
 
 
 
