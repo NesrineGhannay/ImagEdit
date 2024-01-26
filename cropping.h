@@ -17,7 +17,8 @@ public:
     void deleteRectCropping();
     void cropRect(QPixmap *pix);
     bool getIsCropping();
-    
+    QPixmap getPixmap();
+
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;

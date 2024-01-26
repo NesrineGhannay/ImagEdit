@@ -26,6 +26,7 @@ QRect Cropping::resizeHandle() const
 void Cropping::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_Return)
         this->setPixmap(cutImage());
+    update();
 
 }
 
@@ -42,7 +43,12 @@ void Cropping::mousePressEvent(QMouseEvent *event)
 }
 
 bool Cropping::getIsCropping(){
+
     return isCropping;
+}
+
+QPixmap Cropping::getPixmap() {
+    return this->pixmap();
 }
 
 void Cropping::mouseReleaseEvent(QMouseEvent *event)
