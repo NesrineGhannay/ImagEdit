@@ -14,8 +14,9 @@ class Cropping : public QLabel
 public:
     explicit Cropping(QWidget *parent = nullptr, const QRect &rect = QRect());
     void drawRectCropping(QPixmap *pix);
-    
+    void deleteRectCropping();
     void cropRect(QPixmap *pix);
+    bool getIsCropping();
     
 protected:
     void paintEvent(QPaintEvent *event) override;

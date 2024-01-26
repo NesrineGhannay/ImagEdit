@@ -41,6 +41,10 @@ void Cropping::mousePressEvent(QMouseEvent *event)
 
 }
 
+bool Cropping::getIsCropping(){
+    return isCropping;
+}
+
 void Cropping::mouseReleaseEvent(QMouseEvent *event)
 {
     update();
@@ -114,8 +118,14 @@ void Cropping::drawRectCropping(QPixmap *pix) {
                         pix->width(),
                         pix->height()
                         );
+    isCropping = true;
     update();
     releaseKeyboard();
 
 }
 
+void Cropping::deleteRectCropping() {
+    currentRect = QRect();
+    update();
+    isCropping = false;
+}

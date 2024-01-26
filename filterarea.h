@@ -27,18 +27,10 @@ public slots:
     void setLabel(QLabel *label);
     void appliquerOmbresChaudesFilter();
 
-
-
-
 private slots:
     void on_LumFroidesFilterButton_clicked();
-
-<<<<<<< HEAD
     void luminosityChanged();
 
-=======
-    void on_OmbresChaudesFilterButton_clicked();
->>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
 
 private:
     Ui::FilterArea *ui;

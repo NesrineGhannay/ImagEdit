@@ -9,15 +9,11 @@ FilterArea::FilterArea(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
-
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
-    connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
-<<<<<<< HEAD
+    //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
-=======
 
 
->>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
 }
 
 
@@ -33,7 +29,6 @@ void FilterArea::on_NbFilterButton_clicked()
     emit applyNbFilter();
 
 }
-
 
 void FilterArea::setLabel(QLabel *label) {
 
@@ -66,7 +61,6 @@ void FilterArea::appliquerFiltreNoirEtBlanc()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
-
 
 void FilterArea::on_LumFroidesFilterButton_clicked()
 {
@@ -101,9 +95,7 @@ void FilterArea::on_LumFroidesFilterButton_clicked()
 
 }
 
-
 void FilterArea::appliquerOmbresChaudesFilter()
-
 {
     qDebug() << "Appliquer filtre Ombres Chaudes";
 
@@ -123,16 +115,16 @@ void FilterArea::appliquerOmbresChaudesFilter()
                     qMin(255, int(newColor.green() * colorIntensity + ombresChaudesColor.green() * (1.0 - colorIntensity))),
                     qMin(255, int(newColor.blue() * colorIntensity + ombresChaudesColor.blue() * (1.0 - colorIntensity)))
                     );
-<<<<<<< HEAD
+
                 newColor = newColor.lighter(150);
                 //newColor = newColor.darker(115);
-=======
+
 
 
                 newColor = newColor.darker(115);
                 //newColor = newColor.saturation();
 
->>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda
+
                 imageOmbresChaudes.setPixel(x, y, newColor.rgb());
             }
         }
@@ -142,12 +134,8 @@ void FilterArea::appliquerOmbresChaudesFilter()
     else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
-
-
 }
 
-
-<<<<<<< HEAD
 void FilterArea::luminosityChanged()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
@@ -173,13 +161,7 @@ void FilterArea::luminosityChanged()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
-=======
 
 
 
-void FilterArea::on_OmbresChaudesFilterButton_clicked()
-{
 
-}
-
->>>>>>> aab4435daf9413a39cfcb7051f84fc9eabda9bda

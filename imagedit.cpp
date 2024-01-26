@@ -51,7 +51,10 @@ void ImagEdit::on_filter_clicked()
 
 void ImagEdit::on_rogner_clicked()
 {
-    actualCropping->drawRectCropping(pix);
+    if(!actualCropping->getIsCropping())
+        actualCropping->drawRectCropping(pix);
+    else
+        actualCropping->deleteRectCropping();
 
 }
 
