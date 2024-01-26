@@ -15,6 +15,7 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
+    filterarea = new FilterArea();
 
 }
 
@@ -41,15 +42,23 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
-
 void ImagEdit::on_filter_clicked()
 {
-    filterarea = new FilterArea();
-    filterarea->setLabel(actualCropping);
-    filterarea->show();
+    if(!filterarea->getIsFilter()) {
+        filterarea->setLabel(actualCropping);
+        filterarea->show();
+        filterarea->setIsFilter(true);
+    } else {
+        filterarea->close();
+        filterarea->setIsFilter(false);
+    }
+
+
+
 }
 
 void ImagEdit::on_rogner_clicked()
+
 {
     if(!actualCropping->getIsCropping()) {
         actualCropping->drawRectCropping(pix);

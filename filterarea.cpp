@@ -37,7 +37,7 @@ void FilterArea::setLabel(QLabel *label) {
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
 {
-
+    isBlackAndWhiteFilter = true;
     if (!labelSelected->pixmap().isNull()) {
 
         QImage imageNoirEtBlanc(labelSelected->pixmap().toImage().size(), QImage::Format_Grayscale8);
@@ -160,6 +160,18 @@ void FilterArea::luminosityChanged()
     } else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
+}
+
+void FilterArea::setIsFilter(bool filterBool) {
+    isFilter = filterBool;
+}
+
+bool FilterArea::getIsFilter() {
+    return isFilter;
+}
+
+bool FilterArea::getIsBlackAndWhiteFilter() {
+    return isBlackAndWhiteFilter;
 }
 
 
