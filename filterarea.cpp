@@ -14,6 +14,8 @@ FilterArea::FilterArea(QWidget *parent)
     connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
     connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));
+
+    connect(parentWidget()->findChild<QPushButton*>("filter"), SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
 }
 
 

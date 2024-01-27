@@ -5,6 +5,7 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QDebug>
+#include <QPropertyAnimation>
 
 
 
@@ -16,32 +17,10 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     pix = new QPixmap();
     rect = new QRect();
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    QPushButton *filter = new QPushButton("Afficher le contenu de Widget 2", this);
-    layout->addWidget(filter);
+    boutonFiltre = findChild<QPushButton*>("filter");
 
-    //QPushButton *boutonFiltre = findChild<QPushButton*>("filter");
-    //layout->addWidget(boutonFiltre);
-
-    qDebug() << "Before creating widgetFilter";
     widgetFilter = new FilterArea(this);
-    qDebug() << "After creating widgetFilter";
-    qDebug() << "Initial Visibility: " << widgetFilter->isVisible();
-    layout->addWidget(widgetFilter);
-    widgetFilter->setVisible(false);
-
-    int x = 750; // position x
-    int y = 100; // position y
-    widgetFilter->move(x, y);
-
-    /*
-    if (boutonFiltre) {
-        layout->addWidget(boutonFiltre);
-        connect(boutonFiltre, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
-    }*/
-
-    connect(filter, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
-
+    setupFilterButtonConnection();
 }
 
 ImagEdit::~ImagEdit()
@@ -67,16 +46,57 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
+void ImagEdit::setupFilterButtonConnection()
+{
+    widgetFilter->setVisible(false);
+    int x = 750;
+    int y = 100;
+    widgetFilter->move(x, y);
+
+    if (boutonFiltre && widgetFilter) {
+        connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+    }
+
+    //connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+}
 
 void ImagEdit::on_filter_clicked()
 {
-    //filterarea = new FilterArea();
-    //filterarea->setLabel(actualCropping);
-    //filterarea->show();
-    qDebug() << "Bouton cliqué !";
+    qDebug() << "Bouton filtre cliqué !";
+
+    // Créez une animation pour animer la propriété "geometry" de widgetFilter
+    QPropertyAnimation *animation = new QPropertyAnimation(widgetFilter, "geometry", this);
+
+    // Définissez la durée de l'animation (en millisecondes)
+    animation->setDuration(500);  // Réglez cette valeur selon vos préférences
+
+    // Définissez les valeurs de début et de fin pour l'animation
+    QRect startRect = widgetFilter->geometry();
+    QRect endRect = QRect(750, 100, widgetFilter->width(), widgetFilter->height());
+
+    animation->setStartValue(startRect);
+    animation->setEndValue(endRect);
+
+    // Démarrez l'animation
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+
+    // Changez la visibilité de widgetFilter en fonction de l'animation
     widgetFilter->setVisible(!widgetFilter->isVisible());
 
+    qDebug() << "Nouvel état de visibilité de widgetFilter : " << widgetFilter->isVisible();
 }
+
+
+/*void ImagEdit::on_filter_clicked()
+{
+    //filterarea = new FilterArea();
+    //filterarea->setLabel(actualCropping);
+
+    qDebug() << "Bouton cliqué !";
+    widgetFilter->setVisible(!widgetFilter->isVisible());
+    qDebug() << "Nouvel état de visibilité de widgetFilter : " << widgetFilter->isVisible();
+    qDebug() << "Interface utilisateur : " << boutonFiltre->isVisible();
+}*/
 
 void ImagEdit::on_rogner_clicked()
 {
