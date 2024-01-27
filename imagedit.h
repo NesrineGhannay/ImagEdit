@@ -10,6 +10,9 @@
 #include "rognerarea.h"
 #include "filterarea.h"
 #include <iostream>
+#include <QStringList>
+#include <QKeySequence>
+#include <QShortcut>
 
 using namespace std;
 
@@ -34,7 +37,7 @@ public:
 
 public slots:
     void on_open_clicked();
-    void displayOnEdition();
+    void displayOnEdition(int index);
     void on_filter_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
@@ -47,5 +50,9 @@ private:
     QString *path;
     QPixmap *pix;
     QStringList selectedImagePaths;
+    QMap<QPushButton*, QString> buttonToOriginalPath;
+    QShortcut *raccourciEnregistrer;
+    QShortcut *raccourciOuvrir;
+    int currentIndex;
 };
 #endif // IMAGEDIT_H

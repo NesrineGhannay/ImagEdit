@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
+    <width>1034</width>
     <height>541</height>
    </rect>
   </property>
@@ -17,6 +17,9 @@
    <string notr="true">background-color: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <widget class="QPushButton" name="open">
     <property name="geometry">
      <rect>
@@ -46,16 +49,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QListWidget" name="library">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>140</y>
-      <width>181</width>
-      <height>361</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
@@ -82,9 +75,9 @@
    <widget class="QPushButton" name="save_under">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>20</y>
-      <width>121</width>
+      <width>131</width>
       <height>24</height>
      </rect>
     </property>
@@ -105,7 +98,7 @@
    <widget class="QPushButton" name="save_under_2">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>740</x>
       <y>20</y>
       <width>121</width>
       <height>24</height>
@@ -230,18 +223,21 @@
      <rect>
       <x>260</x>
       <y>120</y>
-      <width>421</width>
-      <height>311</height>
+      <width>461</width>
+      <height>341</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="imageLabel">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>290</x>
       <y>140</y>
-      <width>381</width>
-      <height>271</height>
+      <width>401</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="text">
@@ -286,6 +282,44 @@
     <property name="icon">
      <iconset resource="Ressources.qrc">
       <normaloff>:/icone_rogner.png</normaloff>:/icone_rogner.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>10</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../projet/imagedit/logo3.png</pixmap>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignJustify</set>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="library">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>130</y>
+      <width>161</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
