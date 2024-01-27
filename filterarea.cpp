@@ -27,7 +27,6 @@ void FilterArea::on_NbFilterButton_clicked()
 {
     qDebug() << "NbFilterButton clicked";
     emit applyNbFilter();
-
 }
 
 void FilterArea::setLabel(QLabel *label) {
@@ -216,10 +215,3 @@ void FilterArea::saturationChanged()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
-
-
-
-
-
-
-

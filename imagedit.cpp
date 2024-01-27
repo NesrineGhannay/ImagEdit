@@ -5,7 +5,7 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QDebug>
-#include <iostream>
+
 
 
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
@@ -15,6 +15,32 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    //QPushButton *filter = new QPushButton("Afficher le contenu de Widget 2", this);
+    //layout->addWidget(filter);
+
+    QPushButton *boutonFiltre = findChild<QPushButton*>("filter");
+    //layout->addWidget(boutonFiltre);
+
+    qDebug() << "Before creating widgetFilter";
+    widgetFilter = new FilterArea(this);
+    qDebug() << "After creating widgetFilter";
+    qDebug() << "Initial Visibility: " << widgetFilter->isVisible();
+    layout->addWidget(widgetFilter);
+    widgetFilter->setVisible(false);
+
+    int x = 740; // position x
+    int y = 100; // position y
+    widgetFilter->move(x, y);
+
+    /*
+    if (boutonFiltre) {
+        layout->addWidget(boutonFiltre);
+        connect(boutonFiltre, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
+    }*/
+
+    connect(boutonFiltre, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
 
 }
 
@@ -44,9 +70,12 @@ void ImagEdit::on_open_clicked()
 
 void ImagEdit::on_filter_clicked()
 {
-    filterarea = new FilterArea();
-    filterarea->setLabel(actualCropping);
-    filterarea->show();
+    //filterarea = new FilterArea();
+    //filterarea->setLabel(actualCropping);
+    //filterarea->show();
+    qDebug() << "Bouton cliqué !";
+    widgetFilter->setVisible(!widgetFilter->isVisible());
+
 }
 
 void ImagEdit::on_rogner_clicked()
@@ -73,14 +102,3 @@ void ImagEdit::displayOnEdition()
     ui->tabWidget->addTab(actualCropping, *fileName);
 
 }
-
-
-
-
-
-
-
-
-
-
-

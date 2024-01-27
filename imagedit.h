@@ -47,8 +47,7 @@ private:
     QRect *rect;
     Cropping *actualCropping;
 
-
-
-
+    FilterArea *widgetFilter;
+    //QPushButton *boutonFiltre;
 };
 #endif // IMAGEDIT_H
