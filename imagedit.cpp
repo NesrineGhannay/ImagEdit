@@ -17,10 +17,10 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     rect = new QRect();
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    //QPushButton *filter = new QPushButton("Afficher le contenu de Widget 2", this);
-    //layout->addWidget(filter);
+    QPushButton *filter = new QPushButton("Afficher le contenu de Widget 2", this);
+    layout->addWidget(filter);
 
-    QPushButton *boutonFiltre = findChild<QPushButton*>("filter");
+    //QPushButton *boutonFiltre = findChild<QPushButton*>("filter");
     //layout->addWidget(boutonFiltre);
 
     qDebug() << "Before creating widgetFilter";
@@ -30,7 +30,7 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     layout->addWidget(widgetFilter);
     widgetFilter->setVisible(false);
 
-    int x = 740; // position x
+    int x = 750; // position x
     int y = 100; // position y
     widgetFilter->move(x, y);
 
@@ -40,7 +40,7 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
         connect(boutonFiltre, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
     }*/
 
-    connect(boutonFiltre, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
+    connect(filter, SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
 
 }
 
