@@ -50,5 +50,6 @@ private:
 
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
+    bool isFilterVisible;
 };
 #endif // IMAGEDIT_H

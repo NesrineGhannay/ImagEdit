@@ -29,6 +29,7 @@ public slots:
     void appliquerOmbresChaudesFilter();
     void appliquerSummerFiltre();
 
+
 private slots:
     void on_LumFroidesFilterButton_clicked();
     void luminosityChanged();
