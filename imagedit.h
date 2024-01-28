@@ -33,11 +33,9 @@ public:
 
 
 public slots:
-    void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
-    void setupFilterButtonConnection();
 
 
 private:
@@ -48,7 +46,6 @@ private:
     QRect *rect;
     Cropping *actualCropping;
 
-    FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
 };
