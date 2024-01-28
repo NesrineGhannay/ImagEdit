@@ -204,7 +204,7 @@ void FilterArea::saturationChanged()
                 QColor newColor = originalColor.toRgb();
                 int h, s, l;
                 newColor.getHsl(&h, &s, &l);
-                s = qMin(255, int(s + sliderValue/10));
+                s = qMin(255, int(s + sliderValue/20));
                 newColor = QColor::fromHsl(h, s, l);
                 imageSaturationChanged.setPixel(x, y, newColor.rgb());
             }
