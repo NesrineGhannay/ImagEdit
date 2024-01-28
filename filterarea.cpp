@@ -10,10 +10,12 @@ FilterArea::FilterArea(QWidget *parent)
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
-    //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
+    connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
     connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
     connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));
+
+    //connect(parentWidget()->findChild<QPushButton*>("filter"), SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
 }
 
 
@@ -27,7 +29,6 @@ void FilterArea::on_NbFilterButton_clicked()
 {
     qDebug() << "NbFilterButton clicked";
     emit applyNbFilter();
-
 }
 
 void FilterArea::setLabel(QLabel *label) {
@@ -37,7 +38,7 @@ void FilterArea::setLabel(QLabel *label) {
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
 {
-
+    isBlackAndWhiteFilter = true;
     if (!labelSelected->pixmap().isNull()) {
 
         QImage imageNoirEtBlanc(labelSelected->pixmap().toImage().size(), QImage::Format_Grayscale8);
@@ -153,7 +154,17 @@ void FilterArea::luminosityChanged()
     }
 }
 
+void FilterArea::setIsFilter(bool filterBool) {
+    isFilter = filterBool;
+}
 
+bool FilterArea::getIsFilter() {
+    return isFilter;
+}
+
+bool FilterArea::getIsBlackAndWhiteFilter() {
+    return isBlackAndWhiteFilter;
+}
 
 void FilterArea::appliquerSummerFiltre()
 {
@@ -187,7 +198,6 @@ void FilterArea::appliquerSummerFiltre()
     }
 }
 
-
 void FilterArea::saturationChanged()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
@@ -216,10 +226,3 @@ void FilterArea::saturationChanged()
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
 }
-
-
-
-
-
-
-

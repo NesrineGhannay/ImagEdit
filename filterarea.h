@@ -29,6 +29,7 @@ public slots:
     void appliquerOmbresChaudesFilter();
     void appliquerSummerFiltre();
 
+
 private slots:
     void on_LumFroidesFilterButton_clicked();
     void luminosityChanged();
@@ -39,6 +40,14 @@ private:
     Ui::FilterArea *ui;
     QLabel *labelSelected;
     QImage originalImage;
+    bool isFilter = false;
+    bool isBlackAndWhiteFilter = false;
+
+public:
+    bool getIsFilter();
+    void setIsFilter(bool filterBool);
+    bool getIsBlackAndWhiteFilter();
+
 };
 #endif // FILTERAREA_H
 
