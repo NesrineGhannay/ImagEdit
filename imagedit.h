@@ -4,15 +4,27 @@
 #include <QMainWindow>
 #include <QPalette>
 
-#include "libraryarea.h"
-#include "settingarea.h"
-#include "toolboxarea.h"
-#include "rognerarea.h"
 #include "filterarea.h"
-#include <iostream>
+#include "cropping.h"
 #include <QStringList>
 #include <QKeySequence>
 #include <QShortcut>
+#include <QPushButton>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QListWidgetItem>
+#include <QPushButton>
+#include <QDebug>
+#include <QMessageBox>
+#include <QKeyEvent>
+#include <QPixmap>
+#include <QIcon>
+#include <QGridLayout>
+#include <QShortcut>
+#include <QKeySequence>
+#include <QPropertyAnimation>
+#include <iostream>
+
 
 using namespace std;
 
@@ -29,29 +41,36 @@ class ImagEdit : public QMainWindow
 public:
     ImagEdit(QWidget *parent = nullptr);
     ~ImagEdit();
-    LibraryArea *libraryarea;
-    SettingArea *settingarea;
-    ToolboxArea *toolboxarea;
+    Cropping *croppingarera;
 
 
 
 public slots:
     void on_open_clicked();
-    void displayOnEdition(int index);
+    void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
+    void setupFilterButtonConnection();
 
 
 private:
     Ui::ImagEdit *ui;
     QString *path;
+    QString *fileName;
     QPixmap *pix;
     QStringList selectedImagePaths;
     QMap<QPushButton*, QString> buttonToOriginalPath;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
     int currentIndex;
+    QRect *rect;
+    Cropping *actualCropping;
+
+    FilterArea *widgetFilter;
+    QPushButton *boutonFiltre;
+    bool isFilterVisible;
+
 };
-#endif // IMAGEDIT_H
+#endif
