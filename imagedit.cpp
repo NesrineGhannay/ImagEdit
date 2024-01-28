@@ -27,6 +27,21 @@ ImagEdit::~ImagEdit()
     delete path;
 }
 
+void ImagEdit::on_open_clicked()
+{
+    QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
+    QFileInfo fileInfo(cheminFichier);
+    *fileName = fileInfo.fileName();
+    QPushButton *button = new QPushButton(*fileName, this);
+
+    connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
+    *path = cheminFichier;
+    QListWidgetItem *item = new QListWidgetItem;
+
+    ui->library->addItem(item);
+    ui->library->setItemWidget(item, button);
+}
 
 void ImagEdit::on_filter_clicked()
 {
