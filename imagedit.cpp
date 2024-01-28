@@ -5,7 +5,8 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QDebug>
-#include <iostream>
+#include <QPropertyAnimation>
+
 
 
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
@@ -17,6 +18,10 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     rect = new QRect();
     filterarea = new FilterArea();
 
+    boutonFiltre = findChild<QPushButton*>("filter");
+
+    widgetFilter = new FilterArea(this);
+    setupFilterButtonConnection();
 }
 
 ImagEdit::~ImagEdit()
@@ -42,6 +47,7 @@ void ImagEdit::on_open_clicked()
     ui->library->setItemWidget(item, button);
 }
 
+
 void ImagEdit::on_filter_clicked()
 {
     if(!filterarea->getIsFilter()) {
@@ -53,9 +59,17 @@ void ImagEdit::on_filter_clicked()
         filterarea->setIsFilter(false);
     }
 
-
-
 }
+
+void ImagEdit::setupFilterButtonConnection()
+{
+    widgetFilter->setVisible(false);
+    int x = 750;
+    int y = 100;
+    widgetFilter->move(x, y);
+    connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+}
+
 
 void ImagEdit::on_rogner_clicked()
 
@@ -82,14 +96,3 @@ void ImagEdit::displayOnEdition()
     ui->tabWidget->addTab(actualCropping, *fileName);
 
 }
-
-
-
-
-
-
-
-
-
-
-
