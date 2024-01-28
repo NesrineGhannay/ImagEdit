@@ -28,7 +28,7 @@ public:
     LibraryArea *libraryarea;
     SettingArea *settingarea;
     Cropping *croppingarera;
-    FilterArea *filterarea;
+
 
 
 
@@ -36,6 +36,8 @@ public slots:
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
+    void on_open_clicked();
+    void setupFilterButtonConnection();
 
 
 private:
@@ -46,7 +48,9 @@ private:
     QRect *rect;
     Cropping *actualCropping;
 
+    FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
+
 };
 #endif // IMAGEDIT_H
