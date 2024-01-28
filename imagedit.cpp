@@ -24,10 +24,9 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
                               "QPushButton { border: 1px solid #000;}");
     }
 
-    raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this);
-    raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this);
+    raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
+    raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
 
-    // Connecter les raccourcis aux slots correspondants
     connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
     connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
 }
@@ -52,10 +51,14 @@ void ImagEdit::on_open_clicked()
         existingLayout = new QGridLayout;
         ui->library->setLayout(existingLayout);
     }
-    const int gridSize = 100;  // Taille du carré en pixels
 
-    int existingImagesCount = existingLayout->count();
+    QLayoutItem *child;
+    while ((child = existingLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
 
+    const int gridSize = 100;
     for (int i = 0; i < selectedImagePaths.size(); ++i) {
         QPixmap pix(selectedImagePaths[i]);
         pix = pix.scaled(gridSize, gridSize, Qt::KeepAspectRatio);
@@ -63,9 +66,10 @@ void ImagEdit::on_open_clicked()
         QPushButton *button = new QPushButton;
         button->setIcon(QIcon(pix));
         button->setIconSize(pix.size());
-        connect(button, &QPushButton::clicked, [=]() {currentIndex = i; displayOnEdition(i); });
+        existingLayout->addWidget(button, i / 3, i % 3);
 
-        existingLayout->addWidget(button, (existingImagesCount + i) / 3, (existingImagesCount + i) % 3);
+        connect(button, &QPushButton::clicked, [=]() { displayOnEdition(i); });
+
     }
 
 }
@@ -102,7 +106,6 @@ void ImagEdit::on_save_clicked()
         QMessageBox::warning(this, "Aucune image", "Aucune image à enregistrer.");
         return;
     }
-    // index de l'image courante dans la QStringList
     if (currentIndex < 0 || currentIndex >= selectedImagePaths.size()) {
         QMessageBox::warning(this, "Erreur", "L'index de l'image actuelle n'est pas valide.");
         return;

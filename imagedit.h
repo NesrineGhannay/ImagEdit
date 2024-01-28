@@ -44,7 +44,6 @@ public slots:
     void on_save_under_clicked();
 
 
-
 private:
     Ui::ImagEdit *ui;
     QString *path;
