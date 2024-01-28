@@ -58,6 +58,7 @@ void ImagEdit::on_rogner_clicked()
         update();
     }
 }
+
 void ImagEdit::displayOnEdition()
 {
 
