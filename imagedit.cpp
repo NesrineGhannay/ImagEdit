@@ -30,6 +30,7 @@ ImagEdit::~ImagEdit()
 
 void ImagEdit::on_filter_clicked()
 {
+<<<<<<< HEAD
     if(!filterarea->getIsFilter()) {
         filterarea->setLabel(actualCropping);
         filterarea->show();
@@ -39,6 +40,10 @@ void ImagEdit::on_filter_clicked()
         filterarea->setIsFilter(false);
     }
 
+=======
+    widgetFilter->setLabel(actualCropping);
+    widgetFilter->show();
+>>>>>>> a49804a (resolve bug)
 }
 
 void ImagEdit::on_rogner_clicked()
