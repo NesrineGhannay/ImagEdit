@@ -1,8 +1,6 @@
 #ifndef EDITIONAREA_H
 #define EDITIONAREA_H
 
-#include "ui_editionarea.h"
-
 namespace Ui {
 class EditionArea;
 }

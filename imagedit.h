@@ -4,13 +4,11 @@
 #include <QMainWindow>
 #include <QPalette>
 
-#include "editionarea.h"
 #include "libraryarea.h"
 #include "settingarea.h"
-#include "toolboxarea.h"
-#include "rognerarea.h"
 #include "filterarea.h"
-#include <iostream>
+#include "cropping.h"
+
 
 using namespace std;
 
@@ -27,10 +25,10 @@ class ImagEdit : public QMainWindow
 public:
     ImagEdit(QWidget *parent = nullptr);
     ~ImagEdit();
-    EditionArea *editionarea;
     LibraryArea *libraryarea;
     SettingArea *settingarea;
-    ToolboxArea *toolboxarea;
+    Cropping *croppingarera;
+    FilterArea *filterarea;
 
 
 
@@ -39,12 +37,19 @@ public slots:
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
-
+    void setupFilterButtonConnection();
 
 
 private:
     Ui::ImagEdit *ui;
     QString *path;
+    QString *fileName;
     QPixmap *pix;
+    QRect *rect;
+    Cropping *actualCropping;
+
+    FilterArea *widgetFilter;
+    QPushButton *boutonFiltre;
+    bool isFilterVisible;
 };
 #endif // IMAGEDIT_H

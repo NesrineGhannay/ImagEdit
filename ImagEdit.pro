@@ -11,30 +11,27 @@ CONFIG += c++17
 SOURCES += \
     filterarea.cpp \
     libraryarea.cpp \
+    cropping.cpp \
     main.cpp \
     imagedit.cpp \
-    rognerarea.cpp \
     selectionaera.cpp \
-    settingarea.cpp \
-    toolboxarea.cpp
+    settingarea.cpp
 
 HEADERS += \
     filterarea.h \
     imagedit.h \
     libraryarea.h \
-    rognerarea.h \
     selectionaera.h \
-    settingarea.h \
-    toolboxarea.h
+    cropping.h \
+    settingarea.h
 
 FORMS += \
     filterarea.ui \
     imagedit.ui \
     libraryarea.ui \
-    rognerarea.ui \
     selectionaera.ui \
     settingarea.ui \
-    toolboxarea.ui
+    editionarea.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
