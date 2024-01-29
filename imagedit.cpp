@@ -42,6 +42,7 @@ void ImagEdit::on_open_clicked()
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
     *path = cheminFichier;
+    originalPaths.append(*path);
     QPushButton *button = new QPushButton();
 
     croppingButtons.append(button);
@@ -81,30 +82,30 @@ void ImagEdit::setCurrentImage()
 
 void ImagEdit::on_save_under_clicked()
 {
-    /*
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", cheminInitial, "Images (*.png *.jpg *.bmp);;Tous les fichiers (*.*)");
     if (!cheminFichier.isEmpty()) {
-        QPixmap pixmap = ui->imageLabel->pixmap();
+
+        QPixmap pixmap = actualCropping->getPixmap();
         if (!pixmap.save(cheminFichier)) {
             //erreur
         }
-    }*/
+    }
 }
 
 void ImagEdit::on_save_clicked()
 {
-/*
-    if (!ui->cropping->pixmap()) {
+
+    if (!actualCropping->pixmap()) {
         QMessageBox::warning(this, "Aucune image", "Aucune image à enregistrer.");
         return;
     }
-    if (currentIndex < 0 || currentIndex >= selectedImagePaths.size()) {
+    /* (currentIndex < 0 || currentIndex >= selectedImagePaths.size()) {
         QMessageBox::warning(this, "Erreur", "L'index de l'image actuelle n'est pas valide.");
         return;
-    }
-    QString cheminFichier = selectedImagePaths[currentIndex];
-    QPixmap pixmap = ui->imageLabel->pixmap();
+    }*/
+    QString cheminFichier = originalPaths[currentIndex];
+    QPixmap pixmap = actualCropping->pixmap();
     if (pixmap.isNull()) {
         QMessageBox::warning(this, "Erreur", "La pixmap de l'image actuelle est invalide.");
         return;
@@ -115,7 +116,7 @@ void ImagEdit::on_save_clicked()
         qDebug() << "Enregistrement réussi !";
         QMessageBox::warning(this, "Sauvegarde réussi", "Image enregistrée avec succès.");
     }
-    */
+
 }
 
 void ImagEdit::setupFilterButtonConnection()
@@ -125,7 +126,7 @@ void ImagEdit::setupFilterButtonConnection()
     int y = 100;
     widgetFilter->move(x, y);
 
-    //connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+
 }
 
 void ImagEdit::on_filter_clicked()
@@ -134,9 +135,7 @@ void ImagEdit::on_filter_clicked()
     widgetFilter->show();
 }
 
-void ImagEdit::on_rogner_clicked()
-
-{
+void ImagEdit::on_rogner_clicked() {
     if(!actualCropping->getIsCropping()) {
         actualCropping->drawRectCropping(pix);
     }

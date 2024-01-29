@@ -62,7 +62,7 @@ private:
     QString *fileName;
     QPixmap *pix;
     QList<QPushButton*> croppingButtons;
-    QMap<QPushButton*, QString> buttonToOriginalPath;
+    QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
     int currentIndex;
