@@ -53,6 +53,7 @@ public slots:
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
+    void setCurrentImage();
 
 
 private:
@@ -60,7 +61,7 @@ private:
     QString *path;
     QString *fileName;
     QPixmap *pix;
-    QStringList selectedImagePaths;
+    QList<QPushButton*> croppingButtons;
     QMap<QPushButton*, QString> buttonToOriginalPath;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
@@ -71,6 +72,9 @@ private:
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
+    void addImageInLibrary();
+    void updateLibraryVisualisation();
+
 
 };
 #endif

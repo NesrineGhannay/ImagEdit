@@ -10,7 +10,7 @@ FilterArea::FilterArea(QWidget *parent)
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
-    connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
+    //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
     connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
     connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));

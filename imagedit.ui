@@ -49,16 +49,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QListWidget" name="library">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>181</width>
-      <height>381</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
@@ -246,7 +236,7 @@
      <rect>
       <x>990</x>
       <y>120</y>
-      <width>26</width>
+      <width>30</width>
       <height>381</height>
      </rect>
     </property>
@@ -302,6 +292,17 @@
     <property name="alignment">
      <set>Qt::AlignBottom|Qt::AlignJustify</set>
     </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>181</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout"/>
    </widget>
   </widget>
  </widget>

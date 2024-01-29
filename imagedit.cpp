@@ -8,6 +8,7 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     path = new QString();
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
+
     for (QPushButton* bouton : tousLesBoutons) {
         bouton->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;}"
                               "QPushButton { border: 1px solid #000;}");
@@ -34,80 +35,49 @@ ImagEdit::~ImagEdit()
     delete path;
 }
 
-
-
-/*void ImagEdit::on_open_clicked()
-{
-    QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-    QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
-    QFileInfo fileInfo(cheminFichier);
-    *fileName = fileInfo.fileName();
-    QPushButton *button = new QPushButton(*fileName, this);
-
-    connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
-    *path = cheminFichier;
-    QListWidgetItem *item = new QListWidgetItem;
-
-    ui->library->addItem(item);
-    ui->library->setItemWidget(item, button);
-}*/
-
-
 void ImagEdit::on_open_clicked()
 {
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
-    QPushButton *button = new QPushButton(*fileName, this);
+    *path = cheminFichier;
+    QPushButton *button = new QPushButton();
 
-    QGridLayout* existingLayout = dynamic_cast<QGridLayout*>(ui->library->layout()); // add after
-    if (!existingLayout) {
-        existingLayout = new QGridLayout;
-        ui->library->setLayout(existingLayout);
-    }
+    croppingButtons.append(button);
 
-    QLayoutItem *child;
-    while ((child = existingLayout->takeAt(0)) != nullptr) {
-        delete child->widget();
-        delete child;
-    }
-
-    const int gridSize = 100;
-    for (int i = 0; i < selectedImagePaths.size(); ++i) {
-        QPixmap pix(selectedImagePaths[i]);
-        pix = pix.scaled(gridSize, gridSize, Qt::KeepAspectRatio);
-
-        QPushButton *button = new QPushButton;
-        button->setIcon(QIcon(pix));
-        button->setIconSize(pix.size());
-        connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
-
-        existingLayout->addWidget(button, i / 3, i % 3);
-
-        *path = cheminFichier;
-        QListWidgetItem *item = new QListWidgetItem;
-        ui->library->addItem(item);
-        ui->library->setItemWidget(item, button);
+    const int gridSize = 30;
 
 
-        //connect(button, &QPushButton::clicked, [=]() { displayOnEdition(i); });
 
-    }
-
+    pix = new QPixmap(*path);
+    *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
+    button->setIcon(QIcon(*pix));
+    button->setIconSize(pix->size());
+    *path = cheminFichier;
+    button->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;} ""QPushButton { border: 1px solid ;}");
+    button->setFixedSize(40, 40);
+    ui->gridLayout->addWidget(button);
+    updateLibraryVisualisation();
 }
 
-/*void ImagEdit::displayOnEdition(int index)
-{
-    if (index >= 0 && index < selectedImagePaths.size()) {
-        QString selectedImagePath = selectedImagePaths.at(index);
-        QPixmap pix(selectedImagePath);
-        pix = pix.scaled(600, 300, Qt::KeepAspectRatio);
-        ui->imageLabel->setPixmap(pix);
+void ImagEdit::updateLibraryVisualisation() {
+    int c = 0;
+    for(int i = 0; i < ui->gridLayout->count(); i++) {
+        if(i%3 == 0 && i != 0) c++;
+        ui->gridLayout->addWidget(croppingButtons[i], c, i%3);
+        connect(croppingButtons[i], SIGNAL(clicked()), this, SLOT(displayOnEdition()));
     }
-}*/
+    update();
+}
 
 
+void ImagEdit::setCurrentImage()
+{
+    actualCropping = qobject_cast<Cropping*>(ui->tabWidget->currentWidget());
+    widgetFilter->setLabel(actualCropping);
+    update();
+}
 
 void ImagEdit::on_save_under_clicked()
 {
@@ -121,7 +91,6 @@ void ImagEdit::on_save_under_clicked()
         }
     }*/
 }
-
 
 void ImagEdit::on_save_clicked()
 {
@@ -156,7 +125,7 @@ void ImagEdit::setupFilterButtonConnection()
     int y = 100;
     widgetFilter->move(x, y);
 
-    connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+    //connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
 }
 
 void ImagEdit::on_filter_clicked()
@@ -187,7 +156,10 @@ void ImagEdit::displayOnEdition()
     actualCropping = new Cropping();
     actualCropping->setPixmap(*pix);
     actualCropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
+
 
     ui->tabWidget->addTab(actualCropping, *fileName);
 
 }
+
