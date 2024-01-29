@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QPainter>
+#include <iostream>
 
 using namespace std;
 

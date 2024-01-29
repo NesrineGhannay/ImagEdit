@@ -1,18 +1,24 @@
 #include "imagedit.h"
 #include "ui_imagedit.h"
-#include <QFileDialog>
-#include <QStandardPaths>
-#include <QListWidgetItem>
-#include <QPushButton>
-#include <QDebug>
-#include <QPropertyAnimation>
-
 
 
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
     path = new QString();
+    pix = new QPixmap(*path);
+    QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
+
+    for (QPushButton* bouton : tousLesBoutons) {
+        bouton->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;}"
+                              "QPushButton { border: 1px solid #000;}");
+    }
+
+    raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
+    raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
+
+    connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
+    connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
     fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
@@ -29,21 +35,88 @@ ImagEdit::~ImagEdit()
     delete path;
 }
 
-
 void ImagEdit::on_open_clicked()
 {
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
-    QPushButton *button = new QPushButton(*fileName, this);
-
-    connect(button, SIGNAL(clicked()), this, SLOT(displayOnEdition()));
     *path = cheminFichier;
-    QListWidgetItem *item = new QListWidgetItem;
+    originalPaths.append(*path);
+    QPushButton *button = new QPushButton();
 
-    ui->library->addItem(item);
-    ui->library->setItemWidget(item, button);
+    croppingButtons.append(button);
+
+    const int gridSize = 30;
+
+
+
+    pix = new QPixmap(*path);
+    *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
+    button->setIcon(QIcon(*pix));
+    button->setIconSize(pix->size());
+    *path = cheminFichier;
+    button->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;} ""QPushButton { border: 1px solid ;}");
+    button->setFixedSize(40, 40);
+    ui->gridLayout->addWidget(button);
+    updateLibraryVisualisation();
+}
+
+void ImagEdit::updateLibraryVisualisation() {
+    int c = 0;
+    for(int i = 0; i < ui->gridLayout->count(); i++) {
+        if(i%3 == 0 && i != 0) c++;
+        ui->gridLayout->addWidget(croppingButtons[i], c, i%3);
+        connect(croppingButtons[i], SIGNAL(clicked()), this, SLOT(displayOnEdition()));
+    }
+    update();
+}
+
+
+void ImagEdit::setCurrentImage()
+{
+    actualCropping = qobject_cast<Cropping*>(ui->tabWidget->currentWidget());
+    widgetFilter->setLabel(actualCropping);
+    update();
+}
+
+void ImagEdit::on_save_under_clicked()
+{
+    QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    QString cheminFichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", cheminInitial, "Images (*.png *.jpg *.bmp);;Tous les fichiers (*.*)");
+    if (!cheminFichier.isEmpty()) {
+
+        QPixmap pixmap = actualCropping->getPixmap();
+        if (!pixmap.save(cheminFichier)) {
+            //erreur
+        }
+    }
+}
+
+void ImagEdit::on_save_clicked()
+{
+
+    if (!actualCropping->pixmap()) {
+        QMessageBox::warning(this, "Aucune image", "Aucune image à enregistrer.");
+        return;
+    }
+    /* (currentIndex < 0 || currentIndex >= selectedImagePaths.size()) {
+        QMessageBox::warning(this, "Erreur", "L'index de l'image actuelle n'est pas valide.");
+        return;
+    }*/
+    QString cheminFichier = originalPaths[currentIndex];
+    QPixmap pixmap = actualCropping->pixmap();
+    if (pixmap.isNull()) {
+        QMessageBox::warning(this, "Erreur", "La pixmap de l'image actuelle est invalide.");
+        return;
+    }
+    if (!pixmap.save(cheminFichier)) {
+        QMessageBox::warning(this, "Erreur d'enregistrement", "L'enregistrement a échoué.");
+    } else {
+        qDebug() << "Enregistrement réussi !";
+        QMessageBox::warning(this, "Sauvegarde réussi", "Image enregistrée avec succès.");
+    }
+
 }
 
 void ImagEdit::setupFilterButtonConnection()
@@ -53,10 +126,8 @@ void ImagEdit::setupFilterButtonConnection()
     int y = 100;
     widgetFilter->move(x, y);
 
-    connect(boutonFiltre, SIGNAL(clicked()), widgetFilter, SLOT(on_filter_clicked()));
+
 }
-
-
 
 void ImagEdit::on_filter_clicked()
 {
@@ -64,10 +135,7 @@ void ImagEdit::on_filter_clicked()
     widgetFilter->show();
 }
 
-
-void ImagEdit::on_rogner_clicked()
-
-{
+void ImagEdit::on_rogner_clicked() {
     if(!actualCropping->getIsCropping()) {
         actualCropping->drawRectCropping(pix);
     }
@@ -87,7 +155,10 @@ void ImagEdit::displayOnEdition()
     actualCropping = new Cropping();
     actualCropping->setPixmap(*pix);
     actualCropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
+
 
     ui->tabWidget->addTab(actualCropping, *fileName);
 
 }
+

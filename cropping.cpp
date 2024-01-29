@@ -1,8 +1,5 @@
 #include "cropping.h"
 
-#include <QLabel>
-#include <QPainter>
-#include <iostream>
 
 static constexpr int resizeHandleWidth = 40;
 
