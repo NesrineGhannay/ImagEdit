@@ -13,13 +13,13 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>31</y>
-     <width>205</width>
-     <height>335</height>
+     <width>221</width>
+     <height>361</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
@@ -227,8 +227,27 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>20</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Ressources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>luminositeBox</sender>

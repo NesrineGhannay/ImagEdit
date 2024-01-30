@@ -27,7 +27,6 @@ FilterArea::~FilterArea()
 
 void FilterArea::on_NbFilterButton_clicked()
 {
-    qDebug() << "NbFilterButton clicked";
     emit applyNbFilter();
 }
 
@@ -200,7 +199,6 @@ void FilterArea::appliquerSummerFiltre()
 
 void FilterArea::saturationChanged()
 {
-    qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
     if (!labelSelected->pixmap().isNull()) {
         QImage imageSaturationChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
@@ -225,5 +223,11 @@ void FilterArea::saturationChanged()
     } else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
+}
+
+
+void FilterArea::on_pushButton_clicked()
+{
+    this->close();
 }
 

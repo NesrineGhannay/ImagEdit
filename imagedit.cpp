@@ -131,19 +131,30 @@ void ImagEdit::setupFilterButtonConnection()
 
 void ImagEdit::on_filter_clicked()
 {
-    widgetFilter->setLabel(actualCropping);
-    widgetFilter->show();
+    if(ui->tabWidget->count() == 0) {
+        QMessageBox::warning(this, "No image found", "No image selected");
+    } else {
+        widgetFilter->setIsFilter(true);
+        widgetFilter->setLabel(actualCropping);
+        widgetFilter->show();
+    }
+
 }
 
 void ImagEdit::on_rogner_clicked() {
-    if(!actualCropping->getIsCropping()) {
-        actualCropping->drawRectCropping(pix);
+    if(ui->tabWidget->count() == 0) {
+        QMessageBox::warning(this, "No image found", "No image selected");
+    } else {
+        if(!actualCropping->getIsCropping()) {
+            actualCropping->drawRectCropping(pix);
+        }
+        else {
+            actualCropping->deleteRectCropping();
+            *pix = actualCropping->getPixmap();
+            update();
+        }
     }
-    else {
-        actualCropping->deleteRectCropping();
-        *pix = actualCropping->getPixmap();
-        update();
-    }
+
 }
 
 void ImagEdit::displayOnEdition()
