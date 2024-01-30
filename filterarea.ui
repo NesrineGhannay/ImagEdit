@@ -6,344 +6,265 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>306</width>
-    <height>436</height>
+    <width>363</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>31</y>
-     <width>221</width>
-     <height>361</height>
+     <x>0</x>
+     <y>60</y>
+     <width>281</width>
+     <height>331</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="luminositeText">
-          <property name="text">
-           <string>Luminosité</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QSlider" name="luminositeSlider">
-            <property name="minimum">
-             <number>-100</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="luminositeBox">
-            <property name="minimum">
-             <number>-100</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>198</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QLabel" name="saturationText">
-          <property name="text">
-           <string>Saturation</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QSlider" name="saturationSlider">
-            <property name="minimum">
-             <number>-100</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="saturationNumber">
-            <property name="minimum">
-             <number>-100</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>198</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QLabel" name="blurText">
-          <property name="text">
-           <string>Flou</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QSlider" name="blurSlider">
-            <property name="minimum">
-             <number>0</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="blurBox">
-            <property name="minimum">
-             <number>-100</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>198</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>188</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="0">
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
-       <widget class="QPushButton" name="LumFroidesFilterButton">
-        <property name="text">
-         <string>Lumières froides </string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="SummerFiltreButton">
-        <property name="text">
-         <string>Summer</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="OmbresChaudesFilterButton">
-        <property name="text">
-         <string>Ombres chaudes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="NbFilterButton">
-        <property name="text">
-         <string>Noir&amp;Blanc</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>20</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-   <property name="text">
-    <string/>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="icon">
-    <iconset resource="Ressources.qrc">
-     <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
-   </property>
+   <widget class="QLabel" name="saturationText">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>130</y>
+      <width>68</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Saturation</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="luminositeSlider">
+    <property name="geometry">
+     <rect>
+      <x>44</x>
+      <y>92</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="luminositeBox">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>87</y>
+      <width>62</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LumFroidesFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>148</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Lumières froides </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="luminositeText">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>59</y>
+      <width>72</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Luminosité</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="NbFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Noir&amp;Blanc</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OmbresChaudesFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>280</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Ombres chaudes</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="saturationSlider">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>131</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="SummerFiltreButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>280</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Summer</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="saturationNumber">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>150</y>
+      <width>62</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>0</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
   <include location="Ressources.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>luminositeBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>luminositeSlider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>196</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>92</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>luminositeSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>luminositeBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>83</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>196</x>
-     <y>70</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blurBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>blurSlider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>194</x>
-     <y>129</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>93</x>
-     <y>125</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blurSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>blurBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>84</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>200</x>
-     <y>129</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saturationSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>saturationNumber</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>77</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>201</x>
-     <y>190</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saturationNumber</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>saturationSlider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>188</x>
-     <y>183</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>84</x>
-     <y>192</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

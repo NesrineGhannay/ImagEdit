@@ -32,26 +32,30 @@ ImagEdit::~ImagEdit()
 
 void ImagEdit::on_open_clicked()
 {
-    ui->importImage->close();
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
-    *path = cheminFichier;
-    originalPaths.append(*path);
-    pix = new QPixmap(*path);
-    *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
 
-    QPushButton *button = new QPushButton();
-    croppingButtons.append(button);
+    if(!fileName->isEmpty()) {
+        ui->importImage->close();
+        *path = cheminFichier;
+        originalPaths.append(*path);
+        pix = new QPixmap(*path);
+        *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
 
-    button->setIcon(QIcon(*pix));
-    button->setIconSize(pix->size());
-    button->setStyleSheet("QPushButton:pressed {border: 1px solid #00f;} ""QPushButton { border: 1px solid ;}");
-    button->setFixedSize(40, 40);
-    ui->gridLayout->addWidget(button);
+        QPushButton *button = new QPushButton();
+        croppingButtons.append(button);
 
-    updateLibraryVisualisation();
+        button->setIcon(QIcon(*pix));
+        button->setIconSize(pix->size());
+        button->setStyleSheet("QPushButton:pressed {border: 1px solid #00f;} ""QPushButton { border: 1px solid ;}");
+        button->setFixedSize(40, 40);
+        ui->gridLayout->addWidget(button);
+
+        updateLibraryVisualisation();
+    }
+
 }
 
 void ImagEdit::updateLibraryVisualisation() {
@@ -64,9 +68,6 @@ void ImagEdit::updateLibraryVisualisation() {
     }
     update();
 }
-
-
-
 
 void ImagEdit::setCurrentImage()
 {
@@ -160,11 +161,10 @@ void ImagEdit::displayOnEdition()
 
     actualCropping = new Cropping();
     actualCropping->setPixmap(*pix);
+
     actualCropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
-
-
     ui->tabWidget->addTab(actualCropping, *fileName);
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
 
 }
 
