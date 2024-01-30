@@ -36,6 +36,8 @@ private slots:
     void saturationChanged();
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::FilterArea *ui;
     QLabel *labelSelected;
