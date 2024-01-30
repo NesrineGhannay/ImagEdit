@@ -56,12 +56,16 @@ public slots:
     void setCurrentImage();
 
 
+private slots:
+    void on_importImage_clicked();
+
 private:
     Ui::ImagEdit *ui;
     QString *path;
     QString *fileName;
     QPixmap *pix;
     QList<QPushButton*> croppingButtons;
+
     QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
@@ -72,9 +76,9 @@ private:
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
+    bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
-
-
+    const int gridSize = 30;
 };
 #endif

@@ -9,14 +9,9 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
 
-    for (QPushButton* bouton : tousLesBoutons) {
-        bouton->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;}"
-                              "QPushButton { border: 1px solid #000;}");
-    }
-
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
-
+    //croppingButtons = new QList<QPushButton*>();
     connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
     connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
     fileName = new QString();
@@ -37,33 +32,31 @@ ImagEdit::~ImagEdit()
 
 void ImagEdit::on_open_clicked()
 {
+    ui->importImage->close();
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
     *path = cheminFichier;
     originalPaths.append(*path);
-    QPushButton *button = new QPushButton();
-
-    croppingButtons.append(button);
-
-    const int gridSize = 30;
-
-
-
     pix = new QPixmap(*path);
     *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
+
+    QPushButton *button = new QPushButton();
+    croppingButtons.append(button);
+
     button->setIcon(QIcon(*pix));
     button->setIconSize(pix->size());
-    *path = cheminFichier;
-    button->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;} ""QPushButton { border: 1px solid ;}");
+    button->setStyleSheet("QPushButton:pressed {border: 1px solid #00f;} ""QPushButton { border: 1px solid ;}");
     button->setFixedSize(40, 40);
     ui->gridLayout->addWidget(button);
+
     updateLibraryVisualisation();
 }
 
 void ImagEdit::updateLibraryVisualisation() {
     int c = 0;
+    qDebug() << croppingButtons.size();
     for(int i = 0; i < ui->gridLayout->count(); i++) {
         if(i%3 == 0 && i != 0) c++;
         ui->gridLayout->addWidget(croppingButtons[i], c, i%3);
@@ -71,6 +64,8 @@ void ImagEdit::updateLibraryVisualisation() {
     }
     update();
 }
+
+
 
 
 void ImagEdit::setCurrentImage()
@@ -171,5 +166,33 @@ void ImagEdit::displayOnEdition()
 
     ui->tabWidget->addTab(actualCropping, *fileName);
 
+}
+
+void ImagEdit::on_importImage_clicked()
+{
+
+    ui->importImage->close();
+    QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
+    QFileInfo fileInfo(cheminFichier);
+    *fileName = fileInfo.fileName();
+    *path = cheminFichier;
+    originalPaths.append(*path);
+    QPushButton *button = new QPushButton();
+
+    croppingButtons.append(button);
+
+
+
+
+    pix = new QPixmap(*path);
+    *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
+    button->setIcon(QIcon(*pix));
+    button->setIconSize(pix->size());
+    *path = cheminFichier;
+    button->setStyleSheet("QPushButton:pressed {border: 2px solid #00f;} ""QPushButton { border: 1px solid ;}");
+    button->setFixedSize(40, 40);
+    ui->gridLayout->addWidget(button);
+    updateLibraryVisualisation();
 }
 
