@@ -59,55 +59,12 @@
      <set>Qt::AlignBottom|Qt::AlignJustify</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="filter">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
-      <y>230</y>
-      <width>28</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 2px solid black;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/icone_filtre.png</normaloff>:/icone_filtre.png</iconset>
-    </property>
-    <property name="autoRepeat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rogner">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
-      <y>320</y>
-      <width>28</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 2px solid black;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/icone_rogner.png</normaloff>:/icone_rogner.png</iconset>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>851</width>
+      <width>1001</width>
       <height>81</height>
      </rect>
     </property>
@@ -123,7 +80,7 @@
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>710</x>
+       <x>880</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>
@@ -345,6 +302,66 @@ QPushButton::pressed {
     <property name="default">
      <bool>false</bool>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>160</y>
+      <width>181</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="filter">
+       <property name="styleSheet">
+        <string notr="true">border: 2px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Filtres</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/icone_filtre.png</normaloff>:/icone_filtre.png</iconset>
+       </property>
+       <property name="autoRepeat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="rogner">
+       <property name="styleSheet">
+        <string notr="true">border: 2px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Rognage</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/icone_rogner.png</normaloff>:/icone_rogner.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="select">
+       <property name="styleSheet">
+        <string notr="true">border: 2px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Selection</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/icone_selection.png</normaloff>:/icone_selection.png</iconset>
+       </property>
+       <property name="autoRepeat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
