@@ -37,34 +37,12 @@
      <number>-1</number>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>10</y>
-      <width>151</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../projet/imagedit/logo3.png</pixmap>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignJustify</set>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1001</width>
+      <width>1011</width>
       <height>81</height>
      </rect>
     </property>
@@ -80,7 +58,7 @@
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>880</x>
+       <x>800</x>
        <y>30</y>
        <width>80</width>
        <height>24</height>
@@ -216,6 +194,31 @@ QPushButton::pressed {
        <normaloff>:/saveAs.png</normaloff>:/saveAs.png</iconset>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>10</y>
+       <width>111</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>logo3.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignBottom|Qt::AlignJustify</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="libraryFrame">
     <property name="geometry">
@@ -303,11 +306,11 @@ QPushButton::pressed {
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>160</y>
+      <x>800</x>
+      <y>170</y>
       <width>181</width>
       <height>341</height>
      </rect>

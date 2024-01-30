@@ -5,6 +5,7 @@
 #include <QPalette>
 
 #include "filterarea.h"
+#include "selectionarea.h"
 #include "cropping.h"
 #include <QStringList>
 #include <QKeySequence>
@@ -49,10 +50,12 @@ public slots:
     void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
+    void on_select_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
+    void setupSelectButtonConnection();
     void setCurrentImage();
 
 
@@ -75,7 +78,9 @@ private:
 
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
-    bool isFilterVisible;
+
+    selectionarea *widgetSelect;
+    QPushButton *selectButton;
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
