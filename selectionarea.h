@@ -12,6 +12,9 @@ class selectionarea : public QWidget
 {
     Q_OBJECT
 
+private slots:
+    void on_pushButton_clicked();
+
 public:
     explicit selectionarea(QWidget *parent = nullptr);
     ~selectionarea();

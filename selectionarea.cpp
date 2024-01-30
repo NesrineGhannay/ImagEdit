@@ -16,6 +16,12 @@ bool selectionarea::getIsFilter() {
     return isSelect;
 }
 
+void selectionarea::on_pushButton_clicked()
+{
+    this->close();
+}
+
+
 selectionarea::~selectionarea()
 {
     delete ui;

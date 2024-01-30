@@ -146,8 +146,6 @@ void ImagEdit::setupSelectButtonConnection()
     int x = 750;
     int y = 100;
     widgetSelect->move(x, y);
-
-
 }
 
 void ImagEdit::on_select_clicked()
