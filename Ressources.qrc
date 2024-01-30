@@ -16,5 +16,6 @@
         <file>save.png</file>
         <file>open.png</file>
         <file>import_picture.png</file>
+        <file>ciseaux-et-lignes-de-decoupe.png</file>
     </qresource>
 </RCC>
