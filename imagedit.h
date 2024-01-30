@@ -4,10 +4,26 @@
 #include <QMainWindow>
 #include <QPalette>
 
-#include "libraryarea.h"
-#include "settingarea.h"
 #include "filterarea.h"
 #include "cropping.h"
+#include <QStringList>
+#include <QKeySequence>
+#include <QShortcut>
+#include <QPushButton>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QListWidgetItem>
+#include <QPushButton>
+#include <QDebug>
+#include <QMessageBox>
+#include <QKeyEvent>
+#include <QPixmap>
+#include <QIcon>
+#include <QGridLayout>
+#include <QShortcut>
+#include <QKeySequence>
+#include <QPropertyAnimation>
+#include <iostream>
 
 
 using namespace std;
@@ -25,17 +41,19 @@ class ImagEdit : public QMainWindow
 public:
     ImagEdit(QWidget *parent = nullptr);
     ~ImagEdit();
-    LibraryArea *libraryarea;
-    SettingArea *settingarea;
     Cropping *croppingarera;
-    FilterArea *filterarea;
 
 
 
 public slots:
+    void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
     void on_rogner_clicked();
+    void on_save_clicked();
+    void on_save_under_clicked();
+    void setupFilterButtonConnection();
+    void setCurrentImage();
 
 
 private:
@@ -43,10 +61,20 @@ private:
     QString *path;
     QString *fileName;
     QPixmap *pix;
+    QList<QPushButton*> croppingButtons;
+    QList<QString> originalPaths;
+    QShortcut *raccourciEnregistrer;
+    QShortcut *raccourciOuvrir;
+    int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
 
+    FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
+    void addImageInLibrary();
+    void updateLibraryVisualisation();
+
+
 };
-#endif // IMAGEDIT_H
+#endif

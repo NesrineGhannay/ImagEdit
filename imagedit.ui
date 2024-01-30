@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1031</width>
-    <height>521</height>
+    <width>1034</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,6 +17,9 @@
    <string notr="true">background-color: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <widget class="QPushButton" name="open">
     <property name="geometry">
      <rect>
@@ -44,16 +47,6 @@
     </property>
     <property name="checked">
      <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="library">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>181</width>
-      <height>381</height>
-     </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="save">
@@ -84,7 +77,7 @@
      <rect>
       <x>240</x>
       <y>20</y>
-      <width>121</width>
+      <width>131</width>
       <height>24</height>
      </rect>
     </property>
@@ -102,7 +95,7 @@
       <normaloff>:/saveAs.png</normaloff>:/saveAs.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="save_under_2">
+   <widget class="QPushButton" name="delete_2">
     <property name="geometry">
      <rect>
       <x>740</x>
@@ -230,8 +223,8 @@
      <rect>
       <x>230</x>
       <y>120</y>
-      <width>531</width>
-      <height>381</height>
+      <width>461</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -243,7 +236,7 @@
      <rect>
       <x>990</x>
       <y>120</y>
-      <width>26</width>
+      <width>30</width>
       <height>381</height>
      </rect>
     </property>
@@ -277,6 +270,39 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>10</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../projet/imagedit/logo3.png</pixmap>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignJustify</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>181</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout"/>
    </widget>
   </widget>
  </widget>
