@@ -121,8 +121,8 @@ void ImagEdit::on_save_clicked()
 void ImagEdit::setupFilterButtonConnection()
 {
     widgetFilter->setVisible(false);
-    int x = 750;
-    int y = 100;
+    int x = 770;
+    int y = 130;
     widgetFilter->move(x, y);
 
 
