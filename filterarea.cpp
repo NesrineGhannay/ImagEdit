@@ -34,6 +34,12 @@ void FilterArea::on_NbFilterButton_clicked()
 void FilterArea::setLabel(QLabel *label) {
 
     labelSelected = label;
+
+    if (!labelSelected->pixmap().isNull()) {
+        originalImage = labelSelected->pixmap().toImage();
+    } else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
 }
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
