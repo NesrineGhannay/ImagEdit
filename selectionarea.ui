@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>70</y>
-     <width>241</width>
-     <height>331</height>
+     <y>72</y>
+     <width>236</width>
+     <height>291</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -56,48 +56,8 @@
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="Ressources.qrc">
-          <normaloff>:/icone_ovale_selection.png</normaloff>:/icone_ovale_selection.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>80</width>
-          <height>80</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QPushButton" name="pushButton_5">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="Ressources.qrc">
-          <normaloff>:/ligne-pointillee.png</normaloff>:/ligne-pointillee.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>80</width>
-          <height>80</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="rectangleButton">
         <property name="text">
          <string/>
         </property>
@@ -107,8 +67,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>60</width>
+          <height>60</height>
          </size>
         </property>
         <property name="autoExclusive">
@@ -119,6 +79,66 @@
         </property>
         <property name="default">
          <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="ellipseButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Ressources.qrc">
+          <normaloff>:/icone_ovale_selection.png</normaloff>:/icone_ovale_selection.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>60</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="triangleButton">
+        <property name="text">
+         <string>Triangle </string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="etoileButton">
+        <property name="text">
+         <string>Etoile</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="libreButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Ressources.qrc">
+          <normaloff>:/ligne-pointillee.png</normaloff>:/ligne-pointillee.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>60</width>
+          <height>60</height>
+         </size>
         </property>
         <property name="flat">
          <bool>true</bool>
