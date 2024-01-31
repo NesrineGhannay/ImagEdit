@@ -11,9 +11,11 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
-    //croppingButtons = new QList<QPushButton*>();
+    racourciEchapCropping = new QShortcut(QKeySequence(Qt::Key_Escape), this);
+
     connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
     connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
+
     fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
@@ -142,9 +144,11 @@ void ImagEdit::on_rogner_clicked() {
         QMessageBox::warning(this, "No image found", "No image selected");
     } else {
         if(!actualCropping->getIsCropping()) {
+            connect(racourciEchapCropping, &QShortcut::activated, this, &ImagEdit::on_rogner_clicked);
             actualCropping->drawRectCropping(pix);
         }
         else {
+            disconnect(racourciEchapCropping, &QShortcut::activated, this, &ImagEdit::on_rogner_clicked);
             actualCropping->deleteRectCropping();
             *pix = actualCropping->getPixmap();
             update();

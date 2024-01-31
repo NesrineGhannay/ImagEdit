@@ -69,6 +69,7 @@ private:
     QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
+    QShortcut *racourciEchapCropping;
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
