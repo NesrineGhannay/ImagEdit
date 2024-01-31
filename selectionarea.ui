@@ -48,158 +48,140 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="rectangleButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>113</width>
-      <height>66</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/icone_rectangle_selection.png</normaloff>:/icone_rectangle_selection.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>60</width>
-      <height>60</height>
-     </size>
-    </property>
-    <property name="autoExclusive">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>true</bool>
-    </property>
-    <property name="default">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="ellipseButton">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>110</y>
-      <width>113</width>
-      <height>66</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/icone_ovale_selection.png</normaloff>:/icone_ovale_selection.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>60</width>
-      <height>60</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="triangleButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>210</y>
-      <width>113</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	font-family: &quot;Montserrat&quot;, sans-serif;
-	font-weight: 500;
-	color: #edf0f1;
-	background-color: rgba(0, 136, 169, 1);
-	border-radius: 2px;
-}
-
-
-QPushButton::pressed {
-	border: 2px solid #00f;
-}
-
-
-</string>
-    </property>
-    <property name="text">
-     <string>Triangle </string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="etoileButton">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>210</y>
-      <width>113</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	font-family: &quot;Montserrat&quot;, sans-serif;
-	font-weight: 500;
-	color: #edf0f1;
-	background-color: rgba(0, 136, 169, 1);
-	border-radius: 2px;
-}
-
-
-QPushButton::pressed {
-	border: 2px solid #00f;
-}
-
-
-</string>
-    </property>
-    <property name="text">
-     <string>Etoile</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="libreButton">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>250</y>
-      <width>232</width>
-      <height>66</height>
+      <y>50</y>
+      <width>201</width>
+      <height>201</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/ligne-pointillee.png</normaloff>:/ligne-pointillee.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>60</width>
-      <height>60</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="rectangleButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/icone_rectangle_selection.png</normaloff>:/icone_rectangle_selection.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="ellipseButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/icone_ovale_selection.png</normaloff>:/icone_ovale_selection.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="triangleButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+       </property>
+       <property name="text">
+        <string>Triangle </string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="etoileButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font-family: &quot;Montserrat&quot;, sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	background-color: rgba(0, 136, 169, 1);
+	border-radius: 2px;
+}
+
+
+QPushButton::pressed {
+	border: 2px solid #00f;
+}
+
+
+</string>
+       </property>
+       <property name="text">
+        <string>Etoile</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QPushButton" name="libreButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Ressources.qrc">
+         <normaloff>:/ligne-pointillee.png</normaloff>:/ligne-pointillee.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
