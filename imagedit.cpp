@@ -8,6 +8,14 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     path = new QString();
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
+    confirmCropping = new QPushButton("Rogner", this);
+    confirmCropping->hide();
+    //confirmCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
+    //cancelCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
+    cancelCropping = new QPushButton("Annuler", this);
+    cancelCropping->hide();
+    cancelCropping->setStyleSheet("background-color:  #333439;");
+
 
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
@@ -144,10 +152,18 @@ void ImagEdit::on_rogner_clicked() {
         QMessageBox::warning(this, "No image found", "No image selected");
     } else {
         if(!actualCropping->getIsCropping()) {
+            confirmCropping->move(640, 180);
+            confirmCropping->show();
+            cancelCropping->move(520, 180);
+            cancelCropping->show();
+            connect(confirmCropping, SIGNAL(clicked()), actualCropping, SLOT(resizePicture()));
+            connect(cancelCropping, SIGNAL(clicked()), this, SLOT(on_rogner_clicked()));
             connect(racourciEchapCropping, &QShortcut::activated, this, &ImagEdit::on_rogner_clicked);
             actualCropping->drawRectCropping(pix);
         }
         else {
+            confirmCropping->hide();
+            cancelCropping->hide();
             disconnect(racourciEchapCropping, &QShortcut::activated, this, &ImagEdit::on_rogner_clicked);
             actualCropping->deleteRectCropping();
             *pix = actualCropping->getPixmap();

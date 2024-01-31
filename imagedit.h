@@ -73,7 +73,8 @@ private:
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
-
+    QPushButton *confirmCropping;
+    QPushButton *cancelCropping;
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
