@@ -15,6 +15,7 @@ class selectionarea : public QWidget
 private slots:
     void on_pushButton_clicked();
 
+
 public:
     explicit selectionarea(QWidget *parent = nullptr);
     ~selectionarea();
@@ -28,6 +29,15 @@ private:
     QLabel *labelSelected;
     QImage originalImage;
     bool isSelect = false;
+
+    void updateUIForCurrentTool();
+    void selectRectangle();
+    void selectEllipse();
+    void selectStar();
+    void selectTriangle();
+    void selectLibre();
+
+    QPixmap getSelectedImage() const;
 };
 
 #endif // SELECTIONAREA_H
