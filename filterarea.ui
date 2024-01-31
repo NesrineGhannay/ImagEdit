@@ -266,5 +266,70 @@ QPushButton::pressed {
  <resources>
   <include location="Ressources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>luminositeBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>luminositeSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saturationNumber</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>saturationSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>luminositeSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>luminositeBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saturationSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>saturationNumber</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>77</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

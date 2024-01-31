@@ -16,5 +16,7 @@
         <file>save.png</file>
         <file>open.png</file>
         <file>import_picture.png</file>
+        <file>ligne-pointillee2.png</file>
+        <file>ligne-pointillee.png</file>
     </qresource>
 </RCC>

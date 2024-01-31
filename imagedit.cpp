@@ -31,6 +31,10 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     boutonFiltre = findChild<QPushButton*>("filter");
     widgetFilter = new FilterArea(this);
     setupFilterButtonConnection();
+
+    selectButton = findChild<QPushButton*>("select");
+    widgetSelect = new selectionarea(this);
+    setupSelectButtonConnection();
 }
 
 ImagEdit::~ImagEdit()
@@ -128,8 +132,8 @@ void ImagEdit::on_save_clicked()
 void ImagEdit::setupFilterButtonConnection()
 {
     widgetFilter->setVisible(false);
-    int x = 750;
-    int y = 100;
+    int x = 770;
+    int y = 130;
     widgetFilter->move(x, y);
 
 
@@ -143,6 +147,25 @@ void ImagEdit::on_filter_clicked()
         widgetFilter->setIsFilter(true);
         widgetFilter->setLabel(actualCropping);
         widgetFilter->show();
+    }
+
+}
+
+void ImagEdit::setupSelectButtonConnection()
+{
+    widgetSelect->setVisible(false);
+    int x = 750;
+    int y = 100;
+    widgetSelect->move(x, y);
+}
+
+void ImagEdit::on_select_clicked()
+{
+    if(ui->tabWidget->count() == 0) {
+        QMessageBox::warning(this, "No image found", "No image selected");
+    } else {
+        widgetSelect->setIsFilter(true);
+        widgetSelect->show();
     }
 
 }
