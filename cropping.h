@@ -40,6 +40,9 @@ private:
     QPixmap pixImage;
     QPixmap rectToPixmap(const QRect &rect);
 
+public slots:
+    void resizePicture();
+
 };
 
 #endif // CROPPING_H

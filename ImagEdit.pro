@@ -12,16 +12,19 @@ SOURCES += \
     filterarea.cpp \
     cropping.cpp \
     main.cpp \
-    imagedit.cpp
+    imagedit.cpp \
+    selectionarea.cpp
 
 HEADERS += \
     filterarea.h \
     imagedit.h \
-    cropping.h
+    cropping.h \
+    selectionarea.h
 
 FORMS += \
     filterarea.ui \
-    imagedit.ui
+    imagedit.ui \
+    selectionarea.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

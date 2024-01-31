@@ -27,13 +27,18 @@ FilterArea::~FilterArea()
 
 void FilterArea::on_NbFilterButton_clicked()
 {
-    qDebug() << "NbFilterButton clicked";
     emit applyNbFilter();
 }
 
 void FilterArea::setLabel(QLabel *label) {
 
     labelSelected = label;
+
+    if (!labelSelected->pixmap().isNull()) {
+        originalImage = labelSelected->pixmap().toImage();
+    } else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
 }
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
@@ -139,10 +144,10 @@ void FilterArea::luminosityChanged()
         int sliderValue = ui->luminositeSlider->value();
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
             for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
-                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QRgb pixel = originalImage.pixel(x, y);
                 QColor originalColor(pixel);
                 QColor newColor = originalColor.toRgb();
-                newColor = newColor.lighter(100 + sliderValue/15);
+                newColor = newColor.lighter(100 + sliderValue);
                 imageLuminosityChanged.setPixel(x, y, newColor.rgb());
             }
         }
@@ -200,21 +205,19 @@ void FilterArea::appliquerSummerFiltre()
 
 void FilterArea::saturationChanged()
 {
-    qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
     if (!labelSelected->pixmap().isNull()) {
         QImage imageSaturationChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
-        qreal saturationFactor = 2.5;
         int sliderValue = ui->saturationSlider->value();
 
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
             for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
-                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QRgb pixel = originalImage.pixel(x, y);
                 QColor originalColor(pixel);
                 QColor newColor = originalColor.toRgb();
                 int h, s, l;
                 newColor.getHsl(&h, &s, &l);
-                s = qMin(255, int(s + sliderValue/10));
+                s = qMin(255, int(s + sliderValue));
                 newColor = QColor::fromHsl(h, s, l);
                 imageSaturationChanged.setPixel(x, y, newColor.rgb());
             }
@@ -225,5 +228,10 @@ void FilterArea::saturationChanged()
     } else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
+}
+
+void FilterArea::on_pushButton_clicked()
+{
+    this->close();
 }
 

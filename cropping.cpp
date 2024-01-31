@@ -22,9 +22,13 @@ QRect Cropping::resizeHandle() const
 
 void Cropping::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_Return)
-        this->setPixmap(cutImage());
+        resizePicture();
     update();
 
+}
+
+void Cropping::resizePicture() {
+    this->setPixmap(cutImage());
 }
 
 void Cropping::mousePressEvent(QMouseEvent *event)
@@ -73,13 +77,13 @@ QPixmap Cropping::cutImage() {
         }
     }
 
-    for(int i = currentRect.topLeft().x() - marge_lateral; i < currentRect.width() + marge_lateral; i++) {
+    for(int i = currentRect.topLeft().x() - marge_lateral; i < currentRect.topRight().x() + marge_lateral; i++) {
         for(int j = 0; j < currentRect.topLeft().y() - marge_vertical; j++) {
             newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
     }
 
-    for(int i = currentRect.bottomLeft().x() - marge_lateral; i < currentRect.width() + marge_lateral; i++) {
+    for(int i = currentRect.bottomLeft().x() - marge_lateral; i < currentRect.topRight().x() + marge_lateral; i++) {
         for(int j = currentRect.bottomLeft().y() - marge_vertical; j < newImage.height(); j++) {
             newImage.setPixel(i, j, qRgb(255, 255, 255));
         }
