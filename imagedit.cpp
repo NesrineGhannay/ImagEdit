@@ -64,10 +64,13 @@ void ImagEdit::on_open_clicked()
         button->setIcon(QIcon(*pix));
         button->setIconSize(pix->size());
         button->setStyleSheet("QPushButton:pressed {border: 1px solid #00f;} ""QPushButton { border: 1px solid ;}");
-        button->setFixedSize(40, 40);
+        button->setFixedSize(50, 50);
         ui->gridLayout->addWidget(button);
 
-        updateLibraryVisualisation();
+        if(ui->gridLayout->count() == 1) displayOnEdition();
+        else updateLibraryVisualisation();
+
+
     }
 
 }
@@ -198,7 +201,6 @@ void ImagEdit::on_rogner_clicked() {
 
 void ImagEdit::displayOnEdition()
 {
-
     pix = new QPixmap(*path);
     *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
 
@@ -210,6 +212,7 @@ void ImagEdit::displayOnEdition()
     connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
 
 }
+
 
 void ImagEdit::on_importImage_clicked()
 {

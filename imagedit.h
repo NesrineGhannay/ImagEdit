@@ -86,6 +86,6 @@ private:
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
-    const int gridSize = 30;
+    const int gridSize = 100;
 };
 #endif
