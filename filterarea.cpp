@@ -230,7 +230,6 @@ void FilterArea::saturationChanged()
     }
 }
 
-
 void FilterArea::on_pushButton_clicked()
 {
     this->close();

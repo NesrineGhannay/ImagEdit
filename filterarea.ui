@@ -245,6 +245,9 @@ QPushButton::pressed {
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>255</x>
