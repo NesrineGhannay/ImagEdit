@@ -216,7 +216,6 @@ void ImagEdit::displayOnEdition()
 
 void ImagEdit::on_importImage_clicked()
 {
-
     ui->importImage->close();
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
@@ -225,7 +224,7 @@ void ImagEdit::on_importImage_clicked()
     *path = cheminFichier;
     originalPaths.append(*path);
     QPushButton *button = new QPushButton();
-
+    displayOnEdition();
     croppingButtons.append(button);
 
 
