@@ -5,6 +5,7 @@
 #include <QPalette>
 
 #include "filterarea.h"
+#include "selectionarea.h"
 #include "cropping.h"
 #include <QStringList>
 #include <QKeySequence>
@@ -49,12 +50,17 @@ public slots:
     void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
+    void on_select_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
+    void setupSelectButtonConnection();
     void setCurrentImage();
 
+
+private slots:
+    void on_importImage_clicked();
 
 private:
     Ui::ImagEdit *ui;
@@ -62,19 +68,24 @@ private:
     QString *fileName;
     QPixmap *pix;
     QList<QPushButton*> croppingButtons;
+
     QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
+    QShortcut *racourciEchapCropping;
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
-
+    QPushButton *confirmCropping;
+    QPushButton *cancelCropping;
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
-    bool isFilterVisible;
+
+    selectionarea *widgetSelect;
+    QPushButton *selectButton;
+    bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
-
-
+    const int gridSize = 100;
 };
 #endif

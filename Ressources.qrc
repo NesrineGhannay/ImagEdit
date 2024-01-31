@@ -5,7 +5,7 @@
         <file>icone_rectangle_selection.png</file>
         <file>icone_rogner.png</file>
         <file>icone_selection.png</file>
-		<file>cancel.png</file>
+        <file>cancel.png</file>
         <file>arriere.png</file>
         <file>avant.png</file>
         <file>saveAs.png</file>
@@ -15,5 +15,8 @@
         <file>plus.png</file>
         <file>save.png</file>
         <file>open.png</file>
+        <file>import_picture.png</file>
+        <file>ligne-pointillee2.png</file>
+        <file>ligne-pointillee.png</file>
     </qresource>
 </RCC>
