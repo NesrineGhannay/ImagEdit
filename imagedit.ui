@@ -95,34 +95,11 @@
       <normaloff>:/saveAs.png</normaloff>:/saveAs.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="delete_2">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>20</y>
-      <width>111</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 2px solid black;</string>
-    </property>
-    <property name="text">
-     <string>Supprimer</string>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/suppr.png</normaloff>:/suppr.png</iconset>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>20</y>
+      <x>240</x>
+      <y>90</y>
       <width>31</width>
       <height>24</height>
      </rect>
@@ -141,8 +118,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>20</y>
+      <x>280</x>
+      <y>90</y>
       <width>31</width>
       <height>24</height>
      </rect>
@@ -158,31 +135,11 @@
       <normaloff>:/avant.png</normaloff>:/avant.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="moins">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>20</y>
-      <width>31</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 2px solid black;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Ressources.qrc">
-      <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>20</y>
+      <x>460</x>
+      <y>90</y>
       <width>31</width>
       <height>24</height>
      </rect>
@@ -198,11 +155,11 @@
       <normaloff>:/moins.png</normaloff>:/moins.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="cancel">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>20</y>
+      <x>550</x>
+      <y>90</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -274,8 +231,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>10</y>
+      <x>840</x>
+      <y>20</y>
       <width>151</width>
       <height>91</height>
      </rect>
@@ -287,7 +244,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../projet/imagedit/logo3.png</pixmap>
+     <pixmap resource="Ressources.qrc">:/logo3.png</pixmap>
     </property>
     <property name="alignment">
      <set>Qt::AlignBottom|Qt::AlignJustify</set>
@@ -303,6 +260,26 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
+   </widget>
+   <widget class="QPushButton" name="plus">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>90</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Ressources.qrc">
+      <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
+    </property>
    </widget>
   </widget>
  </widget>

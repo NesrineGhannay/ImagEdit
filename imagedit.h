@@ -47,7 +47,7 @@ public:
 
 public slots:
     void on_open_clicked();
-    void displayOnEdition();
+    void displayOnEdition(int index);
     void on_filter_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
@@ -61,20 +61,20 @@ private:
     QString *path;
     QString *fileName;
     QPixmap *pix;
-    QList<QPushButton*> croppingButtons;
     QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
+    QList<Cropping*> croppingList;
+    QList<QPushButton*> croppingButtons;
 
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
     void addImageInLibrary();
     void updateLibraryVisualisation();
-
 
 };
 #endif

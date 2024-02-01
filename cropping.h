@@ -40,6 +40,9 @@ private:
     QPixmap pixImage;
     QPixmap rectToPixmap(const QRect &rect);
 
+signals:
+    void clicked();
+
 };
 
 #endif // CROPPING_H
