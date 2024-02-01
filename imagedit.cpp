@@ -13,6 +13,9 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     cancelCropping = new QPushButton("Annuler", this);
     cancelCropping->hide();
 
+    boutonResize = findChild<QPushButton*>("resize");
+    resize = new Resize(this);
+    setupResizeButtonConnection();
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
     racourciEchapCropping = new QShortcut(QKeySequence(Qt::Key_Escape), this);
@@ -32,7 +35,6 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     resize->hide();
 
     selectButton = findChild<QPushButton*>("select");
-    setupSelectButtonConnection();
 }
 
 ImagEdit::~ImagEdit()
@@ -40,6 +42,16 @@ ImagEdit::~ImagEdit()
     delete ui;
     delete pix;
     delete path;
+}
+
+void ImagEdit::setupResizeButtonConnection()
+{
+    resize->setVisible(false);
+    int x = 770;
+    int y = 130;
+    resize->move(x, y);
+
+
 }
 
 void ImagEdit::on_open_clicked()
@@ -152,24 +164,6 @@ void ImagEdit::on_filter_clicked()
 
 }
 
-void ImagEdit::setupSelectButtonConnection()
-{
-    /*widgetSelect->setVisible(false);
-    int x = 750;
-    int y = 100;
-    widgetSelect->move(x, y);*/
-}
-
-void ImagEdit::on_select_clicked()
-{
-    /*if(ui->tabWidget->count() == 0) {
-        QMessageBox::warning(this, "No image found", "No image selected");
-    } else {
-        widgetSelect->setIsFilter(true);
-        widgetSelect->show();
-    }*/
-}
-
 void ImagEdit::on_rogner_clicked() {
     if(ui->tabWidget->count() == 0) {
         QMessageBox::warning(this, "No image found", "No image selected");
@@ -238,8 +232,12 @@ void ImagEdit::on_importImage_clicked()
 
 void ImagEdit::on_resize_clicked()
 {
-    resize->setCropping(actualCropping);
-    resize->show();
-
+    if(ui->tabWidget->count() == 0) {
+        QMessageBox::warning(this, "No image found", "No image selected");
+    } else {
+        resize->setIsResize(true);
+        resize->setCropping(actualCropping);
+        resize->show();
+    }
 }
 

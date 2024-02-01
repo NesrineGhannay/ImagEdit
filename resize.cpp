@@ -60,3 +60,10 @@ void Resize::on_heightSpinBox_valueChanged(int arg1)
     }
 }
 
+void Resize::setIsResize(bool resizeBool) {
+    isResize = resizeBool;
+}
+
+bool Resize::getIsResize() {
+    return isResize;
+}

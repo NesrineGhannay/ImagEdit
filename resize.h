@@ -16,7 +16,7 @@ public:
     explicit Resize(QWidget *parent = nullptr);
     ~Resize();
 
-    void setCropping(Cropping *cropping);  // Ajout du setter
+    void setCropping(Cropping *cropping);
 
 private slots:
     void on_four_three_clicked();
@@ -28,6 +28,11 @@ private:
     Cropping *actualCropping;
     int *height;
     int *width;
+
+public:
+    bool getIsResize();
+    bool isResize;
+    void setIsResize(bool resizeBool);
 };
 
 #endif // RESIZE_H
