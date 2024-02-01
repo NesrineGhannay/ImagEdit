@@ -199,6 +199,8 @@ void ImagEdit::on_rogner_clicked() {
 
 }
 
+
+
 void ImagEdit::displayOnEdition()
 {
     pix = new QPixmap(*path);
