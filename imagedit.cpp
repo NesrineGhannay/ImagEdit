@@ -27,7 +27,7 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
         on_cancelButton_clicked(currentIndex);
     });
 
-    connect(ui->cancel_2, &QPushButton::clicked, this, &ImagEdit::onCancel2ButtonClicked);
+    //connect(ui->cancel_2, &QPushButton::clicked, this, &ImagEdit::onCancel2ButtonClicked);
 
     fileName = new QString();
     pix = new QPixmap();
@@ -196,7 +196,6 @@ void ImagEdit::displayOnEdition(int index)
     connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
 
 }
-
 
 void ImagEdit::setCurrentImage()
 {
