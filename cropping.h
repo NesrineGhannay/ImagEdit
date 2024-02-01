@@ -20,6 +20,7 @@ public:
     void cropRect(QPixmap *pix);
     bool getIsCropping();
     QPixmap getPixmap();
+    void setOriginalPixmap(const QPixmap &pixmap);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -39,6 +40,12 @@ private:
     QPixmap cutImage();
     QPixmap pixImage;
     QPixmap rectToPixmap(const QRect &rect);
+    QPixmap originalPixmap;
+    qreal currentZoomFactor;
+
+
+public slots:
+    void updateZoom(qreal factor);
 
 signals:
     void clicked();

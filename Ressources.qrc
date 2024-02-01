@@ -10,9 +10,9 @@
         <file>saveAs.png</file>
         <file>suppr.png</file>
         <file>logo3.png</file>
-        <file>moins.png</file>
-        <file>plus.png</file>
         <file>save.png</file>
         <file>open.png</file>
+        <file>zoom.png</file>
+        <file>dezoom.png</file>
     </qresource>
 </RCC>

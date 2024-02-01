@@ -54,6 +54,10 @@ public slots:
     void on_save_under_clicked();
     void setupFilterButtonConnection();
     void setCurrentImage();
+    void on_cancelButton_clicked(int index);
+    void on_zoom_clicked();
+    void on_dezoom_clicked();
+    void onCancel2ButtonClicked();
 
 
 private:
@@ -70,11 +74,15 @@ private:
     QList<Cropping*> croppingList;
     QList<QPushButton*> croppingButtons;
 
+
     FilterArea *widgetFilter;
     QPushButton *boutonFiltre;
     bool isFilterVisible;
     void addImageInLibrary();
     void updateLibraryVisualisation();
+    void updateIndicesAfterRemoval(int removedIndex);
+    void resetInterface();
+
 
 };
 #endif

@@ -19,13 +19,20 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 
     connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
     connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
+
+    connect(ui->zoom, &QPushButton::clicked, this, &ImagEdit::on_zoom_clicked);
+    connect(ui->dezoom, &QPushButton::clicked, this, &ImagEdit::on_zoom_clicked);
+
+    connect(ui->cancel, &QPushButton::clicked, [=]() {
+        on_cancelButton_clicked(currentIndex);
+    });
+
+    connect(ui->cancel_2, &QPushButton::clicked, this, &ImagEdit::onCancel2ButtonClicked);
+
     fileName = new QString();
     pix = new QPixmap();
     rect = new QRect();
     currentIndex = 0;
-    //QList<Cropping*> croppingList;
-    //QList<QPushButton*> croppingButtons;
-
 
     boutonFiltre = findChild<QPushButton*>("filter");
     widgetFilter = new FilterArea(this);
@@ -60,7 +67,6 @@ void ImagEdit::on_open_clicked()
     updateLibraryVisualisation();
     */
 
-
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
     QStringList cheminsFichiers = QFileDialog::getOpenFileNames(this, "Sélectionnez des fichiers", cheminInitial);
 
@@ -69,6 +75,7 @@ void ImagEdit::on_open_clicked()
         QPixmap *pix = new QPixmap(filePath);
         *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
 
+        //bouton image ds library
         QPushButton *button = new QPushButton();
         button->setIcon(QIcon(*pix));
         button->setIconSize(pix->size());
@@ -76,14 +83,11 @@ void ImagEdit::on_open_clicked()
         croppingButtons.append(button);
         ui->gridLayout->addWidget(button);
 
-
-
         Cropping *cropping = new Cropping();
         cropping->setPixmap(*pix);
         cropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
         croppingList.append(cropping);
-
         connect(button, &QPushButton::clicked, this, [=]() {
             int index = croppingButtons.indexOf(button);
             if (index != -1 && index < croppingList.size()) {
@@ -92,22 +96,12 @@ void ImagEdit::on_open_clicked()
             }
         });
         ui->tabWidget->addTab(cropping, QFileInfo(filePath).fileName());
-
         updateLibraryVisualisation();
     }
 
 }
 
 void ImagEdit::updateLibraryVisualisation() {
-    /*
-    int c = 0;
-    for(int i = 0; i < ui->gridLayout->count(); i++) {
-        if(i%3 == 0 && i != 0) c++;
-        ui->gridLayout->addWidget(croppingButtons[i], c, i%3);
-        connect(croppingButtons[i], SIGNAL(clicked()), this, SLOT(displayOnEdition()));
-    }
-    update();
-    */
     int c = 0;
     for(int i = 0; i < ui->gridLayout->count(); i++) {
         if(i % 3 == 0 && i != 0) c++;
@@ -126,30 +120,10 @@ void ImagEdit::updateLibraryVisualisation() {
 void ImagEdit::displayOnEdition(int index)
 {
     /*
-        pix = new QPixmap(*path);
-        *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
-        actualCropping = new Cropping();
-        actualCropping->setPixmap(*pix);
-        actualCropping->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-        connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
-        ui->tabWidget->addTab(actualCropping, *fileName);
-    */
-
-    /*
-    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
-    if (ui->tabWidget->indexOf(actualCropping) == -1) {
-        ui->tabWidget->addTab(actualCropping, QFileInfo(*fileName).fileName());
-    }
-
-    int currentTabIndex = ui->tabWidget->indexOf(actualCropping);
-    ui->tabWidget->setCurrentIndex(currentTabIndex);
-    currentIndex++;
-    */
     connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
     if (index >= 0 && index < croppingList.size()) {
         actualCropping = croppingList[index];
     } else {
-        qDebug() << "Index invalide : " << index;
         return;
     }
 
@@ -160,6 +134,66 @@ void ImagEdit::displayOnEdition(int index)
     int currentTabIndex = ui->tabWidget->indexOf(actualCropping);
     ui->tabWidget->setCurrentIndex(currentTabIndex);
     currentIndex = index;  // Mise à jour de l'index
+    */
+
+    /*
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
+
+       if (index >= 0 && index < croppingList.size())
+       {
+           QPixmap currentState = actualCropping->getPixmap();
+           undoHistory.append(currentState);
+           actualCropping = croppingList[index];
+
+           if (actualCropping->getPixmap().isNull())
+           {
+               qDebug() << "La pixmap de l'image actuelle est invalide.";
+               return;
+           }
+       }
+       else
+       {
+           qDebug() << "Index invalide : " << index;
+           return;
+       }
+
+       if (ui->tabWidget->indexOf(actualCropping) == -1)
+       {
+           ui->tabWidget->addTab(actualCropping, QFileInfo(*fileName).fileName());
+       }
+
+       int currentTabIndex = ui->tabWidget->indexOf(actualCropping);
+       ui->tabWidget->setCurrentIndex(currentTabIndex);
+       currentIndex = index;
+       */
+    disconnect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
+
+    if (index >= 0 && index < croppingList.size())
+    {
+        actualCropping = croppingList[index];
+        if (actualCropping->getPixmap().isNull())
+        {
+            qDebug() << "La pixmap de l'image actuelle est invalide.";
+            return;
+        }
+    }
+    else
+    {
+        qDebug() << "Index invalide : " << index;
+        return;
+    }
+
+    if (ui->tabWidget->indexOf(actualCropping) == -1)
+    {
+        ui->tabWidget->addTab(actualCropping, QFileInfo(*fileName).fileName());
+    }
+
+    int currentTabIndex = ui->tabWidget->indexOf(actualCropping);
+    ui->tabWidget->setCurrentIndex(currentTabIndex);
+    currentIndex = index;
+
+    // Reconnectez le signal currentChanged après avoir terminé le traitement
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(setCurrentImage()));
 
 }
 
@@ -196,31 +230,6 @@ void ImagEdit::on_save_under_clicked()
 
 void ImagEdit::on_save_clicked()
 {
-    /*
-    if (croppingList.isEmpty() || currentIndex < 0 || currentIndex >= croppingList.size()) {
-        QMessageBox::warning(this, "Aucune image", "Aucune image sélectionnée.");
-        return;
-    }
-
-
-    // (currentIndex < 0 || currentIndex >= selectedImagePaths.size()) {
-    //    QMessageBox::warning(this, "Erreur", "L'index de l'image actuelle n'est pas valide.");
-    //    return;
-    //}
-    QString cheminFichier = originalPaths[currentIndex];
-    QPixmap pixmap = actualCropping->pixmap();
-    if (pixmap.isNull()) {
-        QMessageBox::warning(this, "Erreur", "La pixmap de l'image actuelle est invalide.");
-        return;
-    }
-    if (!pixmap.save(cheminFichier)) {
-        QMessageBox::warning(this, "Erreur d'enregistrement", "L'enregistrement a échoué.");
-    } else {
-        qDebug() << "Enregistrement réussi !";
-        QMessageBox::warning(this, "Sauvegarde réussi", "Image enregistrée avec succès.");
-    }
-    */
-
     if (currentIndex < 0 || currentIndex >= croppingList.size()) {
         QMessageBox::warning(this, "Erreur", "L'index de l'image actuelle n'est pas valide.");
         return;
@@ -258,8 +267,6 @@ void ImagEdit::setupFilterButtonConnection()
     int x = 750;
     int y = 100;
     widgetFilter->move(x, y);
-
-
 }
 
 void ImagEdit::on_filter_clicked()
@@ -279,6 +286,80 @@ void ImagEdit::on_rogner_clicked() {
     }
 }
 
+void ImagEdit::updateIndicesAfterRemoval(int removedIndex)
+{
+    if (currentIndex == removedIndex) {
+        //image actuelle supprimée
+        currentIndex = -1;
+    } else if (currentIndex > removedIndex) {
+        // image actuelle  après l'image supprimée
+        currentIndex--;
+    }
+}
+
+
+void ImagEdit::resetInterface()
+{
+    currentIndex = -1;
+    actualCropping = nullptr;
+    ui->tabWidget->clear();
+    croppingList.clear();
+    croppingButtons.clear();
+    originalPaths.clear();
+    ui->gridLayout->removeItem(ui->gridLayout->itemAt(0));
+}
+
+void ImagEdit::on_cancelButton_clicked(int index)
+{
+    if (index >= 0 && index < croppingList.size()) {
+        ui->tabWidget->removeTab(index);
+        Cropping *cropping = croppingList.takeAt(index);
+        QPushButton *button = croppingButtons.takeAt(index);
+        delete cropping;
+        delete button;
+        updateIndicesAfterRemoval(index);
+        if (croppingList.isEmpty()) {
+            resetInterface();
+        } else {
+            int newCurrentIndex = qBound(0, currentIndex, croppingList.size() - 1);
+            displayOnEdition(newCurrentIndex);
+        }
+    }
+}
+
+void ImagEdit::on_zoom_clicked()
+{
+    qreal zoomFactor = 1.15;
+    if (currentIndex >= 0 && currentIndex < croppingList.size())
+    {
+        actualCropping = croppingList[currentIndex];
+        actualCropping->updateZoom(zoomFactor);
+    }
+}
+void ImagEdit::on_dezoom_clicked()
+{
+    qreal zoomFactor = 0.75;
+    if (currentIndex >= 0 && currentIndex < croppingList.size())
+    {
+        actualCropping = croppingList[currentIndex];
+        actualCropping->updateZoom(zoomFactor);
+    }
+}
+
+void ImagEdit::onCancel2ButtonClicked()
+{
+    if (currentIndex >= 0 && currentIndex < originalPaths.size())
+    {
+
+        QPixmap originalPixmap(originalPaths[currentIndex]);
+        actualCropping->setPixmap(originalPixmap);
+        update();
+    }
+    else
+    {
+        qDebug() << "L'index actuel est invalide pour annuler.";
+    }
+}
 
 ImagEdit::~ImagEdit()
 {

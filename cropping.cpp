@@ -132,3 +132,19 @@ void Cropping::deleteRectCropping() {
     update();
     isCropping = false;
 }
+
+
+void Cropping::setOriginalPixmap(const QPixmap &pixmap)
+{
+    originalPixmap = pixmap;
+    setPixmap(originalPixmap);
+}
+
+void Cropping::updateZoom(qreal factor)
+{
+    if (!pixmap().isNull())
+    {
+        QPixmap zoomedPixmap = pixmap().scaled(pixmap().size() * factor, Qt::KeepAspectRatio);
+        setPixmap(zoomedPixmap);
+    }
+}

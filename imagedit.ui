@@ -36,7 +36,7 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Ouvrir</string>
+     <string>Open</string>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
@@ -65,7 +65,7 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Enregistrer</string>
+     <string>Save</string>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
@@ -88,14 +88,14 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Enregistrer sous</string>
+     <string>Save as</string>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
       <normaloff>:/saveAs.png</normaloff>:/saveAs.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="undo">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -115,7 +115,7 @@
       <normaloff>:/arriere.png</normaloff>:/arriere.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="doo">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -135,10 +135,10 @@
       <normaloff>:/avant.png</normaloff>:/avant.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="moins">
+   <widget class="QPushButton" name="dezoom">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>390</x>
       <y>90</y>
       <width>31</width>
       <height>24</height>
@@ -152,13 +152,19 @@
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
-      <normaloff>:/moins.png</normaloff>:/moins.png</iconset>
+      <normaloff>:/dezoom.png</normaloff>:/dezoom.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="cancel">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>490</x>
       <y>90</y>
       <width>80</width>
       <height>24</height>
@@ -168,7 +174,7 @@
      <string notr="true">border: 2px solid black;</string>
     </property>
     <property name="text">
-     <string>Annuler</string>
+     <string>Delete</string>
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
@@ -261,10 +267,10 @@
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
    </widget>
-   <widget class="QPushButton" name="plus">
+   <widget class="QPushButton" name="zoom">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>350</x>
       <y>90</y>
       <width>31</width>
       <height>24</height>
@@ -278,7 +284,26 @@
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
-      <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
+      <normaloff>:/zoom.png</normaloff>:/zoom.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancel_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>90</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
     </property>
    </widget>
   </widget>

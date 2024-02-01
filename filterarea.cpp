@@ -204,7 +204,7 @@ void FilterArea::saturationChanged()
 
     if (!labelSelected->pixmap().isNull()) {
         QImage imageSaturationChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
-        qreal saturationFactor = 2.5;
+        //qreal saturationFactor = 2.5;
         int sliderValue = ui->saturationSlider->value();
 
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
