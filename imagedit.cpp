@@ -239,7 +239,6 @@ void ImagEdit::on_importImage_clicked()
     updateLibraryVisualisation();
 }
 
-
 void ImagEdit::on_resize_clicked()
 {
     resize->setCropping(actualCropping);
