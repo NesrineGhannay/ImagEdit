@@ -50,6 +50,9 @@ public slots:
 signals:
     void clicked();
 
+public slots:
+    void resizePicture();
+
 };
 
 #endif // CROPPING_H

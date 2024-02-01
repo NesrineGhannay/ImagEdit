@@ -5,7 +5,9 @@
 #include <QPalette>
 
 #include "filterarea.h"
+#include "selectionarea.h"
 #include "cropping.h"
+#include "resize.h"
 #include <QStringList>
 #include <QKeySequence>
 #include <QShortcut>
@@ -49,10 +51,12 @@ public slots:
     void on_open_clicked();
     void displayOnEdition(int index);
     void on_filter_clicked();
+    void on_resize_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
+    void setupResizeButtonConnection();
     void setCurrentImage();
     void on_cancelButton_clicked(int index);
     void on_zoom_clicked();
@@ -60,14 +64,20 @@ public slots:
     void onCancel2ButtonClicked();
 
 
+private slots:
+    void on_importImage_clicked();
+
 private:
     Ui::ImagEdit *ui;
     QString *path;
     QString *fileName;
     QPixmap *pix;
+    QList<QPushButton*> croppingButtons;
+
     QList<QString> originalPaths;
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
+    QShortcut *racourciEchapCropping;
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
@@ -76,8 +86,11 @@ private:
 
 
     FilterArea *widgetFilter;
+    Resize *widgetResize;
+    Resize *resize;
     QPushButton *boutonFiltre;
-    bool isFilterVisible;
+    QPushButton *boutonResize;
+    bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
     void updateIndicesAfterRemoval(int removedIndex);

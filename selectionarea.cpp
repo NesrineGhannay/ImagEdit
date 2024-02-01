@@ -1,37 +1,46 @@
-#include "cropping.h"
+#include "selectionarea.h"
+#include "ui_selectionarea.h"
 
-
-static constexpr int resizeHandleWidth = 40;
-
-Cropping::Cropping(QWidget *parent, const QRect &rect)
-    : QLabel(parent),
-    currentRect(rect)
+selectionarea::selectionarea(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::selectionarea)
 {
-    currentRect = currentRect;;
+    ui->setupUi(this);
+
+    /*currentRect = currentRect;;
     m_resizeHandlePressed = false;
-    setFocusPolicy(Qt::StrongFocus);
+    setFocusPolicy(Qt::StrongFocus);*/
+
+    connect(ui->rectangleButton, &QPushButton::clicked, this, &selectionarea::selectRectangle);
+    connect(ui->ellipseButton, &QPushButton::clicked, this, &selectionarea::selectEllipse);
+    connect(ui->etoileButton, &QPushButton::clicked, this, &selectionarea::selectStar);
+    connect(ui->triangleButton, &QPushButton::clicked, this, &selectionarea::selectTriangle);
+    connect(ui->libreButton, &QPushButton::clicked, this, &selectionarea::selectLibre);
 
 }
 
-
-QRect Cropping::resizeHandle() const
+/*
+//Créé la poignée
+QRect selectionarea::resizeHandle() const
 {
     QPoint br = currentRect.bottomRight();
     return QRect(br - QPoint(resizeHandleWidth, resizeHandleWidth), br);
 }
 
-void Cropping::keyPressEvent(QKeyEvent *event) {
+//Quand on clique sur le boutton entrée ca rogne l'image
+void selectionarea::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_Return)
-        resizePicture();
+        selectPicture();
     update();
-
 }
 
-void Cropping::resizePicture() {
+//C'est celle-ci qui coupe
+void selectionarea::selectPicture() {
     this->setPixmap(cutImage());
 }
 
-void Cropping::mousePressEvent(QMouseEvent *event)
+//Celle qui permet de redimensionner la widget du dessus
+void selectionarea::mousePressEvent(QMouseEvent *event)
 {
     event->accept();
     m_resizeHandlePressed = this->resizeHandle().contains(event->position().toPoint());
@@ -43,23 +52,8 @@ void Cropping::mousePressEvent(QMouseEvent *event)
 
 }
 
-bool Cropping::getIsCropping(){
-
-    return isCropping;
-}
-
-QPixmap Cropping::getPixmap() {
-    return this->pixmap();
-}
-
-void Cropping::mouseReleaseEvent(QMouseEvent *event)
-{
-    update();
-    event->accept();
-    m_resizeHandlePressed = false;
-}
-
-QPixmap Cropping::cutImage() {
+//C'est celle qui va mettre à jour les dimension selectionné avec la widget (dans cropping elle coupé l'image)
+QPixmap selectionarea::cutImage() {
     QImage newImage = pixImage.toImage();
 
     int marge_lateral = (this->width() - newImage.width())/2;
@@ -93,7 +87,7 @@ QPixmap Cropping::cutImage() {
     return QPixmap::fromImage(newImage);
 }
 
-void Cropping::mouseMoveEvent(QMouseEvent *event)
+void selectionarea::mouseMoveEvent(QMouseEvent *event)
 {
     event->accept();
 
@@ -104,10 +98,10 @@ void Cropping::mouseMoveEvent(QMouseEvent *event)
         currentRect.moveTopLeft(event->position().toPoint() - m_mousePressOffset);
     }
     update();
-
 }
 
-void Cropping::paintEvent(QPaintEvent *event) {
+//dessine le rectangle de recadrage et la poignée de redimensionnement
+void selectionarea::paintEvent(QPaintEvent *event) {
     QLabel::paintEvent(event);
     QPainter painter(this);
     painter.setPen(QPen(Qt::blue, 2));
@@ -117,7 +111,8 @@ void Cropping::paintEvent(QPaintEvent *event) {
     painter.drawRect(resizeHandle());
 }
 
-void Cropping::drawRectCropping(QPixmap *pix) {
+// initialise le rectangle de recadrage autour de l'image centrée dans le widget
+void selectionarea::drawRectSelect(QPixmap *pix) {
     pixImage = *pix;
     currentRect = QRect(this->width()/2-pix->width()/2,
                         this->height()/2-pix->height()/2,
@@ -127,27 +122,57 @@ void Cropping::drawRectCropping(QPixmap *pix) {
     isCropping = true;
     update();
     releaseKeyboard();
-
 }
 
-void Cropping::deleteRectCropping() {
+//réinitialise le rectangle de recadrage, met à jour le widget pour refléter les changements
+//et indique que le processus de recadrage n'est plus en cours
+void selectionarea::deleteRectSelect() {
     currentRect = QRect();
     update();
     isCropping = false;
+}*/
+
+void selectionarea::setIsFilter(bool selectBool) {
+    isSelect = selectBool;
+}
+
+bool selectionarea::getIsFilter() {
+    return isSelect;
+}
+
+void selectionarea::on_pushButton_clicked()
+{
+    this->close();
+}
+
+void selectionarea::selectRectangle()
+{
+    qDebug() << "Selection Rectangle";
+}
+
+void selectionarea::selectEllipse()
+{
+    qDebug() << "Selection Ellipse";
+}
+
+void selectionarea::selectStar()
+{
+    qDebug() << "Selection Etoile";
+}
+
+void selectionarea::selectTriangle()
+{
+    qDebug() << "Selection Triangle";
+}
+
+void selectionarea::selectLibre()
+{
+    qDebug() << "Selection Libre";
 }
 
 
-void Cropping::setOriginalPixmap(const QPixmap &pixmap)
-{
-    originalPixmap = pixmap;
-    setPixmap(originalPixmap);
-}
 
-void Cropping::updateZoom(qreal factor)
+selectionarea::~selectionarea()
 {
-    if (!pixmap().isNull())
-    {
-        QPixmap zoomedPixmap = pixmap().scaled(pixmap().size() * factor, Qt::KeepAspectRatio);
-        setPixmap(zoomedPixmap);
-    }
+    delete ui;
 }

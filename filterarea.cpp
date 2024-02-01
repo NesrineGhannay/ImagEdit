@@ -1,6 +1,8 @@
 #include "filterarea.h"
 #include "ui_filterarea.h"
 #include <iostream>
+#include <QPainter>
+
 using namespace std;
 
 FilterArea::FilterArea(QWidget *parent)
@@ -10,12 +12,11 @@ FilterArea::FilterArea(QWidget *parent)
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
-    //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
     connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
     connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));
-
-    //connect(parentWidget()->findChild<QPushButton*>("filter"), SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
+    widgetSelect = new selectionarea(this);
+    widgetSelect->hide();
 }
 
 
@@ -27,13 +28,18 @@ FilterArea::~FilterArea()
 
 void FilterArea::on_NbFilterButton_clicked()
 {
-    qDebug() << "NbFilterButton clicked";
     emit applyNbFilter();
 }
 
 void FilterArea::setLabel(QLabel *label) {
 
     labelSelected = label;
+
+    if (!labelSelected->pixmap().isNull()) {
+        originalImage = labelSelected->pixmap().toImage();
+    } else {
+        qDebug() << "Erreur : Aucune image actuelle à traiter.";
+    }
 }
 
 void FilterArea::appliquerFiltreNoirEtBlanc()
@@ -139,10 +145,10 @@ void FilterArea::luminosityChanged()
         int sliderValue = ui->luminositeSlider->value();
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
             for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
-                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QRgb pixel = originalImage.pixel(x, y);
                 QColor originalColor(pixel);
                 QColor newColor = originalColor.toRgb();
-                newColor = newColor.lighter(100 + sliderValue/15);
+                newColor = newColor.lighter(100 + sliderValue);
                 imageLuminosityChanged.setPixel(x, y, newColor.rgb());
             }
         }
@@ -200,21 +206,19 @@ void FilterArea::appliquerSummerFiltre()
 
 void FilterArea::saturationChanged()
 {
-    qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
     if (!labelSelected->pixmap().isNull()) {
         QImage imageSaturationChanged(labelSelected->pixmap().toImage().size(), QImage::Format_ARGB32);
-        //qreal saturationFactor = 2.5;
         int sliderValue = ui->saturationSlider->value();
 
         for (int y = 0; y < labelSelected->pixmap().toImage().height(); ++y) {
             for (int x = 0; x < labelSelected->pixmap().toImage().width(); ++x) {
-                QRgb pixel = labelSelected->pixmap().toImage().pixel(x, y);
+                QRgb pixel = originalImage.pixel(x, y);
                 QColor originalColor(pixel);
                 QColor newColor = originalColor.toRgb();
                 int h, s, l;
                 newColor.getHsl(&h, &s, &l);
-                s = qMin(255, int(s + sliderValue/10));
+                s = qMin(255, int(s + sliderValue));
                 newColor = QColor::fromHsl(h, s, l);
                 imageSaturationChanged.setPixel(x, y, newColor.rgb());
             }
@@ -225,5 +229,25 @@ void FilterArea::saturationChanged()
     } else {
         qDebug() << "Erreur : Aucune image actuelle à traiter.";
     }
+}
+
+void FilterArea::on_pushButton_clicked()
+{
+    this->close();
+}
+
+void FilterArea::on_comboBox_activated(int index)
+{
+    /*if(index == 1) {
+        QLabel::paintEvent(event);
+        QPainter painter(this);
+        painter.setPen(QPen(Qt::blue, 2));
+        QColor grayWithAlpha = QColor(0, 0, 128, 128);
+        painter.setBrush(QBrush(grayWithAlpha));
+        painter.drawRect(labelSelected->pixmap().rect());
+
+
+    }*/
+
 }
 
