@@ -32,10 +32,11 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     widgetFilter = new FilterArea(this);
     setupFilterButtonConnection();
 
-    resize = new Resize();
+    boutonResize = findChild<QPushButton*>("resize");
+    resize = new Resize(this);
+    setupResizeButtonConnection();
     resize->hide();
 
-    selectButton = findChild<QPushButton*>("select");
 }
 
 ImagEdit::~ImagEdit()
@@ -162,8 +163,8 @@ void ImagEdit::on_filter_clicked()
         widgetFilter->setLabel(actualCropping);
         widgetFilter->show();
     }
-
 }
+
 
 void ImagEdit::on_rogner_clicked() {
     if(ui->tabWidget->count() == 0) {
@@ -190,8 +191,6 @@ void ImagEdit::on_rogner_clicked() {
     }
 
 }
-
-
 
 void ImagEdit::displayOnEdition()
 {
@@ -235,12 +234,8 @@ void ImagEdit::on_importImage_clicked()
 
 void ImagEdit::on_resize_clicked()
 {
-    if(ui->tabWidget->count() == 0) {
-        QMessageBox::warning(this, "No image found", "No image selected");
-    } else {
-        resize->setIsResize(true);
-        resize->setCropping(actualCropping);
-        resize->show();
-    }
+
+    QMessageBox::warning(this, "No image found", "Partie non effectué");
+
 }
 

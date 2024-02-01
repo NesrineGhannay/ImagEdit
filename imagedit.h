@@ -51,17 +51,17 @@ public slots:
     void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
+    void on_resize_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
+    void setupResizeButtonConnection();
     void setCurrentImage();
 
 
 private slots:
     void on_importImage_clicked();
-
-    void on_resize_clicked();
 
 private:
     Ui::ImagEdit *ui;
@@ -80,14 +80,13 @@ private:
     QPushButton *confirmCropping;
     QPushButton *cancelCropping;
     FilterArea *widgetFilter;
+    Resize *widgetResize;
     Resize *resize;
     QPushButton *boutonFiltre;
-    QPushButton *selectButton;
     QPushButton *boutonResize;
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
     const int gridSize = 100;
-    void setupResizeButtonConnection();
 };
 #endif

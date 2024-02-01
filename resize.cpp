@@ -17,6 +17,14 @@ Resize::~Resize()
     delete ui;
 }
 
+void Resize::setIsResize(bool resizeBool) {
+    isResize = resizeBool;
+}
+
+bool Resize::getIsResize() {
+    return isResize;
+}
+
 void Resize::setCropping(Cropping *cropping)
 {
     actualCropping = cropping;
@@ -60,10 +68,4 @@ void Resize::on_heightSpinBox_valueChanged(int arg1)
     }
 }
 
-void Resize::setIsResize(bool resizeBool) {
-    isResize = resizeBool;
-}
 
-bool Resize::getIsResize() {
-    return isResize;
-}
