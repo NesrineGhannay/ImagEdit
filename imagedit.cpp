@@ -47,7 +47,16 @@ ImagEdit::~ImagEdit()
 void ImagEdit::on_open_clicked()
 {
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-    QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
+
+    QString selfilter = tr("JPEG (*.jpg *.jpeg)");
+    QString cheminFichier = QFileDialog::getOpenFileName(
+        this,
+        "Sélectionnez un fichier",
+        cheminInitial,
+        tr("All files (*.*);;JPEG (*.jpg *.jpeg);;TIFF (*.tif)" ),
+        &selfilter
+        );
+
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
 
@@ -213,12 +222,20 @@ void ImagEdit::displayOnEdition()
 
 }
 
-
 void ImagEdit::on_importImage_clicked()
 {
     ui->importImage->close();
     QString cheminInitial = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-    QString cheminFichier = QFileDialog::getOpenFileName(this, "Sélectionnez un fichier", cheminInitial);
+
+    QString selfilter = tr("JPEG (*.jpg *.jpeg)");
+    QString cheminFichier = QFileDialog::getOpenFileName(
+        this,
+        "Sélectionnez un fichier",
+        cheminInitial,
+        tr("All files (*.*);;JPEG (*.jpg *.jpeg);;TIFF (*.tif)" ),
+        &selfilter
+        );
+
     QFileInfo fileInfo(cheminFichier);
     *fileName = fileInfo.fileName();
     *path = cheminFichier;
