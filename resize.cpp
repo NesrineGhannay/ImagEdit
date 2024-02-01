@@ -17,6 +17,14 @@ Resize::~Resize()
     delete ui;
 }
 
+void Resize::setIsResize(bool resizeBool) {
+    isResize = resizeBool;
+}
+
+bool Resize::getIsResize() {
+    return isResize;
+}
+
 void Resize::setCropping(Cropping *cropping)
 {
     actualCropping = cropping;

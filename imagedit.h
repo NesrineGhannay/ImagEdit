@@ -52,18 +52,18 @@ public slots:
     void displayOnEdition();
     void on_filter_clicked();
     void on_select_clicked();
+    void on_resize_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
     void setupSelectButtonConnection();
+    void setupResizeButtonConnection();
     void setCurrentImage();
 
 
 private slots:
     void on_importImage_clicked();
-
-    void on_resize_clicked();
 
 private:
     Ui::ImagEdit *ui;
@@ -82,8 +82,10 @@ private:
     QPushButton *confirmCropping;
     QPushButton *cancelCropping;
     FilterArea *widgetFilter;
+    Resize *widgetResize;
     Resize *resize;
     QPushButton *boutonFiltre;
+    QPushButton *boutonResize;
 
     QPushButton *selectButton;
     bool clearImportPictureBtn = false;

@@ -17,6 +17,8 @@ public:
     ~Resize();
 
     void setCropping(Cropping *cropping);  // Ajout du setter
+    bool getIsResize();
+    void setIsResize(bool resizeBool);
 
 private slots:
     void on_four_three_clicked();
@@ -28,6 +30,10 @@ private:
     Cropping *actualCropping;
     int *height;
     int *width;
+
+    QLabel *labelSelected;
+    QImage originalImage;
+    bool isResize = false;
 };
 
 #endif // RESIZE_H
