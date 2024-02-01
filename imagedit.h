@@ -49,7 +49,7 @@ public:
 
 public slots:
     void on_open_clicked();
-    void displayOnEdition();
+    void displayOnEdition(int index);
     void on_filter_clicked();
     void on_resize_clicked();
     void on_rogner_clicked();
@@ -58,6 +58,10 @@ public slots:
     void setupFilterButtonConnection();
     void setupResizeButtonConnection();
     void setCurrentImage();
+    void on_cancelButton_clicked(int index);
+    void on_zoom_clicked();
+    void on_dezoom_clicked();
+    void onCancel2ButtonClicked();
 
 
 private slots:
@@ -77,8 +81,10 @@ private:
     int currentIndex;
     QRect *rect;
     Cropping *actualCropping;
-    QPushButton *confirmCropping;
-    QPushButton *cancelCropping;
+    QList<Cropping*> croppingList;
+    QList<QPushButton*> croppingButtons;
+
+
     FilterArea *widgetFilter;
     Resize *widgetResize;
     Resize *resize;
@@ -87,6 +93,9 @@ private:
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
-    const int gridSize = 100;
+    void updateIndicesAfterRemoval(int removedIndex);
+    void resetInterface();
+
+
 };
 #endif
