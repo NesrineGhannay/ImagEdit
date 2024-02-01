@@ -7,6 +7,7 @@
 #include "filterarea.h"
 #include "selectionarea.h"
 #include "cropping.h"
+#include "resize.h"
 #include <QStringList>
 #include <QKeySequence>
 #include <QShortcut>
@@ -50,12 +51,12 @@ public slots:
     void on_open_clicked();
     void displayOnEdition();
     void on_filter_clicked();
-    void on_select_clicked();
+    void on_resize_clicked();
     void on_rogner_clicked();
     void on_save_clicked();
     void on_save_under_clicked();
     void setupFilterButtonConnection();
-    void setupSelectButtonConnection();
+    void setupResizeButtonConnection();
     void setCurrentImage();
 
 
@@ -79,10 +80,10 @@ private:
     QPushButton *confirmCropping;
     QPushButton *cancelCropping;
     FilterArea *widgetFilter;
+    Resize *widgetResize;
+    Resize *resize;
     QPushButton *boutonFiltre;
-
-    selectionarea *widgetSelect;
-    QPushButton *selectButton;
+    QPushButton *boutonResize;
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();

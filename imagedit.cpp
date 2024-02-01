@@ -5,18 +5,18 @@
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
+    ui->tabWidget->setStyleSheet("background-color:black;");
     path = new QString();
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
     confirmCropping = new QPushButton("Rogner", this);
     confirmCropping->hide();
-    //confirmCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
-    //cancelCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
     cancelCropping = new QPushButton("Annuler", this);
     cancelCropping->hide();
-    cancelCropping->setStyleSheet("background-color:  #333439;");
 
-
+    boutonResize = findChild<QPushButton*>("resize");
+    resize = new Resize(this);
+    setupResizeButtonConnection();
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
     racourciEchapCropping = new QShortcut(QKeySequence(Qt::Key_Escape), this);
@@ -32,9 +32,11 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     widgetFilter = new FilterArea(this);
     setupFilterButtonConnection();
 
-    selectButton = findChild<QPushButton*>("select");
-    widgetSelect = new selectionarea(this);
-    setupSelectButtonConnection();
+    boutonResize = findChild<QPushButton*>("resize");
+    resize = new Resize(this);
+    setupResizeButtonConnection();
+    resize->hide();
+
 }
 
 ImagEdit::~ImagEdit()
@@ -42,6 +44,16 @@ ImagEdit::~ImagEdit()
     delete ui;
     delete pix;
     delete path;
+}
+
+void ImagEdit::setupResizeButtonConnection()
+{
+    resize->setVisible(false);
+    int x = 770;
+    int y = 130;
+    resize->move(x, y);
+
+
 }
 
 void ImagEdit::on_open_clicked()
@@ -160,27 +172,8 @@ void ImagEdit::on_filter_clicked()
         widgetFilter->setLabel(actualCropping);
         widgetFilter->show();
     }
-
 }
 
-void ImagEdit::setupSelectButtonConnection()
-{
-    widgetSelect->setVisible(false);
-    int x = 750;
-    int y = 100;
-    widgetSelect->move(x, y);
-}
-
-void ImagEdit::on_select_clicked()
-{
-    if(ui->tabWidget->count() == 0) {
-        QMessageBox::warning(this, "No image found", "No image selected");
-    } else {
-        widgetSelect->setIsFilter(true);
-        widgetSelect->show();
-    }
-
-}
 
 void ImagEdit::on_rogner_clicked() {
     if(ui->tabWidget->count() == 0) {
@@ -245,8 +238,6 @@ void ImagEdit::on_importImage_clicked()
     croppingButtons.append(button);
 
 
-
-
     pix = new QPixmap(*path);
     *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
     button->setIcon(QIcon(*pix));
@@ -256,5 +247,12 @@ void ImagEdit::on_importImage_clicked()
     button->setFixedSize(40, 40);
     ui->gridLayout->addWidget(button);
     updateLibraryVisualisation();
+}
+
+void ImagEdit::on_resize_clicked()
+{
+
+    QMessageBox::warning(this, "No image found", "Partie non effectué");
+
 }
 

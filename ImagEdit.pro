@@ -13,17 +13,20 @@ SOURCES += \
     cropping.cpp \
     main.cpp \
     imagedit.cpp \
+    resize.cpp \
     selectionarea.cpp
 
 HEADERS += \
     filterarea.h \
     imagedit.h \
     cropping.h \
+    resize.h \
     selectionarea.h
 
 FORMS += \
     filterarea.ui \
     imagedit.ui \
+    resize.ui \
     selectionarea.ui
 
 # Default rules for deployment.
