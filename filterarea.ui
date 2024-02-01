@@ -16,10 +16,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>281</width>
-     <height>381</height>
+     <x>0</x>
+     <y>0</y>
+     <width>361</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -182,6 +182,9 @@ QPushButton::pressed {
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="luminositeText">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>Luminosité</string>
          </property>
@@ -204,6 +207,9 @@ QPushButton::pressed {
          </item>
          <item>
           <widget class="QSpinBox" name="luminositeBox">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
            <property name="minimum">
             <number>-100</number>
            </property>
@@ -220,6 +226,9 @@ QPushButton::pressed {
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="saturationText">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>Saturation</string>
          </property>
@@ -242,6 +251,9 @@ QPushButton::pressed {
          </item>
          <item>
           <widget class="QSpinBox" name="saturationNumber">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
            <property name="minimum">
             <number>-100</number>
            </property>

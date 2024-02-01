@@ -5,6 +5,7 @@
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
+    //ui->tabWidget->setStyleSheet("background-color:black;");
     path = new QString();
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
