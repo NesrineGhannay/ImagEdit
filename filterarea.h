@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include "selectionarea.h"
 
 namespace Ui {
 class FilterArea;
@@ -34,9 +35,8 @@ private slots:
     void on_LumFroidesFilterButton_clicked();
     void luminosityChanged();
     void saturationChanged();
-
-
     void on_pushButton_clicked();
+    void on_comboBox_activated(int index);
 
 private:
     Ui::FilterArea *ui;
@@ -44,6 +44,7 @@ private:
     QImage originalImage;
     bool isFilter = false;
     bool isBlackAndWhiteFilter = false;
+    selectionarea *widgetSelect;
 
 public:
     bool getIsFilter();

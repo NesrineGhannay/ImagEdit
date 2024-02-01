@@ -18,5 +18,6 @@
         <file>import_picture.png</file>
         <file>ligne-pointillee2.png</file>
         <file>ligne-pointillee.png</file>
+		<file>resize.png</file>
     </qresource>
 </RCC>

@@ -105,7 +105,6 @@ void Cropping::mouseMoveEvent(QMouseEvent *event)
     }
     update();
 
-
 }
 
 void Cropping::paintEvent(QPaintEvent *event) {
