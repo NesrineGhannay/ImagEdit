@@ -23,8 +23,8 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     pix = new QPixmap();
     rect = new QRect();
     currentIndex = 0;
-    QList<Cropping*> croppingList;
-    QList<QPushButton*> croppingButtons;
+    //QList<Cropping*> croppingList;
+    //QList<QPushButton*> croppingButtons;
 
 
     boutonFiltre = findChild<QPushButton*>("filter");
@@ -65,7 +65,6 @@ void ImagEdit::on_open_clicked()
     QStringList cheminsFichiers = QFileDialog::getOpenFileNames(this, "Sélectionnez des fichiers", cheminInitial);
 
     for (const QString &filePath : cheminsFichiers) {
-        // Créer un nouvel onglet avec la nouvelle image
         originalPaths.append(filePath);
         QPixmap *pix = new QPixmap(filePath);
         *pix = pix->scaled(381, 271, Qt::KeepAspectRatio);
@@ -76,7 +75,6 @@ void ImagEdit::on_open_clicked()
         button->setFixedSize(40, 40);
         croppingButtons.append(button);
         ui->gridLayout->addWidget(button);
-
 
 
 
