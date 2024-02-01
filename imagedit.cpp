@@ -10,12 +10,8 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
     confirmCropping = new QPushButton("Rogner", this);
     confirmCropping->hide();
-    //confirmCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
-    //cancelCropping->setStyleSheet("QPushButton {font-family: Montserrat, sans-serif;font-weight: 500color: #edf0f1;background-color: rgba(0, 136, 169, 1);border-radius: 2px;}QPushButton::pressed {border: 2px solid #00f;}");
     cancelCropping = new QPushButton("Annuler", this);
     cancelCropping->hide();
-    cancelCropping->setStyleSheet("background-color:  #333439;");
-
 
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
@@ -32,8 +28,10 @@ ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
     widgetFilter = new FilterArea(this);
     setupFilterButtonConnection();
 
+    resize = new Resize();
+    resize->hide();
+
     selectButton = findChild<QPushButton*>("select");
-    widgetSelect = new selectionarea(this);
     setupSelectButtonConnection();
 }
 
@@ -156,21 +154,20 @@ void ImagEdit::on_filter_clicked()
 
 void ImagEdit::setupSelectButtonConnection()
 {
-    widgetSelect->setVisible(false);
+    /*widgetSelect->setVisible(false);
     int x = 750;
     int y = 100;
-    widgetSelect->move(x, y);
+    widgetSelect->move(x, y);*/
 }
 
 void ImagEdit::on_select_clicked()
 {
-    if(ui->tabWidget->count() == 0) {
+    /*if(ui->tabWidget->count() == 0) {
         QMessageBox::warning(this, "No image found", "No image selected");
     } else {
         widgetSelect->setIsFilter(true);
         widgetSelect->show();
-    }
-
+    }*/
 }
 
 void ImagEdit::on_rogner_clicked() {
@@ -215,7 +212,6 @@ void ImagEdit::displayOnEdition()
 
 }
 
-
 void ImagEdit::on_importImage_clicked()
 {
 
@@ -231,8 +227,6 @@ void ImagEdit::on_importImage_clicked()
     croppingButtons.append(button);
 
 
-
-
     pix = new QPixmap(*path);
     *pix = pix->scaled(gridSize, gridSize, Qt::KeepAspectRatio);
     button->setIcon(QIcon(*pix));
@@ -242,5 +236,13 @@ void ImagEdit::on_importImage_clicked()
     button->setFixedSize(40, 40);
     ui->gridLayout->addWidget(button);
     updateLibraryVisualisation();
+}
+
+
+void ImagEdit::on_resize_clicked()
+{
+    resize->setCropping(actualCropping);
+    resize->show();
+
 }
 

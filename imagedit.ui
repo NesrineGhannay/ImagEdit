@@ -398,7 +398,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#55aaff;&quot;&gt;Librarie&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="select">
+   <widget class="QPushButton" name="resize">
     <property name="geometry">
      <rect>
       <x>890</x>
@@ -433,7 +433,7 @@ QPushButton::pressed {
     </property>
     <property name="icon">
      <iconset resource="Ressources.qrc">
-      <normaloff>:/icone_selection.png</normaloff>:/icone_selection.png</iconset>
+      <normaloff>:/resize.png</normaloff>:/resize.png</iconset>
     </property>
     <property name="iconSize">
      <size>

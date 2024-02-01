@@ -10,12 +10,11 @@ FilterArea::FilterArea(QWidget *parent)
     ui->setupUi(this);
     connect(ui->NbFilterButton, SIGNAL(clicked()), this, SLOT(appliquerFiltreNoirEtBlanc()));
     connect(ui->OmbresChaudesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerOmbresChaudesFilter()));
-    //connect(ui->LumFroidesFilterButton, SIGNAL(clicked()), this, SLOT(appliquerLumFroidesFilter()));
     connect(ui->SummerFiltreButton, &QPushButton::clicked, this, &FilterArea::appliquerSummerFiltre);
     connect(ui->luminositeSlider, SIGNAL(valueChanged(int)), this, SLOT(luminosityChanged()));
     connect(ui->saturationSlider, SIGNAL(valueChanged(int)), this, SLOT(saturationChanged()));
-
-    //connect(parentWidget()->findChild<QPushButton*>("filter"), SIGNAL(clicked()), this, SLOT(on_filter_clicked()));
+    widgetSelect = new selectionarea(this);
+    widgetSelect->hide();
 }
 
 
@@ -233,5 +232,10 @@ void FilterArea::saturationChanged()
 void FilterArea::on_pushButton_clicked()
 {
     this->close();
+}
+
+void FilterArea::on_comboBox_activated(int index)
+{
+
 }
 
