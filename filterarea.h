@@ -36,7 +36,6 @@ private slots:
     void luminosityChanged();
     void saturationChanged();
     void on_pushButton_clicked();
-    void on_comboBox_activated(int index);
 
 private:
     Ui::FilterArea *ui;
@@ -52,5 +51,5 @@ public:
     bool getIsBlackAndWhiteFilter();
 
 };
-#endif // FILTERAREA_H
+#endif
 

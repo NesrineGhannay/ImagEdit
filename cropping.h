@@ -42,7 +42,7 @@ private:
 
 public slots:
     void resizePicture();
-
+    void updateZoom(qreal factor);
 };
 
 #endif // CROPPING_H

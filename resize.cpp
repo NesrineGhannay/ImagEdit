@@ -1,4 +1,3 @@
-// resize.cpp
 #include "resize.h"
 #include "ui_resize.h"
 #include "cropping.h"

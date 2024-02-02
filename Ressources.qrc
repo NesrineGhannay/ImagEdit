@@ -18,6 +18,8 @@
         <file>import_picture.png</file>
         <file>ligne-pointillee2.png</file>
         <file>ligne-pointillee.png</file>
-		<file>resize.png</file>
+        <file>resize.png</file>
+        <file>dezoom.png</file>
+        <file>zoom.png</file>
     </qresource>
 </RCC>

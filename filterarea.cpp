@@ -236,18 +236,5 @@ void FilterArea::on_pushButton_clicked()
     this->close();
 }
 
-void FilterArea::on_comboBox_activated(int index)
-{
-    /*if(index == 1) {
-        QLabel::paintEvent(event);
-        QPainter painter(this);
-        painter.setPen(QPen(Qt::blue, 2));
-        QColor grayWithAlpha = QColor(0, 0, 128, 128);
-        painter.setBrush(QBrush(grayWithAlpha));
-        painter.drawRect(labelSelected->pixmap().rect());
 
-
-    }*/
-
-}
 

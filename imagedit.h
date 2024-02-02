@@ -49,7 +49,8 @@ public:
 
 public slots:
     void on_open_clicked();
-    void displayOnEdition();
+    void displayOnEditionImport();
+    void displayOnEdition(int index);
     void on_filter_clicked();
     void on_resize_clicked();
     void on_rogner_clicked();
@@ -58,10 +59,14 @@ public slots:
     void setupFilterButtonConnection();
     void setupResizeButtonConnection();
     void setCurrentImage();
+    void on_cancelButton_clicked(int index);
+    void on_zoom_clicked();
+    void on_dezoom_clicked();
 
 
 private slots:
     void on_importImage_clicked();
+
 
 private:
     Ui::ImagEdit *ui;
@@ -74,7 +79,7 @@ private:
     QShortcut *raccourciEnregistrer;
     QShortcut *raccourciOuvrir;
     QShortcut *racourciEchapCropping;
-    int currentIndex;
+    int currentIndex = 0;
     QRect *rect;
     Cropping *actualCropping;
     QPushButton *confirmCropping;
@@ -87,6 +92,9 @@ private:
     bool clearImportPictureBtn = false;
     void addImageInLibrary();
     void updateLibraryVisualisation();
+    void updateIndicesAfterRemoval(int removedIndex);
+    void resetInterface();
     const int gridSize = 100;
+    QList<Cropping*> croppingList;
 };
 #endif
