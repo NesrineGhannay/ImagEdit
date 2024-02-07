@@ -1,30 +1,33 @@
 #include "imagedit.h"
 #include "ui_imagedit.h"
+/*
 
+All members
+
+*/
 ImagEdit::ImagEdit(QWidget *parent) : QMainWindow(parent), ui(new Ui::ImagEdit)
 {
     ui->setupUi(this);
-    ui->tabWidget->setStyleSheet("background-color:black;");
     path = new QString();
     pix = new QPixmap(*path);
     QList<QPushButton*> tousLesBoutons = findChildren<QPushButton*>();
     confirmCropping = new QPushButton("Rogner", this);
+    confirmCropping->setStyleSheet("Background-color: white;");
     confirmCropping->hide();
     cancelCropping = new QPushButton("Annuler", this);
+    cancelCropping->setStyleSheet("Background-color: white;");
     cancelCropping->hide();
     boutonResize = findChild<QPushButton*>("resize");
     resize = new Resize(this);
     setupResizeButtonConnection();
+
     raccourciEnregistrer = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
     raccourciOuvrir = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
     racourciEchapCropping = new QShortcut(QKeySequence(Qt::Key_Escape), this);
 
     connect(raccourciEnregistrer, &QShortcut::activated, this, &ImagEdit::on_save_clicked);
     connect(raccourciOuvrir, &QShortcut::activated, this, &ImagEdit::on_open_clicked);
-
-    connect(ui->cancel, &QPushButton::clicked, [=]() {
-        on_cancelButton_clicked(currentIndex);
-    });
+    connect(ui->cancel, &QPushButton::clicked, [=]() {on_cancelButton_clicked(currentIndex);});
     connect(ui->zoom, &QPushButton::clicked, this, &ImagEdit::on_zoom_clicked);
     connect(ui->dezoom, &QPushButton::clicked, this, &ImagEdit::on_zoom_clicked);
 
@@ -49,7 +52,9 @@ ImagEdit::~ImagEdit()
     delete pix;
     delete path;
 }
-
+/*
+Initial Resize Button
+*/
 void ImagEdit::setupResizeButtonConnection()
 {
     resize->setVisible(false);
@@ -58,6 +63,9 @@ void ImagEdit::setupResizeButtonConnection()
     resize->move(x, y);
 }
 
+/*
+Open and import image
+*/
 void ImagEdit::on_open_clicked()
 {
     ui->importImage->close();
@@ -96,6 +104,9 @@ void ImagEdit::on_open_clicked()
 
 }
 
+/*
+Sort image icon in library (max 3 by lines)
+*/
 void ImagEdit::updateLibraryVisualisation() {
 
     int c = 0;
@@ -114,6 +125,7 @@ void ImagEdit::updateLibraryVisualisation() {
     update();
 }
 
+
 void ImagEdit::setCurrentImage()
 {
     actualCropping = qobject_cast<Cropping*>(ui->tabWidget->currentWidget());
@@ -122,6 +134,10 @@ void ImagEdit::setCurrentImage()
     update();
 }
 
+
+/*
+Save image into user folder choice
+*/
 void ImagEdit::on_save_under_clicked()
 {
     if (currentIndex < 0 || currentIndex >= croppingList.size()) {
@@ -144,6 +160,10 @@ void ImagEdit::on_save_under_clicked()
     }
 }
 
+
+/*
+Save image in current folder
+*/
 void ImagEdit::on_save_clicked()
 {
     if (currentIndex < 0 || currentIndex >= croppingList.size()) {
@@ -177,6 +197,10 @@ void ImagEdit::on_save_clicked()
     }
 }
 
+
+/*
+Setup filter btn
+*/
 void ImagEdit::setupFilterButtonConnection()
 {
     widgetFilter->setVisible(false);
@@ -187,6 +211,10 @@ void ImagEdit::setupFilterButtonConnection()
 
 }
 
+
+/*
+Filter clicked connect
+*/
 void ImagEdit::on_filter_clicked()
 {
     if(ui->tabWidget->count() == 0) {
@@ -198,6 +226,10 @@ void ImagEdit::on_filter_clicked()
     }
 }
 
+
+/*
+Cropping clicked connect
+*/
 void ImagEdit::on_rogner_clicked() {
     qDebug() << "actualCropping";
     if(ui->tabWidget->count() == 0) {
@@ -226,6 +258,10 @@ void ImagEdit::on_rogner_clicked() {
 
 }
 
+
+/*
+Display icon to selection area from import
+*/
 void ImagEdit::displayOnEditionImport()
 {
     pix = new QPixmap(*path);
@@ -240,6 +276,10 @@ void ImagEdit::displayOnEditionImport()
 
 }
 
+
+/*
+Display icon to selection
+*/
 void ImagEdit::displayOnEdition(int index)
 {
 
@@ -306,6 +346,10 @@ void ImagEdit::displayOnEdition(int index)
     currentIndex = index;
 }
 
+
+/*
+Import image from current folder
+*/
 void ImagEdit::on_importImage_clicked()
 {
     ui->importImage->close();
@@ -342,12 +386,16 @@ void ImagEdit::on_importImage_clicked()
     displayOnEditionImport();
 }
 
+/*
+Resize btn clicked event
+*/
 void ImagEdit::on_resize_clicked()
 {
 
     QMessageBox::warning(this, "No image found", "Partie non effectué");
 
 }
+
 
 void ImagEdit::updateIndicesAfterRemoval(int removedIndex)
 {
@@ -369,6 +417,9 @@ void ImagEdit::resetInterface()
     ui->gridLayout->removeItem(ui->gridLayout->itemAt(0));
 }
 
+/*
+Cancel btn clicked event
+*/
 void ImagEdit::on_cancelButton_clicked(int index)
 {
 
@@ -389,15 +440,20 @@ void ImagEdit::on_cancelButton_clicked(int index)
 
 }
 
-void ImagEdit::on_zoom_clicked()
-
-{
+/*
+Zoom more btn clicked event
+*/
+void ImagEdit::on_zoom_clicked(){
 
     qreal zoomFactor = 1.10;
     actualCropping->updateZoom(zoomFactor);
 
     update();
 }
+
+/*
+Zoom less btn clicked event
+*/
 void ImagEdit::on_dezoom_clicked()
 {
     qreal zoomFactor = 0.75;

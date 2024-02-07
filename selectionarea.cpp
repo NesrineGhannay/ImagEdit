@@ -1,6 +1,10 @@
 #include "selectionarea.h"
 #include "ui_selectionarea.h"
 
+/*
+ @Kawthar GOUMAIDI, Nesrine GHANNAY, Marius THORRE
+*/
+
 selectionarea::selectionarea(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::selectionarea)

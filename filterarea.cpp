@@ -3,6 +3,10 @@
 #include <iostream>
 #include <QPainter>
 
+/*
+@ Nesrine GHANNAY and Kawthar GOUMAIDI
+*/
+
 using namespace std;
 
 FilterArea::FilterArea(QWidget *parent)

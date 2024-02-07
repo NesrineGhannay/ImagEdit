@@ -1,6 +1,10 @@
 #include "resize.h"
 #include "ui_resize.h"
 #include "cropping.h"
+/*
+ @Marius THORRE and Issam LAMHAOURIK
+*/
+
 
 Resize::Resize(QWidget *parent)
     : QWidget(parent)

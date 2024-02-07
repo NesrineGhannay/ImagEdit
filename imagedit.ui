@@ -40,7 +40,7 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
       <width>1111</width>
       <height>111</height>
@@ -186,7 +186,7 @@ QPushButton::pressed {
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>logo3.png</pixmap>
+      <pixmap resource="Ressources.qrc">:/logo3.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -199,10 +199,13 @@ QPushButton::pressed {
      <property name="geometry">
       <rect>
        <x>560</x>
-       <y>30</y>
+       <y>20</y>
        <width>80</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Supprimer </string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -222,7 +225,7 @@ QPushButton::pressed {
 </string>
      </property>
      <property name="text">
-      <string>Cancel</string>
+      <string>Supprimer</string>
      </property>
      <property name="icon">
       <iconset resource="Ressources.qrc">
@@ -233,10 +236,13 @@ QPushButton::pressed {
      <property name="geometry">
       <rect>
        <x>660</x>
-       <y>30</y>
+       <y>20</y>
        <width>41</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Zoom avant</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -273,10 +279,13 @@ QPushButton::pressed {
      <property name="geometry">
       <rect>
        <x>720</x>
-       <y>30</y>
+       <y>20</y>
        <width>41</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Zoom arrière</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -309,6 +318,13 @@ QPushButton::pressed {
       </size>
      </property>
     </widget>
+    <zorder>label</zorder>
+    <zorder>save</zorder>
+    <zorder>open</zorder>
+    <zorder>save_under</zorder>
+    <zorder>cancel</zorder>
+    <zorder>zoom</zorder>
+    <zorder>dezoom</zorder>
    </widget>
    <widget class="QFrame" name="libraryFrame">
     <property name="geometry">

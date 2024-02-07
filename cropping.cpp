@@ -1,5 +1,9 @@
 #include "cropping.h"
 
+/*
+
+@ Marius THORRE and Kawthar GOUMAIDI
+*/
 
 static constexpr int resizeHandleWidth = 40;
 
